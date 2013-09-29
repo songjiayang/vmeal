@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Login name:</b>
+  <%= @food_senter.login_name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @food_senter.password %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @food_senter.user_name %>
+</p>
+
+<p>
+  <b>Id number:</b>
+  <%= @food_senter.id_number %>
+</p>
+
+<p>
+  <b>Tel:</b>
+  <%= @food_senter.tel %>
+</p>
+
+
+<%= link_to 'Edit', edit_food_senter_path(@food_senter) %> |
+<%= link_to 'Back', food_senters_path %>

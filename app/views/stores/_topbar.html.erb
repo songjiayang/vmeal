@@ -1,0 +1,15 @@
+<div class="tab tab_<%= @type=="categories"? 'on':'out'%>">
+  <%=link_to "菜品分类",edit_stores_path(:type=>"categories")%>
+</div>
+<div class="tab tab_<%= @type=="foods"? 'on':'out'%>">
+  <%=link_to "餐品管理",edit_stores_path(:type=>"foods")%>
+</div>
+<div class="tab tab_<%= @type=="orders"? 'on':'out'%>">
+  <%=link_to "订餐动态",edit_stores_path%>
+</div>
+<div class="tab tab_<%= @type=="messages"? 'on':'out'%>">
+  <%=link_to "客户留言",edit_stores_path(:type=>"messages")%>
+</div>
+<div class="tab tab_<%= @type=="finance"? 'on':'out'%>">
+  <%=link_to "财务统计",edit_stores_path(:type=>"finance")%>
+</div>

@@ -1,0 +1,31 @@
+<h1>Listing food_senters</h1>
+
+<table>
+  <tr>
+    <th>Login name</th>
+    <th>Password</th>
+    <th>User name</th>
+    <th>Id number</th>
+    <th>Tel</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @food_senters.each do |food_senter| %>
+  <tr>
+    <td><%= food_senter.login_name %></td>
+    <td><%= food_senter.password %></td>
+    <td><%= food_senter.user_name %></td>
+    <td><%= food_senter.id_number %></td>
+    <td><%= food_senter.tel %></td>
+    <td><%= link_to 'Show', food_senter %></td>
+    <td><%= link_to 'Edit', edit_food_senter_path(food_senter) %></td>
+    <td><%= link_to 'Destroy', food_senter, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Food senter', new_food_senter_path %>

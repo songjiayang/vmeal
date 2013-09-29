@@ -1,0 +1,44 @@
+<%= render 'topbar'%>
+<table class="table table-condensed table-striped">
+			<thead>
+				<tr>
+					<th class="shrink">
+					<input class="toggle" type="checkbox">
+					</th>
+					<th class="header pjax headerSortDown id_field integer_type" data-href="/admin/comment?sort=id&amp;sort_reverse=true">编号</th>
+					<th class="  commentable_field polymorphic_association_type">店名</th>
+					<th class="header pjax  content_field text_type" data-href="/admin/comment?sort=content">平台订餐数</th>
+					<th class="header pjax  created_at_field datetime_type" data-href="/admin/comment?sort=created_at">创建时间</th>
+					<th class="header pjax  updated_at_field datetime_type" data-href="/admin/comment?sort=updated_at"> 营业状态</th>
+					<th class="header pjax  updated_at_field datetime_type" data-href="/admin/comment?sort=updated_at"> 店家类型</th>
+					<th class="header pjax  updated_at_field datetime_type" data-href="/admin/comment?sort=updated_at"> 店家排序</th>
+					<th class="last shrink"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @stores.each do |store| %>
+				<tr>
+					<td>
+					<input id="bulk_ids_" name="bulk_ids[]" type="checkbox" value="<%=store.id%>">
+					</td>
+					<td class="id_field integer_type" title="632"><%=store.id%></td>
+					<td class="commentable_field polymorphic_association_type" title="FieldTest #300"><a href="/admins/stores/<%= store.id%>" class="pjax"><%= store.name%></a></td>
+					<td class="integer_type" > <%= store.sold_count%> 份</td>
+					<td class="created_at_field datetime_type" title="<%= format store.created_at%>"><%= format store.created_at%></td>
+					<td class="commentable_field" ><%= Store::STORE_STATUS_ADMIN_HASH[store.isclose]%></td>
+					<td class="commentable_field" ><%= Store::STORE_TYPE[store.isphone]%></td>
+					<td class="commentable_field" ><%= store.sortvalue%></td>
+					<td class="last links">
+					<ul class="inline">
+						<li title="查看" rel="tooltip" class="icon show_member_link ">
+							<a class="pjax" href="/admins/stores/<%= store.id%>"> <i class="icon-info-sign"></i> <span style="display:none">查看</span> </a>
+						</li>
+
+						<li title="编辑" rel="tooltip" class="icon edit_member_link ">
+							<a class="pjax" href="/admins/stores/<%= store.id%>/edit"> <i class="icon-pencil"></i> <span style="display:none">修改</span> </a>
+						</li>
+					</ul></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>

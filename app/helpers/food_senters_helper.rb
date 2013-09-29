@@ -1,0 +1,2 @@
+module FoodSentersHelper
+end

@@ -1,0 +1,17 @@
+<%= form_for [:admins,@store_user] do |f| %>
+<div class="field">
+	<%= f.label :店长登录帐号 %>
+	<%= f.text_field :username %>
+</div>
+<div class="field">
+	<%= f.label :密码 %>
+	<%= f.password_field :password %>
+</div>
+<div class="field">
+	<%= f.label :店名 %>
+	<%= f.select :store_id, options_for_select(@stores.map{ |s| [s.name, s.id] }) %>
+</div>
+<div class="actions">
+	<%= f.submit "提交" %>
+</div>
+<% end %>

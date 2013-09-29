@@ -1,0 +1,19 @@
+ <%@activites.each do |jp|%>
+   <div class="deal zt<%=parse_type_to_deal_class(@type)%>">
+         <%=link_to image_tag(jp.avatar),activities_path(jp)%>
+        <h3>
+          <%=link_to jp.title, activities_path(jp), :title=>jp.title%>
+        </h3>
+        <p>
+            中奖名额：<strong><%=jp.total_number%></strong>价值：<%=jp.real_money%>元
+        </p>
+        <h4>
+           <span>
+              <em><strong><%=jp.need_score%></strong>积分</em>
+              <i><%=jp.join_number%>人已参与</i>
+           </span>
+              <%=link_to "", activities_path(jp)%>
+              <b>00:00开始</b>
+       </h4>
+  </div>
+<%end%>

@@ -1,0 +1,4 @@
+<%=render :partial => 'admins/activities/topbar', :locals => {:flash=>flash, :type=>2} %>
+<%= form_for  [:admins,@activity], :html=>{:class=>'form-horizontal'}  do |builder| %>
+  <%=render :partial => 'admins/activities/form', :locals => {:f=>builder} %>
+<%end%>

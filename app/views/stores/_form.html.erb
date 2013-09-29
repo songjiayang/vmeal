@@ -1,0 +1,74 @@
+<%= form_for@store,:html => { :multipart => true } do |f| %>
+  <% if @store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store.errors.values.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+      <% @store.errors.values.each do |msg| %>
+        <li><%= msg[0]%> </li>
+        
+      <% end %>
+      </ul>  
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :店铺名称 %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :主营业务 %><br />
+    <%= f.text_field :main_sales %>
+  </div>
+  <div class="field">
+    <%= f.label :店家地址 %><br />
+    <%= f.text_field :address %>
+  </div>
+   <div class="field">
+    <%= f.label :起送价 %><br />
+    <%= f.text_field :send_price %>
+  </div>
+    <div class="field">
+    <%= f.label :公告 %><br />
+    <%= f.text_area :public_talk %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :简介 %><br />
+    <%= f.text_area :introduce %>
+  </div>
+  
+  
+  
+  <div class="field">
+    <%= f.label :开门时间 %><br />
+    <%= f.time_select :opentime %>
+  </div>
+  <div class="field">
+    <%= f.label :歇业时间 %><br />
+    <%= f.time_select :closetime %>
+  </div>
+  <div class="field">
+    <%= f.label :标签 %><br />
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.label :店家类别 %><br />
+    <%= f.select :categore , StoCategory.find_all_story_category %>
+  </div>
+  <div class="field">
+    <%= f.label :联系电话 %><br />
+    <%= f.text_field :tel %>
+  </div>
+  <div class="field">
+    <%= f.label :是否停业 %><br />
+    <%= f.select :isclose ,Store::STORE_STATUS%>
+  </div>
+  <div class="field">
+    <%= f.label :店家缩略图%><br />
+    <%= f.file_field :image_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit  :提交修改%>
+  </div>
+<% end %>

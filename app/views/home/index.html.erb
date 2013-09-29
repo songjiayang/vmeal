@@ -1,0 +1,95 @@
+<%= javascript_include_tag "bootstrap"%>
+<%= stylesheet_link_tag "bootstrap" %>
+<div class="ordering_contentbase">
+        <div class="ordering_content">
+                <div class="ordering_main">
+                        <div class="ordering_main_top">
+                                <div class="ordering_maintop_half"></div>
+                                <div class="ordering_maintop_half" style="background:#FFE28C;">
+                                        <div class="ordering_maintop_speaker"><img src="/images/icon/notice.png" width="16" height="16" />
+                                        </div>
+                                        <div class="ordering_maintop_message">
+                                                <%unless @notices.blank?%>
+                                                                <a href="/notices/<%=@notices.last.id%>"><%=@notices.last.title%></a>
+                                                <%end%>
+                                        </div>
+                                        <div class="ordering_maintop_point"></div>
+                                </div>
+                        </div>
+
+                        <div class="ordering_main_title">
+                                <div class="ordering_main_title_text">
+                                </div>
+                                <div class="ordering_main_title_position" style="width:300px;">
+                                        <%=cookies[:school]%>
+                                        <a href="/locate" style="text-decoration: none;">切换学校</a>
+                                </div>
+                        </div>
+                        <div class="ordering_mainfocus">
+                                <div class="ordering_mainfocus_left">
+                                        <div id="myCarousel" class="carousel slide" style="width:650px">
+                                          <!-- Carousel items -->
+                                          <div class="carousel-inner">
+                                                <%@jd_ads.each_with_index do |ad,index|%>
+                                                    <div class="<%='active' if index==0%> item">
+                                                        <a href="<%=ad.link_to%>" title="<%=ad.title%>">
+                                                                        <img src="<%=ad.img_path%>" width="650" height="234" />
+                                                        </a>
+                                                    </div>
+                                            <%end%>
+                                          </div>
+                                          <!-- Carousel nav -->
+                                          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                                          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                                        </div>
+                                </div>
+                                <%= render "login"%>
+                                <div class="ordering_center">
+                                        <div class="ordering_center_left">
+                                                <div class="ordering_center_left_title">
+                                                        推荐美食
+                                                </div>
+                                                <%= render "food_ads"%>
+                                                <div class="ordering_center_left_title">
+                                                        网络餐厅
+                                                </div>
+                                                <%= render :partial => "stores", :locals => { :stores => @net_stores } %>
+                                                <% unless @phone_stores.empty? %>
+                                                <div class="ordering_center_left_title">
+                                                        更多餐厅
+                                                </div>
+                                                <%= render :partial => "stores", :locals => { :stores => @phone_stores } %>
+                                                <% end %>
+                                        </div>
+
+                                        <div class="ordering_center_right">
+                                                <%= render "weibo"%>
+                                                <%= render "hot_foods"%>
+                                        </div>
+
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+<% cache "home_notices", :expires_in => 1.day do %>
+<script type="text/javascript">
+  $(document).ready(function () {
+                $('.carousel').carousel({
+                  interval: 2000
+                })
+  });
+  $(document).ready(function () {
+       setInterval("startRequest()",2000);
+    });
+    var messages = [<%=format_notice(@notices)%>]
+    var index = 0
+    function startRequest(){
+      $(".ordering_maintop_message").html(messages[index]);
+      index+=1;
+      if (index>=messages.length){
+                index = 0;
+      }
+   }
+</script>
+<%end%>

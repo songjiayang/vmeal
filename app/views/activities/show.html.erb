@@ -1,0 +1,160 @@
+<%= stylesheet_link_tag "cj_detail" %>
+ <div class="area nav_label" style="margin-top:70px;">
+      <a href="/" target="_blank">微大学</a>&nbsp;&gt;&nbsp;
+      <a href="/cj" target="_blank">幸运抽奖</a>&nbsp;&gt;&nbsp;
+      礼品详情
+</div>
+<br/>
+
+<div id="contentA" class="area">
+  <div class="left">
+    <div class="pt">
+      <img src="<%=@activity.avatar%>">
+      <span class="bsr"></span>
+    </div>
+
+    <div class="blockA">
+      <h2>热门抽奖活动...</h2>
+      <ul>
+        <%@hot_activity.each do |hot|%>
+          <li>
+            <a href="/cj/<%=hot.id%>" target="_blank"><img src="<%=hot.avatar%>">
+            </a>
+            <h3>
+              <a href="/cj/<%=hot.id%>" target="_blank" title="<%=hot.title%>">
+               <%=hot.title%></a></h3>
+            <p><strong><%=hot.join_number%></strong>人已参与</p>
+          </li>
+          <%end%>
+      </ul>
+    </div>
+</div>
+
+<div class="right">
+    <div class="deal zt<%=@type%>">
+        <h2>
+          <span><%=@activity.title%></span>          
+        </h2>
+        <h3>抽奖所需积分：<em><%=@activity.need_score%></em>
+          积分&nbsp;&nbsp;|&nbsp;&nbsp;
+          价值: <%=@activity.real_money%>&nbsp;&nbsp;|&nbsp;&nbsp;
+          中奖名额<strong><%=@activity.total_number%></strong>
+        </h3>
+        <%if @type==2%>
+            <%date = parse_time_for_activity((@activity.end_time-Time.now).to_i)%>
+            <h5>距离抽奖结束：
+              <i id="day"><%=date[0]%></i>天
+              <em class="one" id="hour"><%=date[1]%>
+              </em><em class="two" id="minute"><%=date[2]%></em>
+              <em id="second"><%=date[3]%></em>
+            </h5>
+             <h4>
+              <%=form_for "", :url => "/cj/confirm_order" do |f| %>
+                  <input  name="id" type="hidden" value="<%=@activity.id%>">
+                  <%=f.submit "", :class=>'btn' %>
+                  <em><%=@activity.join_number%>人已参与</em>
+              <%end%>
+            </h4>
+        <%elsif @type==1%>
+           <h4>
+              <span></span>
+              <em>0人已参与</em>
+              <i>开始时间：<%=@activity.start_time.localtime.strftime("%F %R")%></i>
+           </h4>
+        <%else%>
+           <h4><span></span></h4>
+            <div class="blockA">
+            <h2><span>中奖名单</span><a href="#"></a></h2>
+            <ul class="clear">
+              <%@activity.users.each do |u|%>
+                  <li>
+                  <img alt="<%=u.username%>" src="<%=u.get_image_url("small")%>" title="<%=u.username%>">
+                  <span><a href="javascript:void(0)" target="_blank"><%=u.username%></a></span>
+                  <em>于<%=@activity.end_time.strftime("%F")%> 中奖</em>
+                  </li>
+              <%end%>
+            </ul>
+            <p></p>
+          </div>
+        <%end%>
+
+        <p>小编提醒：<%=@activity.description%></p>
+      </div>
+
+    <div class="l clear displayIF" id="">
+      <div class="topinfo"></div>
+      <div class="blockCJ">
+        <p></p>
+        <strong>幸运抽奖规则</strong>
+        1、活动开始后，所有注册会员均可点击“我要抽奖”按钮参与幸运抽奖活动<br>
+        2、所有中奖得到的礼品不收取任何费用，我们包邮为您送到家<br>
+        3、参与幸运抽奖需要花费相应的积分，并且无论中奖与否积分不退<br>
+        4、为增加中奖率，每位会员可多次参与幸运抽奖，但需要花费多次相应积分<br>
+        5、每天下午8点所有已结束的抽奖活动统一由系统随机摇奖<br>
+        6、开奖后页面会展示中奖会员名单，中奖会员可以从<a href="/users/welfare" class="font3399cc" target="_blank">我的礼品</a>中查看物流信息
+        <strong>注意事项</strong>
+        1、微大学内部员工禁止参加任何会员积分活动<br>
+        2、提前登录微大学账号再参与活动，这样才能快人一步<br>
+        3、活动礼品发出15天内请到论坛进行晒单分享，还可获取额外积分<br>
+        4、发表晒单帖时请注意遵守论坛发帖规范，如有违反将有可能取消参与积分活动的资格<br>
+        5、请准确填写<a href="/users/welfare/address" target="_blank">收货地址</a>和电话,如因填写的地址或电话有误导致的快递丢失，积分不退
+      </div>
+    </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      setInterval("flush_time()",1000);
+   });  
+   var now_day =  Math.floor($("#day").text());
+   var now_hour = Math.floor($("#hour").text());
+   var now_minute = Math.floor($("#minute").text());
+   var now_second = Math.floor($("#second").text());
+   function flush_time(){
+      if ((now_day+now_hour+now_minute+now_second) > 0){
+        if(now_second >0){
+           now_second -= 1;
+           if(now_second<10){
+            $("#second").text("0"+now_second);
+           }else{
+            $("#second").text(now_second);
+           }
+        }else if (now_minute >0){
+          now_minute -= 1;
+          now_second = 59;
+          if(now_minute<10){
+            $("#minute").text("0"+now_minute);
+           }else{
+            $("#minute").text(now_minute);
+           }
+          $("#second").text(now_second);
+        }else if (now_hour >0){
+          now_minute = 59;
+          now_second = 59;
+          now_hour -= 1;
+          if(now_minute<10){
+            $("#hour").text("0"+now_hour);
+           }else{
+            $("#hour").text(now_hour);
+           }
+          $("#second").text(now_second);
+          $("#minute").text(now_minute);
+        }else if (now_day > 0){
+          now_day  -= 1 ;
+          now_minute = 59;
+          now_second = 59;
+          now_hour = 23;
+          if(now_day<10){
+            $("#day").text("0"+now_day);
+           }else{
+            $("#day").text(now_day);
+           }
+          $("#second").text(now_second);
+          $("#minute").text(now_minute);
+          $("#hour").text(now_hour);
+        }
+      }
+   }
+</script>
+

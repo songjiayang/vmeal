@@ -1,0 +1,69 @@
+<% if flash[:create_food_info]%>
+<script type="text/javascript">
+alert('<%= flash[:create_food_info]%>');
+</script>
+<%end%>
+
+<div class = "main_content_details_table">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="0">
+		<tr>
+			<th>菜名</th>
+			<th>价格</th>
+			<th>数量</th>
+			<th>标签</th>
+			<th>热量</th>
+			<th>评价</th>
+			<th>折扣</th>
+			<th>类别</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<% @store.categories.each do |category| %>
+		<% category.foods.each do |food| %>
+		<tr>
+			<td><%= food.name %></td>
+			<td><%= food.price %></td>
+			<td><%= food.sum %></td>
+			<td><%= food.tag %></td>
+			<td><%= food.energy %></td>
+			<td><%= food.rank %></td>
+			<td><%= food.sales %></td>
+			<td><%= food.category.name%></td>
+			<td><a href="javascript:void(0)" onclick="requery_food('#edit_food',<%= food.id%>)">更新</a></td>
+			<td><%= link_to '删除', delete_food_stores_path(:food_id => food.id), confirm: '确定删除吗?', method: :delete %></td>
+			<td> <% if food.is_recommend == 0%> <a href="javascript:void(0)" onclick="apply_recomment('#recommend_food',<%= food.id%>)">店长推荐</a> <% else %>
+			<%= link_to '取消推荐', cancel_ad_stores_path(:food_id => food.id)%>
+			<% end %> </td>
+		</tr>
+		<% end %>
+		<% end %>
+	</table>
+	<br/>
+	<a href="javascript:void(0)" onclick="food_edit('#add_food')">添加本店菜品</a>
+</div>
+
+<div id="add_food" style="display: none;height:500px;" class="food_form">
+	<%= render 'foods/form'%>
+</div>
+<div id="edit_food" style="display: none;height:500px;" class="food_form">
+	<%= render 'foods/edit'%>
+</div>
+<div id="recommend_food" style="display: none">
+	<%= form_for :food,:url=>{:controller=>:foods,:action=>:add_recomment} do |f| %>
+	<label>推荐理由：</label>
+	<div class="field">
+		<%= f.text_area :recomment_description%>
+	</div>
+	<label>缩略图：</label>
+	<div class="field">
+		<%= f.file_field :photo %>
+		<%= f.hidden_field :id,:id => "recomment_food_id",:name => "recomment_food_id"%>
+		<%= f.hidden_field :is_recommend,:value => "1"%>
+	</div>
+	<div class="actions">
+		<%= f.submit  :提交修改%>
+	</div>
+	<% end %>
+</div>
+

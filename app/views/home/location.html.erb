@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag "location" %>
+    <title>选择校区</title>
+  </head>
+
+  <body>
+    <div id="bg">
+      <%=image_tag("http://qzs.qq.com/qzone/v6/v6_config/upload/20121211_2.jpg")%></div>
+    <div id="main">
+      <div id="tit">
+        <span>我的位置</span>
+        <a href="/" title="返回">返回</a>
+      </div>
+      <% cache "school1_#{School.last.id.to_s}", :expires_in => 1.day do %>
+      <div id="ct">
+        <%School.all.each_with_index do |school,index|%>
+        <div class="ct_pos<%"_last" if index%3==0%>">
+          <a href="/choose/<%=school.id%>">
+            <%=image_tag(school.avatar(:thumb))%>
+        </a>
+      </div>
+      <%end%>
+    </div>
+    <%end%>
+    <% unless user_signed_in? %>
+    <div id="other">
+      <div id="bt">
+        <a href="/users/sign_in" title="登录微大学享受美食吧">登录</a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</body>
+</html>

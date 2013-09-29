@@ -1,0 +1,209 @@
+﻿body{
+	padding:0;
+	margin:0;
+	font-family:"微软雅黑";
+	font-size:14px;
+	background:url(../temp/bg.gif);
+}
+
+.sign_in_contentbase{
+	width:960px;
+	margin:0px auto;
+	height:auto;
+}
+.sign_in_content{
+	width:960px;
+	float:left;
+	height:auto;
+}
+
+.sign_in_empty{
+	width:100%;
+	float:left;
+}
+
+.regist_logo{
+	width:860px;
+	padding-left:100px;
+	height:auto;
+	float:left;
+}
+.logo{
+	width:140px;
+	height:60px;
+	float:left;
+}
+.title{
+	width:200px;
+	height:60px;
+	line-height:60px;
+	font-size:20px;
+	float:left;
+	padding-left:20px;
+}
+.regist_process{
+	width:860px;
+	padding-left:100px;
+	height:54px;
+	float:left;
+}
+.regist_process_main{
+	height:54px;
+	width:860px;
+	float:left;
+	line-height:54px;
+	font-size:18px;
+	
+}
+
+.regist_process_main_title1{
+	width:230px;
+	float:left;
+	height:54px;
+	text-align:center;
+	text-shadow: 1px 1px 3px #999, 1px 1px 6px #CCC, 1px 1px 10px #EEE;
+
+}
+
+.regist_info{
+	padding-left:250px;
+	padding-right:250px;
+	width:460px;
+	height:auto;
+}
+
+.regist_info_line{
+	width:100%;
+	height:40px;
+	float:left;
+	line-height:40px;
+}
+
+.regist_info_error_line{
+	width:360px;
+	height:30px;
+	line-height:28px;
+	padding-left:100px;
+	float:left;
+	font-family:"宋体";
+	font-size:12px;
+	color:#F60;
+}
+
+.regist_info_error_line p{
+	height:20px;
+	width:300px;
+	margin:3px 0px;
+	
+}
+
+.regist_info_name{
+	height:40px;
+	float:left;
+	width:90px;
+	line-height:40px;
+	text-align:right;
+	padding-right:10px;
+}
+.regist_info_input{
+	height:40px;
+	float:left;
+	width:310px;
+	line-height:40px;
+	padding-right:50px;
+	font-family:"微软雅黑";
+	font-size:14px;
+}
+.regist_info_inputstyle{
+	height:40px;
+	float:left;
+	width:300px;
+	padding-left:10px;
+	line-height:40px;
+	border:#CCC 1px solid;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	color:#666;
+	font-size:14px;
+	font-family:"微软雅黑";
+}
+
+.regist_info_inputstyle:hover{
+	border-color:#F90;
+}
+
+.regist_info_line a{
+	color:#066;
+	text-decoration:none;
+}
+
+.regist_info_line a:hover{
+	text-decoration:underline;
+}
+.regist_submit_button{
+	width:150px;
+	height:40px;
+	float:left;
+	border:#F99A00 1px solid;
+	font-family:"微软雅黑";
+	font-size:16px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	cursor:pointer;
+	text-shadow: 1px 1px 3px #999, 1px 1px 6px #CCC;
+	background:url(../temp/buttonbg.jpg);
+	color:#111;
+}
+
+.input_error{
+	width:310px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	color:#F60;
+}
+
+.password0{
+	background:url(../temp/password0.png);
+	background-position:center;
+}
+
+.password1{
+	background:url(../temp/password1.png);
+	background-position:center;
+}
+
+.password2{
+	background:url(../temp/password2.png);
+	background-position:center;
+}
+
+.password3{
+	background:url(../temp/password3.png);
+	background-position:center;
+}
+
+
+.regist_info_verification{
+		height:40px;
+	float:left;
+	width:300px;
+	padding-left:10px;
+	line-height:40px;
+	border:#CCC 1px solid;
+	color:#666;
+	font-size:14px;
+	font-family:"微软雅黑";
+}
+.store_join_textarea{
+	height:200px;
+	float:left;
+	width:400px;
+	margin-left:60px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	
+	
+}

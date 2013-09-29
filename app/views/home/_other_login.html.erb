@@ -1,0 +1,40 @@
+<%if session[:need_binding]%>
+	<%unless current_user%>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.layer({
+		    		type : 1,
+		    		title : ['',false],
+		    		closeBtn : ['0',true],
+		    		border : [10 , 0.3 , '#000', true],
+		    		area : ['auto','auto'],
+		    		page : {dom : '#otherlogin'}
+				});
+			});
+
+			function login_other (arge) {
+				var url = "/otherlogin";
+				if (arge==0){
+					url = url + "?type=0"
+				};
+				$.ajax({
+							type : "POST",
+							url : url,
+							beforeSend : function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));},
+							data : {email : $("#email").attr("value"),password:$("#password").attr("value")},
+							dataType : "json",
+							success : function(data) {
+								if(data.status == "ok")
+								{
+									window.location = "/";
+								}else
+								{
+									$("#msg").html(data.error_msg);
+								}
+							}
+				});
+			}
+		</script>
+	<%end%>
+<%end%>
+

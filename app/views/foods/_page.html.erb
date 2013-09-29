@@ -1,0 +1,52 @@
+  <%unless@max_page == 0%>
+	   <div class="main_content_left_pager">
+	   	<%if @page_number == 1%>
+	        <span>上一页</span>
+	        <span class="now">1</span>
+		        <%if @max_page >3 %>
+		            <%[@page_number+1,@page_number+2].each do |index| %>
+		            	<a href="/foods/search?keys=<%=@key_word%>&page=<%=index%>"><%=index%></a>
+
+		            <%end%> 
+		            ...
+		        <%else%>	
+			           <%if @max_page ==2%>
+			           		<a href="/foods/search?keys=<%=@key_word%>&page=2">2</a>
+			            <%elsif @max_page ==3%>
+			               <%[2,3].each do |index| %>
+			            	<a href="/foods/search?keys=<%=@key_word%>&page=<%=index%>"><%=index%></a>
+			              <%end%> 
+		                <%end%>
+
+	           <%end%>
+	     <%else%>
+	         <a class="page" href="/foods/search?keys=<%=@key_word%>&page=<%=@page_number-1%>">上一页</a>
+	          <a class="page" href="/foods/search?keys=<%=@key_word%>&page=1">1</a>
+	         <%if @page_number >3%>
+                 ...
+              <%end%>
+              <%if @page_number ==@max_page and @page_number==2%>
+              <a href="/foods/search?keys=<%=@key_word%>&page=2"><span class="now">2</span></a>
+              <%elsif @page_number==3%>
+                <a href="/foods/search?keys=<%=@key_word%>&page=2">2</a>
+                <a href="/foods/search?keys=<%=@key_word%>&page=3"><span class="now">3</span></a>
+              <%else%>
+                   <%if @page_number != @max_page%>
+                     <span class="now"><%=@page_number%></span>
+                     <a href="/foods/search?keys=<%=@key_word%>&page=<%=@page_number+1%>"><%=@page_number+1%></a>
+                    <%else %>
+		        	<a href="/foods/search?keys=<%=@key_word%>&page=<%=@max_page%>"><%=index%></a>
+		        	<span class="now"><%=@max_page%></span>
+		        	<%end%>
+		      <%end%> 
+		      <%if @max_page >@page_number+1%>
+		      	...
+		      <%end%>
+	     <%end%>
+		     <%if  @page_number == @max_page %>
+		         共<%=@max_page%>页
+		     <%else%>
+		      <a class="page" href="/foods/search?keys=<%=@key_word%>&page=<%=@page_number+1%>">下一页</a>
+		      <%end%>
+	   </div>
+   <%end%>

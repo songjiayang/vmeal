@@ -1,0 +1,80 @@
+<script language="javascript" type="text/javascript" src="/My97DatePicker/WdatePicker.js"></script>
+<div class="row-fluid sortable"  style="margin-top:28px">
+  <div class="box-header well" data-original-title>
+    <h2><i class="icon-home"></i>订单</h2>
+    <form action="/admins/orders" method='get'>
+      <input type="hidden" name="type" value="1">
+      <input type="text" placeholder="点击选择日期" name="order_time" onclick="WdatePicker()">
+      <button type="submit" class="btn">提交</button>
+    </form>
+
+    <div class="box-icon">
+      <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+      <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+      <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+    </div>
+
+    <div class="box-content">
+      <table class="table table-striped table-bordered bootstrap-datatable datatable ">
+        <thead>
+          <tr>
+            <th>订单号</th>
+            <th>店家</th>
+            <th>金额</th>
+            <th>付款方式</th>
+            <th>下单时间</th>
+            <th>送餐时间</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@orders.each_with_index do |order,index|%>
+          <tr>
+            <td class="center"><%=order.order_number%></td>
+			<% if order.store.nil? %>
+			<td class="center">店家出错</td>
+			<% else %>
+			 <td class="center"><%=order.store.name%></td>
+			<% end %>
+            <td class="center"><%= (order.pay_type.to_s == "货到付款")? order.total_price.to_s + "元" : (order.total_price * 12.5).round.to_s + " 积分" %></td>
+            <td class="center"><%= order.pay_type%></td>
+            <td class="center"><%=order.created_at.localtime.to_s(:db)%></td>
+            <td class="center"><%=order.send_time%></td>
+            <td class="center">
+              <span class="label label-<%= order.translate_status_to_s.include?("成功") ? 'success' : 'important'%>">
+                <%= Order::ORDER_STATUS_HASH[order.order_status]%></span>
+            </td>
+            <td class="center">
+              <a class="btn btn-success" href="<%=admins_order_path(order)%>">
+                <i class="icon-zoom-in icon-white"></i>
+                查看
+              </a>
+              <%if order.order_status == 1%>
+              <a class="btn btn-danger" href="<%= do_fail_order_orders_path(:id =>order.id)%>">
+                <i class="icon-edit icon-white"></i>
+                列入弃单
+              </a>
+              <%end%>
+              <%if order.order_status == 2%>
+              <a href="<%= recover_order_orders_path(:id =>order.id) %>" class='btn btn-warning'>
+                <i class="icon-edit icon-white"></i>
+                恢复
+              </a>
+              <%end%>
+            </td>
+          </tr>
+          <%end%>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination" >
+      <%= will_paginate @feeds %>
+    </div>
+  </div>
+</div><!--/span-->
+</div><!--/row-->
+
+
+<%=render "admins/orders/datechange"%>

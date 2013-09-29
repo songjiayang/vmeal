@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "Morestyle" %>
+<div class="ordering_center_left_recommend">
+  <%@food_ads.first(3).each_with_index do |ad,index| %>
+  <div class="ordering_center_left_recbox" 
+       <% if index.odd?%>
+       style="padding-left:26px; padding-right:26px;position: relative;"
+       <%else%>
+       style="position: relative;"
+       <% end %>
+       >
+    <a href="<%=ad.link_to%>" title="<%=ad.title%>">
+      <img src="<%=ad.img_path%>" width="190" height="190" />
+    </a>
+    <div class="recbox_tips"
+      <% if index.odd?%>
+       style="margin-left:26px; margin-right:26px;"
+       <%end%>
+      >
+      <div class="ordering_center_left_restaurant_line3"><%=ad.store.nil? ? 0 : ad.store.sold_count%></div>
+      <a class="recbox_tips_name" href="/stores/<%=ad.store_id%>"><%=ad.title%></a>
+      <div id="dis_content">
+        <p class="recbox_tips_des"><a href="<%=ad.link_to%>"><%=ad.describe.nil? ? '   ' : ad.describe%></a></p>
+        <a class="recbox_tips_res_link" href="/stores/<%=ad.store_id%>"><%=ad.store.nil? ? '微大学餐厅' : ad.store.name%></a>
+      </div>
+    </div>
+  </div>
+  <%end%>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  // $(".recbox_tips").find("div:last").hide();
+  $(".ordering_center_left_recbox").hover(function(){
+    $(this).find("div:first").animate({height:"120px"});
+    },function() {
+      $(this).find("div:first").animate({height:"20px"});
+    });    
+  });
+</script>

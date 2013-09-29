@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script type="text/javascript" language="javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			if (-1 != navigator.userAgent.indexOf("MSIE")) {
+				document.write(' <OBJECT id="Player"');
+				document.write(' classid="clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6"');
+				document.write(' width=0 height=0 > <param name="URL" value="/msg/msg.wav" /> <param name="AutoStart" value="false" /> </OBJECT>');
+			} else {
+				document.write(' <OBJECT id="Player"');
+				document.write(' type="application/x-ms-wmp"');
+				document.write(' autostart="false" src= "/msg/msg.wav" width=0 height=0> </OBJECT>');
+			}
+		</script>
+		<%= render 'form' %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.extend({
+					show : function() {
+						$.ajax({
+							type : "GET",
+							url : "/order_manager/has_order",
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+							},
+							dataType : "json",
+							success : function(data) {
+								if(data["status"]=="OK"){
+									location='/order_manager';								
+								}
+							},
+							error : function(data) {
+
+							}
+						});
+					}
+				});
+				setInterval("$.show()", 30000);
+				Player.controls.play();
+			});
+		</script>
+	</body>
+</html>

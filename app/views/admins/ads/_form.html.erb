@@ -1,0 +1,65 @@
+<div class="control-group ">
+  <label class='control-label'>图片地址:</label>
+  <div class="controls">
+    <%= f.text_area :img_path, class:'input-xlarge', :rows=>"2" %>
+  </div>
+</div>
+ <div class="control-group ">
+  <label class='control-label'>跳转地址:</label>
+  <div class="controls ">
+    <%= f.text_area :link_to, class:'input-xlarge', :rows=>"2" %>
+  </div>
+</div>
+  <div class="control-group ">
+  <label class='control-label'>标题:</label>
+  <div class="controls">
+    <%= f.text_field :title, class:'input-xlarge' %>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>费用:</label>
+  <div class="controls">
+    <%= f.text_field :money, class:'input-xlarge'%>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>描述:</label>
+  <div class="controls">
+    <%= f.text_area :describe, class:'input-xlarge'%>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>店家:</label>
+  <div class="controls">
+    <%= f.text_field :store_id, class:'input-xlarge'%>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>广告类型:</label>
+  <div class="controls ">
+    <%= f.select :ad_type,[1,2]%>
+    <p class='help-block'>其中1表示焦点图，2表示其他图片.</p>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>状态:</label>
+  <div class="controls ">
+    <%= f.select :status, Ads::STATUS %>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>所属学校:</label>
+  <div class="controls ">
+       <select id="school_id" name="ads[school_id]">
+                <%=School.all.each do |school|%>
+                  <option value="<%=school.id%>"><%=school.name%></option>
+                <%end%>
+        </select>
+  </div>
+</div>
+<div class="form-actions">
+	<%= f.submit '提交', :class=>"btn btn-primary"%>
+	<%=link_to  '取消', admins_ads_path %>
+</div>
+
+

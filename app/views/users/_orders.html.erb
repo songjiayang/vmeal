@@ -1,0 +1,97 @@
+<div class="main_content_details_bottom">
+  <%if order_status == 1%>
+  <div class="tab tab_on">
+    待完成的订单
+  </div>
+  <div class="tab tab_out">
+    <%= link_to '一月内订单' ,orders_users_path(:status => "in_one_month")%>
+  </div>
+  <div class="tab tab_out">
+    <%= link_to '一月前订单' ,orders_users_path(:status => "before_one_month")%>
+  </div>
+  <%elsif order_status ==2 %>
+  <div class="tab tab_out">
+    <%= link_to '待完成的订单' ,orders_users_path(:status => "building")%>
+  </div>
+  <div class="tab tab_on">
+    一月内订单
+  </div>
+  <div class="tab tab_out">
+    <%= link_to '一月前订单' ,orders_users_path(:status => "before_one_month")%>
+  </div>
+  <%else%>
+  <div class="tab tab_out">
+    <%= link_to '待完成的订单' ,orders_users_path(:status => "building")%>
+  </div>
+  <div class="tab tab_out">
+    <%= link_to '一月内订单' ,orders_users_path(:status => "in_one_month")%>
+  </div>
+  <div class="tab tab_on">
+    一月前订单
+  </div>
+  <%end%>
+  <% unless @orders.nil? %>
+  <div class="main_content_details_table">
+    <table cellpadding="0px" cellspacing="0px">
+      <thead>
+        <tr>
+          <th>订单号</th>
+          <th>餐厅</th>
+          <th>日期</th>
+          <th>份数</th>
+          <th>金额</th>
+          <th>付款方式</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order|%>
+        <tr>
+          <td><%= link_to order.order_number%></td>
+          <td><%= link_to order.store.name,order.store%></td>
+          <td><%= order.created_at.to_s(:db)%></td>
+          <td><%= order.total_foods%></td>
+          <td><%= (order.pay_type.to_s == "货到付款")? order.total_price.to_s + "元" : (order.total_price * 12.5).round.to_s + " 积分" %></td>
+          <td><%= order.pay_type%></td>
+          <td class="table_remarks"><%= order.comment%></td>
+          <td> <% if order.in_five_minutes? %>
+            <% if order.order_status == 0%>
+            <% if order.store.isphone == 0%>
+            <%= link_to '取消订单(下单后五分钟内可以操作)',drop_order_users_path(:order_id => order.id),:confirm =>'您确认取消订单?' %>
+            <% else %>
+            <font color="red"> 如需取消订单请联系店家</font>
+            <% end %>
+            <%else%>
+            <font color="blue"><%= Order::ORDER_STATUS_HASH[order.order_status]%></font>
+            <% end %>
+            <% elsif order.order_status == 3 %>
+            <% if order.is_comment ==0%> <a href="javascript:void(0)" onclick="comment_order('#order_success_comment',<%= order.id%>)">评论订单 </a> <% else %> <font color="red"> 完成评论</font> <% end %>
+            <% else %> <font color="blue"><%= Order::ORDER_STATUS_HASH[order.order_status]%></font> <% end %>
+
+            | <a href="javascript:void(0)" onclick="show_order_detail(<%= order.id%>,0)">订单详细 </a></td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+  <%= will_paginate @orders %>
+</div>
+<div id="order_success_comment" style="display: none;margin:10px;">
+  <%= form_for :order,:url=>{:controller=>:orders,:action=>:do_one_order_comment} do |f| %>
+  <label>订单评价：</label>
+  <div class="field">
+    <%= f.text_area :comment,:cols =>"40",:rows =>"10"%>
+  </div>
+  <%= f.hidden_field :id,:id => "orderid",:name => "orderid"%>
+  <%= f.submit  :提交,:class => "action"%>
+  <% end %>
+</div>
+  <%if session[:new_orders]%>
+    <%= javascript_include_tag "application" ,"http://localhost:9292/faye.js" %>
+    <script type="text/javascript">
+      var faye = new Faye.Client('http://localhost:9292/faye');
+      console.log(<%=session[:new_orders]%>)
+    </script>
+  <%end%>

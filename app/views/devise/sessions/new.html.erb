@@ -1,0 +1,157 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<html xmlns:wb="http://open.weibo.com/wb">
+		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2784058992" type="text/javascript" charset="utf-8"></script>
+		<title>登录微大学</title>
+		<meta name="keywords" content="外卖,外卖电话,西南石油大学外卖,四川音乐学院外卖,成都医学院外卖,订餐电话,订餐平台,正因村,西南石油大学,四川音乐学院,成都医学院">
+		<meta name="description" content="微大学订餐平台,汇集新都区所有美食，以大学生为受众群体的一个新式订餐平台">
+		<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="bookmark" type="image/x-icon" />
+		<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="icon" type="image/x-icon" />
+		<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<script src="/javascripts/jquery-1.7.2.js" type="text/javascript"></script>
+		<script src="/javascripts/jquery.blockUI.js" type="text/javascript"></script>
+		<script src="/javascripts/jquery.validate.js" type="text/javascript"></script>
+		<link href="/css/Login.css" type="text/css" rel="stylesheet" />
+		<%= csrf_meta_tags %>
+		<style type="text/css">
+			label.error {
+				float: none;
+				color: red;
+				padding-left: .5em;
+				vertical-align: top;
+			}
+			p {
+				clear: both;
+			}
+			.submit {
+				margin-left: 12em;
+			}
+			em {
+				font-weight: bold;
+				padding-right: 1em;
+				vertical-align: top;
+      }
+      .enter_email{
+        margin-left: -230px;
+      }
+      .enter_psw{
+        margin-left: -230px;
+      }
+			.alert{
+				height: 20px; 
+				line-height: 20px;
+				width: 100%; 
+				float: left; 
+				color: #F00;
+				text-align:left;
+				padding-bottom:10px; 
+				padding-left: 52px;
+				font-size: 14px ;
+			}
+		</style>
+</head>
+
+<body>
+	<div class="top">
+		<div class="top_vmeal">
+			<a href="/"><img src="/images/icon/vmeal.png" /></a>
+		</div>
+		<div class="top_rightbox">
+			<div class="top_qqlogin top_otherlogin">
+				<a href="/users/qqlogin">QQ登录</a>
+			</div>
+			<div class="top_blank"></div>
+			<div class="top_bloglogin top_otherlogin">
+				<a href="/users/sina_login">微博登录</a>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main_title">
+			订外卖不差登录这点事！
+		</div>
+		<div class="main_content">
+			<div class="main_content_leftpic"></div>
+			<div class="main_content_rightcontrol">
+				
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+					<div class="main_content_loglabel">
+				  <div class="alert" >
+									<%= alert %>
+									<%= flash[:notice]%>
+						</div>
+            <label for="user[email]">邮箱</label>
+						<%= f.email_field :email ,:value =>"",:size =>"30",:maxlength=>"30", :class => "main_content_input",:tabindex =>"1"%>
+          <span class="enter_email" style="">请输入邮箱</span>
+					</div>
+					<div class="main_content_loglabel">
+          <label for="user[password]">密码</label>
+          <%= f.password_field :password , :value => "",:size =>"30",:tabindex =>"2",:maxlength=>"30", :class => "main_content_input"  , :onCopy => "return false" ,:onpaste => "return false;" , :onCut => "return false" ,:onselectstart => "return false"%>
+          <span class="enter_psw" style="">请输入密码</span>
+					</div>
+					<div class="main_content_loglabel">
+						<p></p>
+						<label>
+							<% if devise_mapping.rememberable? %>
+							<%= f.check_box :remember_me ,:tabindex=>"3"%>
+							<% end %>
+							<span>记住我</span>
+							<%= f.submit '登录',:tabindex =>"4"%>
+						</label>
+					</div>
+					<div class="main_content_loglabel">
+						<p></p>
+						<%= link_to "忘记密码?", new_password_path(resource_name) %>&nbsp;&nbsp;|<% if devise_mapping.registerable? && controller_name != 'registrations' %>
+									<%= link_to "免费注册", new_registration_path(resource_name)%>
+									<br />
+									<% end %> </label>
+					</div>
+				<% end %>
+				
+				
+			</div>
+		</div>
+	</div>
+  <script type="text/javascript">
+     $(document).ready(function () {
+      $("#user_email").click(function() {
+          $(".enter_email").hide();
+      });
+
+      $(".enter_email").click(function(){
+        $(".enter_email").hide();
+        $("#user_email").focus();
+      });
+
+      $("#user_email").focusin(function() {
+        if($(this)[0].value==""){
+          $(".enter_email").hide();
+        }
+      });
+      $("#user_email").focusout(function(){
+        if($(this).attr("value")==""){
+          $(".enter_email").show();
+        }
+      });
+      $("#user_password").focusin(function() {
+        if($(this).attr("value")==""){
+          $(".enter_psw").hide();
+        }
+      });
+      $("#user_password").click(function() {
+          $(".enter_psw").hide();
+      });
+  
+      $(".enter_psw").click(function(){
+        $(".enter_psw").hide();
+        $("#user_password").focus();
+      });
+
+      $("#user_password").focusout(function(){
+        if($(this).attr("value")==""){
+          $(".enter_psw").show();
+        }
+      });
+     });
+  </script>
+</body>

@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag "cj_detail",'cj_error' %>
+ <div class="area nav_label" style="margin-top:70px;">
+      <a href="/" target="_blank">微大学</a>&nbsp;&gt;&nbsp;
+      <a href="/cj" target="_blank">幸运抽奖</a>&nbsp;&gt;&nbsp;
+       抽奖确认
+</div>
+
+<div id="cententA" class="area">
+  <%= form_for   "", :url => "/score_histories/create" do |f|%>
+	  <p class="b2">
+	  <strong>温馨提示！</strong>
+	    <input type='hidden' name='activity_id' value='<%=@activity.id%>'>
+	    参与本次抽奖活动您将减少<%=@activity.need_score%>积分，抽奖活动可多次参与，每次都会扣除<br/>相应积分，无论中奖与否积分都不会退还！
+	    <input type='submit' class='btn' value=''/>
+	  </p>
+  <%end%>
+</div>
+
+

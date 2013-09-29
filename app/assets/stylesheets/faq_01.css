@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+.faq .left{float:right;}
+.faq .right{float:left;}
+#integral{min-height: 702px;_height: 702px;}
+#integral p{line-height: 26px;color:#333;}
+#integral h3{font-size:14px;font-weight:bold;color:#c00;margin:20px 0;}
+#integral table{width: 660px;}
+#integral th,#integral td{background: #fff;padding:5px;line-height: 20px;}
+#integral th{text-align: center;height:20px;color:#333;}
+#integral .tab1{background: #fadfd7;}
+#integral .tab1 th{background: #fff5f1;}
+#integral .tab2{background: #c8f1cb;}
+#integral .tab2 th{background: #ecfced;}
+/*libuyid*/
+#libuyid p{line-height: 26px;color:#333;}
+#libuyid dl{margin-top:20px;}
+#libuyid dt{color:#cc0000;font-size:14px;font-weight: 800;}
+#libuyid dd{line-height: 20px;padding-top:10px;}
+/*signal*/
+#signalid{background:#fff}
+#signalid div strong{position:absolute; top:20px;left:0; font:30px/30px "微软雅黑";color:#e22a10}
+#signalid div span{position:absolute; top:20px;left:40px;font:18px/30px "微软雅黑";color:#000}
+#signalid div p{position:absolute; top:60px; left:40px; text-align:left; font:14px/20px "";width:300px}
+#signalid div img{border:1px solid #ccc; width:308px; position: absolute; top:20px;right:0}
+#signalid div{width:680px; clear:left; margin:0 auto; position:relative; height:400px;overflow:hidden;padding-top:20px}
+/*novice*/
+#novice div img{border:none;width:310px;height:328px;}
+/*faqid*/
+#faqid dl{margin-top:10px;}
+#faqid dl label{width:50px;display:inline-block;vertical-align: top;}
+#faqid dt{color:#333;font-size:14px;padding:10px;}
+#faqid dt label{color:#5aae22;padding-right: 6px;}
+#faqid dd{color:#af7105;background: url(http://p0.tuanimg.com/v1/2012/images/faq_bg.png) no-repeat 0 0;padding-top:10px;}
+#faqid dd p{background: url(http://p0.tuanimg.com/v1/2012/images/faq_bg.png) no-repeat 0 bottom;padding:0 10px 10px;line-height: 20px;font-size:12px;}
+#faqid dd p label{font-size:14px;}
+#faqid dd p span,#faqid dt span{display:inline-block;width:600px;}
+#faqid dd p span strong{display: inline;}
+#faqid dd p span a{color:#09c}#faqid dd p span a:hover{color:#cc0000}
+
+.dealcontent .right .mod-nav{background:#fff;margin-bottom:10px;text-align: left;line-height: 24px;padding:10px 20px;}
+.dealcontent .right .mod-nav h2{border:none;text-align:left;padding:10px 0 0;width:auto;}
+.dealcontent .right .mod-nav dl{margin-bottom:10px;}
+.dealcontent .right .mod-nav dl a{display:block;}
+.dealcontent .right .mod-nav dt{padding:5px 0;font-size:14px;color:#333;}
+.dealcontent .right .mod-nav dd a{color:#09c}.dealcontent .right .mod-nav dd a:hover{color:#cc0000}
+.dealcontent .right .mod-nav dl a.on,.dealcontent .right .mod-nav dl a.on:hover{color:#cc0000;font-weight: 800;}
+.dealcontent .right .teal{line-height: 30px;background:#fff;text-align: left;padding:20px;font-size:14px;}
+.dealcontent .right .teal img{vertical-align: middle;}
+.dealcontent .right .teal em{font-size:12px;}
+.dealcontent .right .teal .fkalink{font-size:12px;color: #0099CC;}.dealcontent .right .teal .fkalink:hover{color:#cc0000}
+
+.show_faq h2{text-align:left;font:800 20px/30px "微软雅黑";color:#cc0000;border-bottom: 1px solid #e5e5e5;padding-bottom:20px;}
+.static_page{width:680px;padding:0;}
+.static_page th{background:#f1f9fe;font-size: 12px;}
+.static_page th.fir,.static_page td.fir{font-weight: 400;text-align: center;color:#1170b0;}
+.static_page td.fir{background:#f9fcfd;}
+.static_page h2 span{color:#cc0000;font-size: 28px;}
+.faq .left .static_page p{font-size: 12px;}
+.faq .left .static_page p strong{display:inline;}
+
+#spike p{margin-top: 20px;color:#333;}
+#spike dl{margin-top: 30px;}
+#spike dt{font-size:14px;padding:10px 0;color:#333;}
+#spike dt span{color:#cc0000;font-weight: 800;}
+#spike dd{line-height: 20px;}
+.faq-tabbar{position: fixed; top:0;left:50%;margin-left:-490px;_position:absolute;_top:expression(0 + documentElement.scrollTop +"px");  margin-top:0}
+/*member*/
+#member{min-height: 702px;_height: 702px;}
+#member p{line-height: 26px;margin:10px 0;}
+#member table{width:450px;text-align: center;background: #fae0d8;margin-top: 30px;}
+#member td{background: #fff;height: 30px;}
+#member td em{color:#c00;font-weight: 800;}
+#member th{background: #fff5f2;height: 30px;color:#333;}
+#member a{color:#09c;}#member a:hover{color:#c00;}
+/*shoptake*/
+#shoptake{background:#fff}
+#shoptake div strong{position:absolute; top:20px;left:0; font:24px/26px "微软雅黑";color:#e22a10}
+#shoptake div span{width: 320px;position:absolute; top:20px;left:40px;font:16px/30px "微软雅黑";color:#000}
+#shoptake div p{position:absolute; top:60px; left:40px; text-align:left; font:12px/20px "";width:300px;color:#999;}
+#shoptake div img{border:1px solid #ccc; position: absolute; top:20px;right:0}
+#shoptake div{width:680px; clear:left; margin:0 auto; position:relative; height:350px;overflow:hidden;padding-top:20px}
+#shoptake div a{color:#09c;text-decoration: underline;}#shoptake div a:hover{color:#c00;}

@@ -1,0 +1,52 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+    <li title="" rel="" class="icon index_collection_link active ">
+       <a class="pjax" href="/admins/ads">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+       </a>
+    </li>
+        
+    <li title="新建" rel="" class="icon export_collection_link ">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_notice_path, :class => 'pjax'%>
+    </li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<table class="table table-condensed table-striped">
+  <thead>
+      <th class="header pjax headerSortDown id_field integer_type">编号</th>
+      <th class="  commentable_field polymorphic_association_type">标题</th>
+      <th class="header pjax  created_at_field datetime_type">最后修改日期</th>
+      <th class="last shrink"></th>
+      </tr>
+  </thead>
+<tbody>
+  <% @notices.each do |notice|%>
+        <tr>
+          <td class="id_field integer_type"><%=notice.id%></td>
+          <td class="commentable_field polymorphic_association_type">
+            <%=notice.title%>
+          </td>
+           <td class="created_at_field datetime_type"><%=notice.updated_at.localtime.to_s(:db)%></td>
+        <td class="last links">
+           <ul class="inline">
+           <%=link_to raw('<i class="icon-info-sign"></i>'),admins_notice_path(notice), title:"查看" %>
+          <%=link_to raw('<i class="icon-pencil"></i>'),edit_admins_notice_path(notice), title:"修改"%>
+            <%= link_to raw('<i class="icon-remove"></i>'), admins_notice_path(notice), method: :delete, data: { confirm: 'Are you sure?' } , title: '删除' %>
+          </ul>
+        </td>
+        </tr>
+<%end%>
+</tbody>
+</table>
+<div class="pagination">
+    <ul> <%= will_paginate @notices %> </ul>
+</div>
+</div>

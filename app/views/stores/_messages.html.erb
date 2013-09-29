@@ -1,0 +1,46 @@
+<div class = "main_content_details_table">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="0">
+		<tr>
+					<th>用户名</th>
+					<th>时间</th>
+					<th>内容</th>
+					<th>操作</th>
+		</tr>
+		<% @messages.each do |message| %>
+			<tr>
+					<td><%= message.user.username %></td>
+					<td><%= message.created_at.localtime.to_s(:db) %></td>
+					<td><%= message.comment %></td>
+					<td>
+						<%if message.reply%>
+						<a href='javascript:void(0)' onclick="requry_reply('#reply_cotent',<%=message.reply.id%>)">查看回复</a>
+						<%else%>
+						  <a href='javascript:void(0)' onclick="reply_comment('#reply_form',<%=message.id%>)">回复</a>
+						 <%end%>
+				  <td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate @messages %>
+</div>
+
+<div id="reply_form" style="display: none">
+	<%= form_for :reply,:url=>{:controller=>:reply,:action=>:create} do |f| %>
+	 <%= f.text_field :message_id  , :type => "hidden" ,:id=>"reply_message_id"%>
+		<div class="field">
+			<%= f.text_area :comment%>
+		</div>
+		<div class="actions">
+			<%= f.submit  :提交修改%>
+		</div>
+	<% end %>
+</div>
+
+
+<div id="reply_cotent" style="display: none">
+		<div class="field">
+			<p id="message_cotent"> </p>
+		</div>
+</div>
+
+

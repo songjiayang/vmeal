@@ -1,0 +1,13 @@
+<fieldset>
+		 <%= f.label "时间段"%>
+		 <%= f.select :start_time , OrderPeriod.time_selector%>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>--</span>
+		 <%= f.select :end_time,OrderPeriod.time_selector%><br/>
+		 		 <%= f.label "送餐量"%>
+		 <%= f.select :max_number,OrderPeriod::MAX_NUMBERS,:size=>10%><br/>
+		 <label>描&nbsp;&nbsp;&nbsp;述</label>
+		 <%= f.select :description,OrderPeriod::SELECT_TYPE ,:class=>'description'%>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 <%= f.check_box :_destroy%>
+		 <%= f.label :_destroy, "destroy"%>
+</fieldset>

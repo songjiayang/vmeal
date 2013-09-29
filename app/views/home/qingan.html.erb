@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>青安驾校欢迎您！</title>
+    <link href="/css/qingan.css" type="text/css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="base">
+      <div class="main">
+        <div class="top">
+          <img src="/css/images/banner_a.png"  />
+        </div>
+
+        <div class="info">
+          <div class="info_box">
+            <img src="/css/images/kaochang1.jpg"/>
+            <span>申领条件</span>
+            <div>
+              初次此申领的车型为C1、B2、E<br />
+              申请增驾B1的，需取得C1、C2三年以上或者取得B2一年以上<br />
+              申请增驾A1的，需取得B1，B2五年以上或者取得A2两年以上
+            </div>
+          </div>
+
+
+          <div class="info_box">
+            <img src="/css/images/kaochang2.jpg"/>
+            <span>报名资料</span>
+            <div>
+              初次申领的学员需交验身份证，外地户口须办理暂住证，并提供复印件各2份，白底彩色相片1寸12张（免冠，不戴眼镜，不穿制服）<br />
+              申请增驾的学员需交验身份证，并提供身份证复印件3份，现有驾驶证复印件1份，白底彩色相片1寸12张（免冠，不戴眼镜，不穿制服）
+            </div>
+          </div>
+
+
+          <div class="info_box">
+            <img src="/css/images/kaochang3.jpg"/>
+            <span>年龄及身高</span>
+            <div>
+              小型汽车C1：
+              18—70周岁 &nbsp;150cm以上<br />
+              大型货车B2：
+              21—50周岁 &nbsp;155cm以上<br />
+              大型客车A1：
+              26—50周岁 &nbsp;155cm以上<br />
+              摩托车E：
+              18—60周岁 &nbsp;无上限<br />
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="process">
+          <img src="/css/images/process.png" width="960" height="90" /> </div>
+
+
+
+        <div class="apply">
+          <div class="apply_left">
+            <div>
+              青&nbsp;安&nbsp;驾&nbsp;校<br />
+              火&nbsp;热&nbsp;报&nbsp;名
+
+            </div>
+
+          </div>
+          <div class="apply_right_base">
+            <div class="apply_right">
+              <div class="apply_center">
+                <div>在下面填写报名信息，我们将以最快的速度联系您！</div>
+                <%= form_for @qingan,:url =>signup_home_index_path  do |f|%>
+                <div><span>姓名</span><%= f.text_field :name %></div>
+                <div><span>联系电话</span><%= f.text_field :telephone%></div>
+                <%= f.submit '立即报名',:class => "button"%>
+                <% end %>
+              </div>
+
+              <div class="apply_center">
+                <div>您也可以主动联系我们哦！</div>
+                <div><span>店铺地址:</span><p>成都市新都区正因街10号。</p></div>
+                <div><span>联系电话:</span><p>15114020808（谭教练）<br />
+                    15388198689 <br />
+                    13541236262 （王教练）</p></div>
+              </div>
+
+
+              <div class="apply_img">
+                <img src="/css/images/qa.jpg" /> </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="promise">
+          <div class="promise_main">
+            <span>郑&nbsp;重&nbsp;承&nbsp;诺</span>
+            <div>
+              1、以最优的服务质量，最好的服务态度，接待每一位学员。<br />
+              2、最低的教学价格，中途不增收任何其它费用。最快的时间报考考试，出驾照。<br />
+              3、团报（5人以上）享受团队价格。
+            </div>
+          </div>
+
+
+          <div style="padding-left:30px; float:left; width:465px; height:auto;">
+
+            <div class="promise_main">
+              <span>敬&nbsp;告</span>
+              <div>
+                学习有效期为三年（以报名之日起）过期无效，已交的所有费用不予退还，中途退学的已向车管部门办理手续的所有费用由车管部门处理，所学的学时按平时80元/小时，周末100元/小时收取。
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="bottom">
+      友情链接:
+      <a href="#">青安驾校官网</a>
+      <a href="#">驾考一点通</a>
+      <a href="#">微大学订餐平台</a>
+      <a href="#">西南石油大学</a>
+      <a href="#">油吧</a>
+      <a href="#">四川音乐学院</a>
+      <a href="#">成都医学院</a>
+    </div>
+    <div class="bottom_line"></div>
+  </body>
+</html>
+
+<% if flash[:qingan]%>
+<script type="text/javascript">
+  alert('<%= flash[:qingan]%>');
+</script>
+<%end%>

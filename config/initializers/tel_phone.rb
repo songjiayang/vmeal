@@ -1,0 +1,2 @@
+require 'util/mobile_short_message'
+include MobileShortMessage

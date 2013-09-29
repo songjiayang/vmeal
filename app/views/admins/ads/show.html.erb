@@ -1,0 +1,36 @@
+
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/ads"><%=controller_name%></a> <span class="divider">/</span></li>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link ">
+        <a class="pjax" href="/admins/ads">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+      <li title="新建" rel="" class="icon export_collection_link active">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_ad_path, :class => 'pjax'%>
+      </li>
+</ul>
+
+<div class="well" id="my_show_form">
+<div><label>图片地址:</balel><span><%=@ad.img_path%></span></div>
+<div><label>跳转链接:</balel><span><%=@ad.link_to%></span></div>
+<div><label>标题:</balel><span><%=@ad.title%></span></div>
+<div><label>费用:</balel><span><%=@ad.money%>元</span></div>
+<div><label>广告类型:</balel><span><%=@ad.ad_type%></span></div>
+<div><label>状态:</balel><span><%=@ad.status%></span></div>
+<div><label>学校:</balel><span><%=@ad.school.name%></span></div>
+</div>
+
+
+

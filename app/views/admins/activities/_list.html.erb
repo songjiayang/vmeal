@@ -1,0 +1,111 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link active ">
+        <a class="pjax" href="/admins/activities">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+        
+      <li title="新建" rel="" class="icon export_collection_link ">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_activity_path, :class => 'pjax'%>
+      </li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<div id="list">
+  <%= form_tag '/admins/ads/query', :method => :post, :class=> "pjax-form form-inline"%>
+     <div class="well ">
+          <select class="input-small " name="type" style="width:120px;">
+            <option value ="type">正在进行中</option>
+            <option value ="type">即将开奖</option>
+            <option value ="status">即将开始</option>
+            <option value ="status">历史活动</option>
+          </select>
+          <button class="btn btn-primary"  type="submit">
+            <i class="icon-white icon-refresh"></i>
+            查询
+          </button>
+        </div>
+ </form>
+<table class="table table-condensed table-striped">
+  <thead>
+     <tr >
+      <th style="width:6%;">编号</th>
+      <th style="width:25%;">跳转链接</th>
+      <th style="width:15%;">开始时间</th>
+      <th style="width:15%;">结束时间</th>
+      <th style="width:10%;">参与人数</th>
+      <th style="width:15%;">状态</th>
+      <th class="last shrink"></th>
+      </tr>
+  </thead>
+<tbody>
+  <%@activities.each do |ac|%>
+   <tr>
+      <th style="width:6%;"><%=ac.id%></th>
+      <th ><a href="/cj/<%=ac.id%>"><%=ac.title%></a></th>
+      <th ><%=ac.start_time.to_s(:db)%></th>
+      <th ><%=ac.end_time.to_s(:db)%></th>
+      <th id="total_number_<%=ac.id%>" style="display:none;"><%=ac.total_number%></th>
+      <th style="color:#C00;" id="join_number_<%=ac.id%>"><%=ac.join_number%></th>
+      <th >
+        <%if ac.status =="即将开始"%>
+           <span class='btn btn-warning'><%=ac.status%></span>
+        <%elsif ac.status =="正在进行中"%>
+           <span class='btn btn-danger'><%=ac.status%></span>
+        <%elsif ac.status =="即将开奖"%>
+          <a class="btn btn-success kaijiang" name="<%=ac.id%>"
+           data-loading-text="正在抽奖中...">立即开奖</a>
+        <%else ac.status =="历史活动"%>
+           <span class='btn'><%=ac.status%></span>
+        <%end%>
+        
+      </th>
+      <td class="last links">
+           <ul class="inline">
+            <%=link_to raw('<i class="icon-info-sign"></i>'),admins_activity_path(ac), title:"查看" %>
+            <%if ac.status=="正在进行中" or ac.status=="即将开始"%>
+            <%=link_to raw('<i class="icon-pencil"></i>'),edit_admins_activity_path(ac), title:"修改"%>
+            <%end%>
+             <%if (ac.status =="即将开始" or ac.join_number<=(20*ac.total_number)) and ac.users.size==0%>
+               <%= link_to raw('<i class="icon-remove"></i>'), admins_activity_path(ac), method: :delete, data: { confirm: 'Are you sure?' } , title: '删除' %>
+            <%end%>
+          </ul>
+        </td>
+      </tr>
+  <%end%>
+</tbody>
+</table>
+
+<div class="pagination">
+    <ul> <%= will_paginate @activities %> </ul>
+</div>
+</div>
+
+<script type="text/javascript">
+  $(".kaijiang").click(function(){
+      var the_deal = $(this);
+      var activity_id = the_deal.attr("name");
+      var join_number = $("#join_number_"+activity_id).text();
+      var total_number = $("#total_number_"+activity_id).text();
+      if (join_number<total_number*0) {
+        alert("抽奖人数不足奖品人数20倍，不能开奖.");
+      }else{
+         htmlobj=$.ajax({url:"/admins/activities/kaijiang/"+activity_id,async:false});
+         if (htmlobj.responseText>0){
+            self.location='/admins/activities/'+activity_id
+         }else{
+          alert("抽奖失败");
+         }
+      }
+      
+  });
+
+</script>

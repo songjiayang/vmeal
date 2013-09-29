@@ -1,0 +1,48 @@
+<%= render :partial => 'tab', :locals => {:tab_index => @tab_index} %>
+<div class="main_content_details">
+				<div class="main_content_details_top">
+					<div class="personal_info">
+						<div class="personal_info_head">
+							 <img src="<%= current_user.get_image_url%>" width="90" height="90" /> 
+							<a href="javascript:void(0)" onclick="avatar()">修改头像</a>
+						</div>
+						<div class="personal_info_about">
+							<div class="personal_info_about_blank"></div>
+							<div class="personal_info_about_name">
+								<%= current_user.username%>
+							</div>
+							<div class="personal_info_about_time">
+								<span><%= current_user.created_at.localtime.to_s(:db)%></span> 注册
+							</div>
+						</div>
+						<div class="personal_info_other">
+							<div class="personal_info_other_line">
+								&nbsp;
+							</div>
+							<div class="personal_info_other_line">
+								完成订单 ：<a href="/users/orders/building"><%= current_user.orders.count%></a> 笔
+							</div>
+							<div class="personal_info_other_line">
+								我的收藏： <a href="/users/collects"><%= current_user.favorites.count %></a> 家餐厅&nbsp;&nbsp;<a href="/users/collects?type=foods"><%=current_user.favorite_foods.count%></a> 份美食
+							</div>
+							<div class="personal_info_other_line">
+								未读消息 ：<a href="#">0</a> 条
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+</div>
+
+<div id="avatar" style="display: none">
+			<div >
+				<%=form_for :user,:url=>{:action=>:change_avatar},:html => { :multipart => true} do |f|%>
+				<div>
+						 <div ><%= f.file_field :image_url  ,:onchange=>"readURL(this);"%></div>
+             <div><img id="avatar_preview"/></div>
+				</div>
+				  <div><%= f.submit :确认上传 %></div>
+		<%end%>
+</div>
+

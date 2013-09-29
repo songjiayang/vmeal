@@ -1,0 +1,80 @@
+<style type="text/css">
+#mail-content{
+	    width:200px;
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		-o-text-overflow:ellipsis;
+		-moz-binding:url('ellipsis.xml#ellipsis');
+        }
+</style>
+<%= render 'topbar'%>
+<ul class="nav nav-tabs">
+
+	<li title="" rel="" class="icon index_collection_link active">
+		<a class="pjax" href="/admins/station_mails/"> <i class="icon-th-list"></i> <span>显示所有站内新</span> </a>
+	</li>
+
+	<li title="" rel="" class="icon new_collection_link  ">
+		<a class="pjax" href="/admins/station_mails/new"> <i class="icon-plus"></i> <span>新建站内信</span> </a>
+	</li>
+    <li title="" rel="" class="icon new_collection_link  ">
+		<a class="pjax" href="/admins/station_mails/new_user"> <i class="icon-plus"></i> <span>发送给指定人</span> </a>
+	</li>
+	
+
+	<li class="dropdown" style="float:right">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Selected items<b class="caret"></b></a>
+		<ul class="dropdown-menu" style="left:auto; right:0;">
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('export'); jQuery('#bulk_form').submit(); return false;">Export selected Comments</a>
+			</li>
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('bulk_delete'); jQuery('#bulk_form').submit(); return false;">Delete selected Comments</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th class="header pjax headerSortDown id_field integer_type" data-href="/admin/comment?sort=id&amp;sort_reverse=true">编号</th>
+			<th class="  commentable_field polymorphic_association_type">站内新标题</th>
+			<th class="header pjax  created_at_field datetime_type" >创建时间</th>
+			<th class="header pjax  content_field text_type" >站内信内容</th>
+			<th class="last shrink"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @station_mails.each do |station_mail| %>
+		<tr>
+			<td class="id_field integer_type"><%= station_mail.id%></td>
+			<td class="commentable_field polymorphic_association_type" title="FieldTest #300"><%= station_mail.title%></td>
+
+			<td class="created_at_field datetime_type" title="<%= format station_mail.created_at%>"><%= format station_mail.created_at%></td>
+			<td class="integer_type" > <p id="mail-content"><%= station_mail.content%></p></td>
+			<td class="last links">
+			<ul class="inline">
+                <li title="查看" rel="tooltip" class="icon edit_member_link ">
+					<a class="pjax" href="/admins/station_mails/<%= station_mail.id%>"> <i class="icon-info-sign"></i> <span style="display:none">修改</span> </a>
+				</li>
+				<li title="编辑" rel="tooltip" class="icon edit_member_link ">
+					<a class="pjax" href="/admins/station_mails/<%= station_mail.id%>/edit"> <i class="icon-pencil"></i> <span style="display:none">修改</span> </a>
+				</li>
+				<li title="删除" rel="tooltip" class="icon edit_member_link ">
+					<%= link_to raw('<i class="icon-remove"></i>'), [:admins,station_mail], method: :delete, data: { confirm: '你确认删除吗?' } %> 
+				</li>
+				<% if station_mail.send_success?%>
+				 <li title="站内信发送成功" rel="tooltip" >
+					<button class="btn btn-success">站内信已经发送</button>
+				</li>
+				<%else%>
+				<li title="发送" rel="tooltip" >
+					<%= link_to '发送站内信',send_mail_admins_station_mails_path(:mail_id => station_mail.id),:class =>"btn btn-primary" ,:confirm => "您确认发送站内信吗？"%>
+				</li>
+				<% end %>
+			</ul></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

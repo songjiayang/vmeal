@@ -1,0 +1,48 @@
+﻿body{
+	padding:0;
+	margin:0;
+	font-family:"微软雅黑";
+	font-size:14px;
+	background:url(/temp/bg.gif);
+}
+
+.ordering_tempfunction_contentbase{
+	width:960px;
+	margin:0px auto;
+	height:auto;
+}
+.ordering_tempfunction_content{
+	width:960px;
+	float:left;
+	height:auto;
+	padding-bottom:40px;
+}
+
+.ordering_tempfunction_empty{
+	width:100%;
+	float:left;
+}
+
+.ordering_tempfunction_logo{
+	width:860px;
+	padding-left:100px;
+	height:auto;
+}
+
+.ordering_tempfunction_main{
+	padding-left:80px;
+	padding-right:80px;
+	height:553px;
+	width:800px;
+	float:left;
+	background:url(/temp/catering.png) no-repeat;
+	background-position:center;
+}
+
+.ordering_tempfunction_returnback{
+	width:190px;
+	height:54px;
+	float:right;
+	position:relative;
+	cursor:pointer;
+}

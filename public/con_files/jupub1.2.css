@@ -1,0 +1,173 @@
+@charset "utf-8";
+/* CSS Document */
+em{ font-style:normal}
+body{background:url(../img/icon1.png);}
+a,a *{cursor: pointer;}
+
+/*头*/
+#toolbar{width:100%; height:30px; background:#f8f8f8;color:#333; line-height:30px; border-bottom:1px solid #b10000; position:relative; z-index:10000}
+.toolbar{ position:relative; z-index:99999}
+.toolbar .flow{margin:3px 0 0 10px;}
+.toolbar .right{color:#d5d5d5}
+.toolbar .right .sc{color:#09c;}.toolbar .right .sc:hover{color:#cc0000;}
+.toolbar .l{position:relative;_padding-top:5px;}
+.toolbar .l em .user{color:#cc0000;}
+.toolbar .l .yqhy{margin-left:10px;}
+.toolbar .l .yqhy i{width:51px;height:18px;display:inline-block;background:url(http://p0.tuanimg.com/v1/2012/images/top_icon_2.png) no-repeat -36px 0;_background:url(http://p0.tuanimg.com/v1/2012/images/top_icon_2_ie6.png) no-repeat -36px 0;font-style: normal;text-align: center;line-height: 18px;color:#fff;}
+.toolbar .digtao{width:180px;height:52px;background:url(http://p0.tuanimg.com/v1/2012/images/top_icon_2.png) no-repeat -87px 0;_background:url(http://p0.tuanimg.com/v1/2012/images/top_icon_2_ie6.png) no-repeat -87px 0;position: absolute;right:145px;top:25px;}
+.toolbar .digtao a.clo{width:15px;height:15px;position: absolute;right:4px;top:9px;display: inline-block;}
+.toolbar .digtao a.img{width:35px;height:35px;position: absolute;left:10px;top:11px;display: inline-block;}
+.toolbar .digtao a.txt{position: absolute;left:53px;top:12px;font-size: 14px;}
+.toolbar span a{color:#d7412c}
+
+#attentionTao{position:absolute; right:50px;width:190px;top:20px; text-align:left;padding:10px 10px 0;color:#000; line-height:22px;display:none;}
+#attentionTao a{color:#d50; float:right;background: url(http://p0.tuanimg.com/v1/2012/images/weibo_bg.png) no-repeat 0 0; height:25px;width: 59px;}
+#attentionTao a:hover{ background-position:-60px 0}
+#attentionTao span{width: 172px; float:left;margin-top:4px}
+#attentionTao em{background: url(http://p0.tuanimg.com/v1/2012/images/icon_bg.png) no-repeat -16px -164px ;display: block;font-size: 0;height: 7px;line-height: 0;width: 190px;}
+#attentionTao p{background:#FFFBEB;line-height: 20px;padding:5px 8px;width: 172px; border:1px solid #C9C9C9; border-top:0;color:#e20050; overflow:hidden;}
+#attentionTao h3{width: 172px; float:left; border-left:1px solid #C9C9C9;border-right:1px solid #C9C9C9;background:#FFFBEB; padding: 0 8px; text-align:right; font:0/0 ""}
+#attentionTao h3 u{background: url(http://p0.tuanimg.com/v1/2012/images/collection_bg.png) no-repeat 0 -21px ;cursor: pointer;display:inline-block;height:10px;font:0/0 "";margin-top: 5px;padding-left: 10px;vertical-align: middle;}
+#attentionTao p small{font-size:12px}
+
+#everyDayNine{position:absolute; left:180px;width:170px;top:30px; text-align:left;padding:10px 10px 0;color:#000; line-height:22px;}
+#everyDayNine p a{color:#d50; float:right;background:url(http://p0.tuanimg.com/v1/2012/images/tao_20126.07bg1.png) 0 -75px no-repeat;line-height:25px;height:25px;width: 59px; text-align:center; text-decoration:none;color:#333}
+#everyDayNine p a:hover{background-position:-60px -75px;}
+#everyDayNine i{width: 148px; float:left; padding:0 5px; font-style:normal}
+#everyDayNine em{background: url(http://p0.tuanimg.com/v1/2012/images/tao_20125.16bg.png) no-repeat 0 0 ;display: block;font-size: 0;height: 7px;line-height: 0;width: 170px;}
+#everyDayNine p span{width:158px; height:11px; font:0/0 ""; text-align:right; display:inline-block; padding-top:3px}
+#everyDayNine p span a{width:11px;height:11px; display:inline-block; background:url(http://p0.tuanimg.com/v1/2012/images/tao_20126.07bg1.png) -11px -62px no-repeat}
+#everyDayNine p span a:hover{ background-position:0 -62px}
+#everyDayNine p{background:#FFFBEB;line-height: 20px;padding:0 5px 10px;width: 158px; border:1px solid #C9C9C9; border-top:0;color:#666; overflow:hidden}
+#everyDayNine small{font-size:12px; padding:0 6px;width:146px; float:left}
+
+/*icon2.png背景*/
+.header .clientLink,.header .sc,.header .sc i,.header .dy,.header .fx,.head_nav .r .signin_a,.head_nav .r .signin_on  span.signin_a,.topf a.def,.topf a.def:hover{background:url(../img/icon2_2.png) no-repeat;}
+
+.header{width:100%; background:url(../img/bg.png) left top repeat-x; height:72px}
+.header h1{overflow:hidden; height:54px}
+.header h1 .l img{vertical-align:top}
+.header .clientLink{width:128px;height:22px;float:left;display:inline;margin:25px 0 0 20px;background-position: 0 0;}
+.header .sc{width:39px;height:39px;margin-top:15px;background-position: -83px -115px;position: relative;z-index:10000;}
+.header .sc:hover{background-position: -125px -116px;}
+.header .sc i{width:65px;height:25px;display:none;position: absolute;left:-13px;top:-28px;z-index:10000;background-position: -176px -1px;}
+.header .sc:hover i{display:inline-block;}
+.header .dy{width:39px;height:39px;display:inline;margin:15px 10px 0 0;background-position: -42px -115px;}
+.header .dy input{display:none;}
+.header .dyon{width:245px;background-position: 0 -61px;text-align: left;}
+.header .dyon input{display:inline;border:none;background: none;}
+.header .dyon .int{height: 20px; line-height: 20px; margin: 9px 0px 0px 50px; width: 130px;}
+.header .dyon .btn{padding: 0px; margin: 3px 0px 0px 1px; height: 25px; width: 48px; cursor: pointer;}
+.header .fx{width:39px;height:39px;display:inline;margin:15px 10px 0 0;background-position: -1px -115px;}
+.header .fxon{background-position: 0 -21px;text-align: left;font-size: 0px;letter-space: -8px;}/*width:172px;*/
+.header .fxon a{width:20px;height:22px;display:inline-block;margin:8px 0 0 4px;}
+.header .fxon a.sina{margin-left:40px;}
+
+#head_nav{width:100%; background:url(../img/bg.png) left bottom repeat-x; height:43px;}
+#head_nav .area{height:40px;}
+.head_nav .l{position: relative;}
+.head_nav .l a{width:100px;float:left;height:39px;border-right:1px solid #d7412c;overflow: hidden;}
+.head_nav .l a.first{border-left:1px solid #d7412c;}
+.head_nav .l a.on,.head_nav .l a.on:hover{background: #920e01;}
+.head_nav .l a:hover{background: #920e01;}
+.head_nav .l a,.head_nav .r a{color:#fff;font:14px/40px "";}
+.head_nav .l a{ text-decoration:none;}
+.head_nav .r{text-align:left;padding-right:80px;position: relative;z-index: 10000;}
+.head_nav .r a.on{color:#ffd696}
+.head_nav .r a{margin:0 10px;display:inline-block;}
+.head_nav .r a.alink{margin-left:110px;}
+.head_nav .r em{width:2px;font:0/0 ""; height:40px; background:url(http://p0.tuanimg.com/v1/2012/images/tao_20125.16bg2.png) -239px -63px no-repeat; display:inline-block; vertical-align:top}
+.head_nav .r i{width:14px; height:38px; background:url(http://p0.tuanimg.com/v1/2012/images/tao_20125.16bg2.png) -241px -63px no-repeat; float:left;margin-right:10px}
+.head_nav .r i.i1{ background-position:-241px -63px}
+.head_nav .r i.i2{ background-position:-256px -63px}
+.head_nav .l .zhibg{width:36px;height:15px;display:inline-block;background:url(http://p0.tuanimg.com/v1/2012/images/top_icon_2.png);_background:url(http://p0.tuanimg.com/v1/2012/images/top_icon_2_ie6.png);position: absolute;top:0;left: 205px;}
+
+/*底*/
+.foot_bg{background:#fff url(http://p0.tuanimg.com/v1/2012/images/foot_bg2.png) repeat-x;margin-top:20px;}
+.about {margin-top:20px;margin-top:0; padding-top:20px;border-bottom:1px solid #f3f3f3;}
+.about .top{width:980px;height:19px; float:left; }
+.about .bottom{width:980px;height:19px; float:left}
+.about .mid{width:980px;float:left}
+.about .mid dl{float:left; line-height:24px; text-align:left}
+.about .mid dl dt{font-size:14px; line-height:30px;color:#000}
+.about .mid dl dd a{color:#09c}.about .mid dl dd a:hover{color:#cc0000}
+.about .mid dl.dl1{ padding:0 20px;width:125px}
+.about .mid dl.dl2{ padding:0 20px;width:135px}
+.about .mid dl.dl3{width:250px; text-align:center;margin-left:30px;}
+.about .mid dl.dl3 img{float:left;}
+.about .mid dl.dl3 p{float:right;width:145px;text-align: left;font:400 15px/24px "微软雅黑";color:#333;}
+.about .mid dl.dl3 span{display:inline-block;font: 400 12px/20px "";color:#666;padding-top:10px;}
+.about .mid dl.dl3 span i{display: inline-block;height:14px;width:14px;background: url(http://p0.tuanimg.com/v1/2012/images/tao-footer-bg.png);text-align: center;line-height: 14px;margin-right:5px;font-style: normal;}
+.about .mid dl.dl3 span em{color:#cc0000;font-style: normal;}
+.about .mid dl.dl1 a.sina{background: url(http://p0.tuanimg.com/v1/2012/images/sina_new.png) no-repeat 0 0; padding-left:20px}
+.about .mid dl.dl1 a.tao_small{background: url(http://p0.tuanimg.com/v1/2012/images/tao_small.png) no-repeat 0 0; padding-left:20px}
+.about .mid dl.dl1 a.tao_mobile{background: url(http://p0.tuanimg.com/v1/2012/images/tao_mobile.png) no-repeat 0 0; padding-left:20px}
+.taowenwidls{float:left;width:100%;}
+.footer{margin-top:20px;height:60px; line-height:30px;}
+.footer img{ vertical-align:middle;margin-left:10px; border:1px solid #c3bfbe}
+#taowenwid{text-align:left;}
+#taowenwid .taowen{width:346px;height:87px;background:url(http://p0.tuanimg.com/v1/2012/images/taowen_bg.png);padding:10px 10px 0;line-height: 20px;}
+#taowenwid .taowen a{color:#D80000;}
+#dialog_taowenwidto{position: absolute;}
+
+/*弹窗-默认样式*/
+.diglog-wrapper{position: absolute;background:#fffbeb;border: 5px solid #e6e6e6;z-index: 100000;}
+.diglog-wrapper .diginfo{padding:10px 20px;border:1px solid #c9c9c9;}
+.diglog-wrapper .diginfo em{margin-left:5px;}
+.diglog-wrapper .diginfo u{float:left;width:18px;height:18px;overflow:hidden;background: url(http://css.tuan800.net/global/images/msg.png);}
+.diglog-wrapper .diginfo u.m0{background:none;display:none}
+.diglog-wrapper .diginfo u.m1{background-position:0 0;}
+.diglog-wrapper .diginfo u.m2{background-position:0 -18px;}
+.diglog-wrapper span.close{position: absolute;top:5px;right:5px;display:block;width:10px;height:10px;background:url(http://css.tuan800.net/global/images/bg_content.png) -388px -181px;cursor:pointer;}
+.diglog-wrapper a:hover span.close{background-position: -388px -147px;}
+
+/*弹窗样式*/
+#dialog_empty_deal{border:none;background:none;width:380px;height:210px;position:absolute;z-index:99999}
+#dialog_empty_deal .diginfo{ border:0}
+#dialog_empty_deal span.close{width:32px;height:32px; display:block; position:absolute; top:17px;right:-12px; background:url(http://p0.tuanimg.com/v1/2012/images/tao_20125.22bg2.png) 0 0 no-repeat; _background:url(http://p0.tuanimg.com/v1/2012/images/tao_20125.22bg3.png) 0 0 no-repeat; z-index:4}
+#dialog_empty_deal.diglog-wrapper-ad{width:auto;height:auto;border: 5px solid #B2B2B2;background:#fff;font-size: 14px;line-height: 26px;position:absolute;z-index:99999}
+#dialog_empty_deal.diglog-wrapper-ad span.close,#signal_diglog.diglog-wrapper a:hover span.close{background: url("http://p0.tuanimg.com/v1/2012/images/tao_20125.22bg2.png") no-repeat scroll 0 0 transparent;display: block;height: 32px;position: absolute;right: -15px;top: -15px;width: 32px;z-index: 4;_background:url(http://p0.tuanimg.com/v1/2012/images/tac_ie6_clo.png);_width:28px;_height:28px;}
+#dialog_empty_deal .diginfo{padding:10px 20px;}
+
+/*签到*/
+.head_nav .r .signin{float:right;height:40px;line-height: 40px;width:74px;position: absolute;top:0;right:0;z-index: 10000;}
+.head_nav .r .signin_a{display:inline-block;background-position: -167px -109px;width:74px;height:27px;line-height: 29px;text-align: center;margin:0;margin-top:5px;text-decoration: none;}
+.head_nav .r span.signin_a{display:none;}
+.head_nav .r .signin dl{width:175px;position: absolute;top:40px;right:0;line-height: 20px;background:#fff;display:none;}
+.head_nav .r .signin dt{padding:0 10px;line-height: 26px;border:1px solid #e6e6e6;border-bottom: 1px dotted #c9c9c9;padding-bottom:5px;}
+.head_nav .r .signin dt span,.head_nav .r .signin dt b{font-family: arial;font-size: 14px;font-weight: bold;}
+.head_nav .r .signin dt b.b2{color:#c41303;}
+.head_nav .r .signin dd{padding:5px 10px;border:1px solid #e6e6e6;border-width: 0 1px;}
+.head_nav .r .signin dl a{height:auto;margin:0;font-size:12px;line-height: 20px;color:#3399CC;display:inline;}
+.head_nav .r .signin dd.bomback{height:4px;padding:0;padding-left:4px;margin:0;border:none;overflow:hidden;background:#fff url(http://p0.tuanimg.com/v1/2012/images/top_icon_1.png) no-repeat 0 0;}
+.head_nav .r .signin dd.bomback span{height:4px;float:left;width: 100%;background:#fff url(http://p0.tuanimg.com/v1/2012/images/top_icon_1.png) no-repeat right 0;}
+.head_nav .r .signin_on  a.signin_a{display:none;}
+.head_nav .r .signin_on  span.signin_a{display:block;background-position: -167px -141px;}
+
+/*导航-帮助中心入口*/
+.topf{float: right;width:100px;position: absolute;right:155px;top:0;}
+.topf a.def,.topf a.def:hover{width:92px;height: 39px;margin:0 4px;background-position:-15px -162px;text-decoration: none;overflow: hidden;}
+.topf dl{display:none;background:#f7f7f7;border:1px solid #999;position: absolute;width:100px;left:-5px;top:2px;}
+.topf dt{font:800 14px/34px "";background:#eee url(http://p0.tuanimg.com/v1/2012/images/top_icon_2.png) no-repeat -175px -91px;padding-left: 10px;color:#333;}
+.topf dd{padding:5px;}
+.head_nav .r .topf dd a{color:#666;display:block;margin:0;font: 12px/30px "";padding-left: 10px;}.head_nav .r .topf dd a:hover{background:#eee;text-decoration: none;}
+.topfon a.def{display:none;}
+.topfon dl{display:block;}
+
+/*分类专区*/
+.classifi{background:#fff url(http://p0.tuanimg.com/v1/2012/images/tao_indnav1.png) repeat-x 0 76px; position:relative; z-index:9999;margin-bottom: 20px;}
+.classifi .area{height:80px;background:url(http://p0.tuanimg.com/v1/2012/images/tao_indnav2.png) no-repeat center bottom;}
+.classifi .area div{height:76px;text-align:left;overflow:hidden;}
+.classifi div.cL{float:left;width:584px;padding-left:10px;}
+.classifi div.mid{float:left;width:305px;padding-left:10px;border-left: 1px dotted #b2b2b2;}
+.classifi div.r{width:69px;border-left: 1px dotted #b2b2b2;background:#f3f3f3;}
+.classifi .area div a,.classifi .area div em{height: 25px;padding-left:8px;vertical-align: top;float:left;display:inline;margin:0 5px 9px 0;_margin-right:4px;line-height: 25px;font-size:14px;white-space:nowrap;}
+.classifi .area div a em{padding:0 8px 0 0;margin:0;}
+.classifi .area div a.on,.classifi .area div a:hover,.classifi .area div a.on:hover{background: url(http://p0.tuanimg.com/v1/2012/images/tao_indnav1.png) no-repeat left -4px;text-decoration:none;}
+.classifi .area div a.on em,.classifi .area div a:hover em,.classifi .area div a.on:hover em{background: url(http://p0.tuanimg.com/v1/2012/images/tao_indnav1.png) no-repeat right -4px;color:#333;}
+.classifi .area div span{display:block;font:800 16px/40px "微软雅黑";color:#333;}
+.classifi div.r a{height:40px;padding:0;margin:16px 19px;font:800 14px/20px "";color:#09c;}
+.classifi div.r a,.classifi div.r a em{white-space:normal;}
+
+.defaback {background: url("http://p0.tuanimg.com/v1/2012/images/i3.png") repeat scroll 0 -122px transparent;cursor: pointer;display: inline-block;height: 30px;line-height: 30px;padding-left: 20px;}
+.defaback em {background: url("http://p0.tuanimg.com/v1/2012/images/i3.png") repeat scroll right -122px transparent;color: #FFFFFF;display: inline-block;font: bold 16px/30px "微软雅黑";height: 30px;padding-right: 20px;}

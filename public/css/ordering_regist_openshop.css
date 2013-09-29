@@ -1,0 +1,240 @@
+﻿body{
+	padding:0;
+	margin:0;
+	font-family:"微软雅黑";
+	font-size:14px;
+	background:url(../temp/bg.gif);
+}
+
+.ordering_openshop_contentbase{
+	width:960px;
+	margin:0px auto;
+	height:auto;
+}
+.ordering_openshop_content{
+	width:960px;
+	float:left;
+	height:auto;
+	padding-top:40px;
+}
+
+.sign_in_empty{
+	width:100%;
+	float:left;
+}
+
+.title{
+	width:200px;
+	height:60px;
+	line-height:60px;
+	font-size:20px;
+	float:left;
+	padding-left:20px;
+}
+.ordering_openshop_process{
+	width:760px;
+	padding-left:100px;
+	padding-right:100px;
+	height:54px;
+	float:left;
+}
+.ordering_openshop_process_img{
+	height:34px;
+	width:760px;
+	float:left;
+	line-height:34px;
+	font-size:14px;
+}
+.ordering_openshop_process_text{
+	height:20px;
+	width:760px;
+	float:left;
+	line-height:20px;
+	font-size:14px;
+}
+
+.ordering_openshop_process_main_title1{
+	width:190px;
+	float:left;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+}
+
+.regist_info{
+	padding-left:250px;
+	padding-right:250px;
+	width:460px;
+	height:400px;
+}
+
+.regist_info_line{
+	width:100%;
+	height:40px;
+	float:left;
+	line-height:40px;
+	font-size:18px;
+}
+
+.regist_info_error_line{
+	width:360px;
+	height:30px;
+	line-height:28px;
+	padding-left:100px;
+	float:left;
+	text-align:left;
+	font-family:"宋体";
+	font-size:12px;
+	color:#F60;
+}
+
+.regist_info_error_line p{
+	height:20px;
+	width:300px;
+	margin:3px 0px;
+	
+}
+
+.regist_info_name{
+	height:40px;
+	float:left;
+	width:90px;
+	line-height:40px;
+	text-align:right;
+	padding-right:10px;
+}
+.regist_info_input{
+	height:40px;
+	float:left;
+	width:310px;
+	line-height:40px;
+	padding-right:50px;
+	font-family:"微软雅黑";
+	font-size:14px;
+}
+.regist_info_inputstyle{
+	height:40px;
+	float:left;
+	width:300px;
+	padding-left:10px;
+	line-height:40px;
+	border:#CCC 1px solid;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	color:#666;
+	font-size:14px;
+	font-family:"微软雅黑";
+}
+
+.regist_info_inputstyle:hover{
+	border-color:#F90;
+}
+
+.regist_info_line a{
+	color:#066;
+	text-decoration:none;
+}
+
+.regist_info_line a:hover{
+	text-decoration:underline;
+}
+.regist_submit_button{
+	width:150px;
+	height:40px;
+	float:left;
+	border:#F99A00 1px solid;
+	font-family:"微软雅黑";
+	font-size:16px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	cursor:pointer;
+	text-shadow: 1px 1px 3px #999, 1px 1px 6px #CCC;
+	background:url(../temp/buttonbg.jpg);
+	color:#111;
+}
+
+.input_error{
+	width:310px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	color:#F60;
+}
+
+
+
+
+.password3{
+	background:url(../temp/password3.png);
+	background-position:center;
+}
+
+
+.regist_info_verification{
+	height:40px;
+	float:left;
+	width:300px;
+	padding-left:10px;
+	line-height:40px;
+	border:#CCC 1px solid;
+	color:#666;
+	font-size:14px;
+	font-family:"微软雅黑";
+}
+
+.ordering_openshop_pageline{
+	height:60px;
+	width:960px;
+	float:left;
+	}
+.ordering_openshop_logo{
+	width:140px;
+	float:left;
+	height:60px;
+}
+
+
+.ordering_openshop_position{
+	width:200px;
+	float:left;
+	padding-left:10px;
+	line-height:60px;
+	font-size:20px;
+}
+
+.ordering_openshop_sure_button{
+	width:auto;
+	height:40px;
+	border:#F99A00 1px solid;
+	font-family:"微软雅黑";
+	font-size:16px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	cursor:pointer;
+	text-shadow: 1px 1px 3px #999, 1px 1px 6px #CCC;
+	background:url(../temp/buttonbg.jpg);
+	color:#111;
+}
+.ordering_openshop_messageline{
+	width:100%;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#F60;
+	float:left;
+	padding-top:10px;
+}
+.ordering_openfunction_opinoin{
+	width:360px;
+	height:auto;
+	line-height:28px;
+	padding-left:100px;
+	float:left;
+	text-align:left;
+	font-family:"宋体";
+	font-size:12px;
+	color:#F60;
+}

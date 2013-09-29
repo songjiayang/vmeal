@@ -1,0 +1,79 @@
+<head>
+<link rel="stylesheet" media="all" type="text/css" href="/timepicker/jquery-ui.css" />
+<link rel="stylesheet" media="all" type="text/css" href="/timepicker/jquery-ui-timepicker.css" />
+<script type="text/javascript" src="/timepicker/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/timepicker/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/timepicker/jquery-ui-timepicker.js"></script>
+</head>
+
+<div class="control-group ">
+  <label class='control-label'>标题:</label>
+  <div class="controls">
+    <%= f.text_field :title, class:'input-xlarge' %>
+  </div>
+</div>
+ <div class="control-group ">
+  <label class='control-label'>所需积分:</label>
+  <div class="controls ">
+    <%= f.text_field :need_score, class:'input-xlarge' %>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>价值:</label>
+  <div class="controls">
+    <%= f.text_field :real_money, class:'input-xlarge' %>
+  </div>
+</div>
+
+<div class="control-group ">
+  <label class='control-label'>中奖名额:</label>
+  <div class="controls">
+    <%= f.text_field :total_number, class:'input-xlarge' %>
+  </div>
+</div>
+  <div class="control-group ">
+  <label class='control-label'>开始时间:</label>
+  <div class="controls">
+    <%= f.text_field :start_time, class:'input-xlarge', id:'start_time'%>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>结束时间:</label>
+  <div class="controls ">
+        <%= f.text_field :end_time, class:'input-xlarge', id:'end_time'%>
+  </div>
+</div>
+<div class="control-group ">
+  <label class='control-label'>详细描述:</label>
+  <div class="controls ">
+        <%= f.text_area :description, class:'input-xlarge', :rows=>"4" %>
+  </div>
+</div>
+
+<div class="control-group ">
+  <label class='control-label'>活动图片:</label>
+  <div class="controls ">
+        <%= f.file_field :avatar, class:'input-xlarge'%>
+  </div>
+</div>
+
+
+
+<div class="form-actions">
+	<%= f.submit '提交', :class=>"btn btn-primary"%>
+	<%=link_to  '取消', admins_activities_path , :class=>"btn btn-warning"%>
+</div>
+<script type="text/javascript">
+$('#start_time').datetimepicker({
+  dateFormat: "yy-mm-dd",
+  addSliderAccess: true,
+  sliderAccessArgs: { touchonly: false }
+});
+
+$('#end_time').datetimepicker({
+  dateFormat: "yy-mm-dd",
+  addSliderAccess: true,
+  sliderAccessArgs: { touchonly: false }
+});
+</script>
+

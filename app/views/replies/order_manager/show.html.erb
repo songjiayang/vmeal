@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>地址:</b>
+  <%= @order.address %>
+</p>
+
+<p>
+  <b>电话:</b>
+  <%= @order.phone %>
+</p>
+
+<p>
+  <b>姓名:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>订单编号:</b>
+  <%= @order.order_number %>
+</p>
+
+<p>
+  <b>状态:</b>
+  <%= @order.translate_status_to_s %>
+</p>
+
+<p>
+  <b>Pay type:</b>
+  <%= @order.pay_type %>
+</p>
+<table>
+	<tr>
+		<th> 店家</th>
+		<th> 菜名</th>
+		<th> 份数</th>
+		<th> 价格</th>
+	</tr>
+	<%@order.line_items.each do |line_item|%>
+	<tr>
+		<td> <%=line_item.food.store.name%></td>
+		<td> <%=line_item.food.name%></td>
+		<td>  <%=line_item.quantity%></td>
+		<td> <%=line_item.total_price%></td>
+	</tr>
+	<%end%>
+</table>
+
+<p>
+  <b>备注:</b>
+  <%= @order.comment %>
+</p>
+
+<%=link_to "验证通过",  set_user_is_ok_order_manager_index_path(:id=>@order.id)%>
+
+<a href="/order_manager">返回</a>

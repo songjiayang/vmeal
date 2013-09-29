@@ -1,0 +1,131 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="外卖,外卖电话,西南石油大学外卖,四川音乐学院外卖,成都医学院外卖,订餐电话,订餐平台,正因村,西南石油大学,四川音乐学院,成都医学院">
+	<meta name="description" content="微大学订餐平台,汇集新都区所有美食，以大学生为受众群体的一个新式订餐平台">
+	<style type="text/css">
+		#order_info p {
+			margin: 10px;
+			margin-left: 40px;
+		}
+
+		b {
+			font-size: 14px;
+			font-weight: 800;
+			color: #7D1F0A;
+		}
+		#phone {
+			margin-left: 32px;
+		}
+
+		#status {
+			margin-left: 124px;
+		}
+		#phone {
+			margin-left: 140px;
+		}
+
+		table {
+			width: 80%;
+			font-size: 14px;
+			margin-left: 10px;
+		}
+
+		span {
+			color: #7D1F0A;
+		}
+
+		th {
+			color: #7D1F0A;
+		}
+
+		td {
+			text-align: center;
+		}
+
+		fieldset {
+			padding: 10px;
+			margin: 10px;
+			color: #333;
+			border: #06c solid 1px;
+		}
+
+		legend {
+			color: #06c;
+			font-weight: 800;
+			background: #fff;
+			border: #b6b6b6 solid 1px;
+			padding: 3px 6px;
+		}
+
+		.comment {
+			margin-left: 40px;
+		}
+
+		.food_name {
+			text-align: left;
+			padding-left: 60px;
+			color: #7D1F0A;
+		}
+		body {
+			background-color: white;
+		}
+
+	</style>
+</head>
+
+<fieldset>
+	<legend>
+		定餐列表
+	</legend>
+	<table>
+		<tr>
+			<th style="width:50%"> 菜名</th>
+			<th style="width:25%"> 份数</th>
+			<th style="width:25%"> 价格</th>
+		</tr>
+		<%@order.line_items.each do |line_item|%>
+		<tr>
+			<td class="food_name"><%= line_item.food.name%></td>
+			<td> <%= line_item.quantity%></td>
+			<td> <%= line_item.total_price%></td>
+		</tr>
+		<%end%>
+	</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>
+		订单信息
+	</legend>
+	<div id="order_info">
+		<p>
+			<b>订单编号:</b>
+			<%= @order.order_number %>
+		</p>
+
+		<p>
+			<b>姓名:</b>
+			<%= @order.name %>
+			<b id="phone">电话:</b>
+			<%= @order.phone %>
+		</p>
+		<p >
+			<b>总价:</b>
+			<%= @order.total_price %><span> 元</span>
+			<b id="status">状态:</b>
+			<%= @order.translate_status_to_s %>
+		</p>
+
+		<p>
+			<b>地址:</b> <%= @order.address %>
+		</p>
+
+		<p >
+			<b>备注:</b>
+			<%= @order.comment %>
+		</p>
+
+	</div>
+</fieldset>
+

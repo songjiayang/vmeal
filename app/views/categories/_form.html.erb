@@ -1,0 +1,17 @@
+<%= form_for(@category) do |f| %>
+<div class='field'>
+	<label>名称</label>
+<%= f.text_field :name ,:class => "input_text" %>
+</div>
+<div>
+<label>权值</label>
+<%= f.text_field :sortvalue ,:class => "input_text" %>
+</div>
+  <%= f.submit '提交' ,:class => "my_action"%>
+<%end  %>
+
+
+
+
+
+

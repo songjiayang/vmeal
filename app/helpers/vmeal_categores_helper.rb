@@ -1,0 +1,2 @@
+module VmealCategoresHelper
+end

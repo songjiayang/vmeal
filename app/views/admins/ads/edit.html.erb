@@ -1,0 +1,4 @@
+<%=render :partial => 'admins/ads/topbar', :locals => {:flash=>flash, :type=>2} %>
+<%= form_for  [:admins,@ad], :html=>{:class=>'form-horizontal'}  do |builder| %>
+  <%=render :partial => 'admins/ads/form', :locals => {:f=>builder} %>
+<%end%>

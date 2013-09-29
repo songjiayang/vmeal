@@ -1,0 +1,106 @@
+<div class="result_order">
+        <div class="result_order_type"></div>
+        <div class="result_order_content">
+                <div class="main_content_details_table">
+                        <table cellpadding="0px" cellspacing="0px">
+                                <thead>
+                                        <tr>
+                                                <th>订单号</th>
+                                                <th>金额</th>
+                                                <th>付款方式</th>
+                                                <th>下单时间</th>
+                                                <th>送餐时间</th>
+                                                <th>备注</th>
+                                                <th>订单状态</th>
+                                                <th>操作</th>
+                                                <th>申请弃单</th>
+                                                <th>确认订单</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <% unless @orders.nil? %>
+                                        <% @orders.each do |order|%>
+                                        <tr>
+                                                <td><%= order.order_number%></td>
+                                               <td><%= (order.pay_type.to_s == "货到付款")? order.total_price.to_s + "元" : (order.total_price * 12.5).round.to_s + " 积分" %></td>
+                                                <td style="color:red;"><%= order.pay_type%></td>
+                                                <td><%= order.created_at.localtime.to_s(:db)%></td>
+                                                <td style="color:red;"><%= order.send_time%></td>
+                                                <td class="table_remarks">
+                                                <div>
+                                                        <%= order.comment%>
+                                                </div></td>
+                                                <td><%= Order::ORDER_STATUS_HASH[order.order_status]%></td>
+                                                <td><a href="javascript:void(0)" onclick="show_order_detail(<%= order.id%>,1)">订单详细 </a></td>
+                                                <% if order.order_status == 0 || order.order_status == 5%>
+                                                <td><a href="javascript:void(0)" onclick="apply_fail_comment('#store_fail_comment',<%= order.id%>)">申请弃单</a></td>
+                                                <% else %>
+                                                <td>-----</td>
+                                                <% end %>
+                                                <td>
+                                                        <% if order.order_status == 5 || order.order_status == 0 %>
+                                                        <%= link_to '完成交易',order_success_stores_path(:order_id => order.id),:confirm =>'您确认完成交易?'%>
+                                                        <% else %>
+                                                        -----
+                                                        <% end %>
+                                                </td>
+                                        </tr>
+                                        <% end %>
+                                        <% end %>
+                                </tbody>
+                        </table>
+                        <%= will_paginate @orders %>
+                </div>
+        </div>
+</div>
+<div id="store_fail_comment" style="display: none">
+        <%= form_tag apply_fail_order_orders_path do%>
+        <div class="field">
+                <label for="fail_comment">申请弃单原因：</label>
+                <br />
+                <%= text_area_tag :fail_comment%>
+                <%= hidden_field_tag(:order_id) %>
+        </div>
+        <div class="actions">
+                <%= submit_tag  :提交%>
+        </div>
+        <% end %>
+</div>
+
+<div style="display: none" id="max_order_id"><%=@max_order_id%></div>
+
+<% if flash[:order_info]%>
+        <script>
+                        $(document).ready(function(){
+                          alert('<%=flash[:order_info]%>');
+                  });
+        </script>
+<%end%>
+
+
+<script type="text/javascript">
+        if (-1 != navigator.userAgent.indexOf("MSIE")) {
+                document.write(' <OBJECT id="Player"');
+                document.write(' classid="clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6"');
+                document.write(' width=0 height=0 > <param name="URL" value="http://bcs.duapp.com/ycxxww/weidaxue%2Flddl.wav" /> <param name="AutoStart" value="false" /></OBJECT>');
+        } else {
+                document.write(' <OBJECT id="Player"');
+                document.write(' type="application/x-ms-wmp"');
+                document.write(' autostart="false" src= "http://bcs.duapp.com/ycxxww/weidaxue%2Flddl.wav" width=0 height=0> </OBJECT>');
+        }
+</script>
+
+
+<script type="text/javascript">
+         $(document).ready(function(){
+                        setInterval("query_new_order()",20000);
+         });
+         function query_new_order(){
+            var max_order_id = $("#max_order_id").text() ;
+      htmlobj=$.ajax({url:"/stores/has_new_order/<%=@store.id%>/"+max_order_id,async:false});
+      if (htmlobj.responseText == "1"){
+        Player.controls.play();
+        setInterval("window.location.reload();",30000);
+      }
+         }
+</script>

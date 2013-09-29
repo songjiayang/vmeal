@@ -1,0 +1,321 @@
+<%= stylesheet_link_tag "restaurant" %>
+<%= javascript_include_tag "car" %>
+<link href="/css/ordering_bill.css" rel="stylesheet" type="text/css" />
+
+
+<div class="main">
+  <div class="main_position">
+    <%=cookies[:school]%>
+  </div>
+  <div id="ordering_bill_content_base">
+    <div id="ordering_bill_content">
+      <div id="foot" class="ordering_bill_left" style="<%= 'display:none' if @carts.nil?||@carts.size==0%>">
+        <%= form_for @order do  |f| %>
+        <div id="ordering_bill_left_tittle">
+          <font color="white">订单信息</font>
+        </div>
+        <div id="ordering_bill_left_form_line_message" style="color:#F00;" name = "error_name">
+          <%= notice%>
+        </div>
+        <% @totle_price = 0%>
+        <%if @carts%>
+          <%@carts.each do |store_id,v| %>
+            <% @total = 0.0 %>
+            <% v["line_items"].values.map { |e| @total += (e["count"].to_i * e["price"].to_f) } %>
+            <div id ="store_id_<%= store_id %>" class="order_content">
+              <input type="hidden" value="<%= @total%>" id="store_price_<%= store_id%>" />
+              <div id="ordering_bill_left_restaurant_name">
+                <%=v["store_name"]%>
+                <input id="delete" class="dele" type="button" onclick="clear_store_food(<%= store_id %>);"/>
+              </div>
+              <div id="ordering_bill_li_content">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <th width="300" align="left" valign="middle">菜名</th>
+                    <th width="12%" align="center" valign="middle">单价</th>
+                    <th width="50" align="center" valign="middle">数量</th>
+                    <th width="80" align="center" valign="middle">操作</th>
+                  </tr>
+                  <tbody id="body<%= store_id %>">
+                    <%v["line_items"].each do |food_id,foods|%>
+                      <tr id="food_id_<%=food_id%>">
+                        <td align="left" valign="middle"><%= foods["food_name"]%></td>
+                        <td align="center" valign="middle">
+                          <span id="food_price_<%=food_id%>"><%= foods["price"]%></span>元
+                        </td>
+                        <td align="center" valign="middle">
+                          <span id="food_num_<%= food_id%>"><%= foods["count"] %></span>
+                        </td>
+                        <td align="center" valign="middle"> <a class="js" onclick="add_food_num(<%= store_id %>,<%= food_id %>,<%= foods["price"] %>);">+</a>&nbsp;&nbsp;&nbsp;<a class="js" onclick="reduce(<%= store_id %>,<%= food_id %>,<%= foods["price"] %>);">-</a>&nbsp;&nbsp;&nbsp;<a class="js" onclick="remove_food(<%= store_id %>,<%= food_id %>,<%= foods["price"] %>);">×</a></td>
+                      </tr>
+                    <% end %>
+                   </tbody>
+                </table>
+              </div>
+            </div>
+            <%@totle_price += v["total_price"]%>
+
+            <div id="ordering_bill_li_total">
+              <font size="-2" color="#F00"><%= params[:notice]%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+
+              订单合计：<font>
+              <span id="total_price"><%=@totle_price.to_f%></span>元
+            </div>
+            <div id="ordering_bill_li_total">
+              <font size="-1"> </font>
+            </div>
+          <%end%>
+
+          <div id="ordering_bill_left_tittle">
+            <font color="white">送餐信息</font>
+          </div>
+
+          <div id="ordering_bill_left_about">
+            <div id="ordering_bill_left_form" style="display:block;">
+              <div id="ordering_bill_left_form_line">
+                <div id="ordering_bill_left_form_line_tt">
+                  <font>*&nbsp;</font>送餐地址
+                </div>
+                <%= f.text_field :address , :size=>30 , :value => ((@default_address.nil?)? "" : @default_address.address) ,:id=>"address", :class => "ordering_bill_left_form_line_input" , :onblur => "errormsg_blur()"%>
+              </div>
+              <div class="ordering_bill_left_form_line_message" style="color:red;" id="address_error"></div>
+
+              <div id="ordering_bill_left_form_line">
+                <div id="ordering_bill_left_form_line_tt">
+                  <font>*&nbsp;</font>联系电话
+                </div>
+
+                <%= f.text_field :phone ,:size =>11 ,:value => ((@default_address.nil?)? "" : @default_address.tel_number1) ,:id=>"tellphone", :class => "ordering_bill_left_form_line_input" , :onblur => "errormsg_blur()"%>
+              </div>
+              <div class="ordering_bill_left_form_line_message" style="color:#F00;" id = "tellphone_error"></div>
+
+              <div id="ordering_bill_left_form_line">
+                <div id="ordering_bill_left_form_line_tt">
+                  备选电话
+                </div>
+                <%= f.text_field :phone_bk ,:size =>11 ,:value => ((@default_address.nil?)? "" : @default_address.tel_number2) ,:id=>"tellphoneother", :class => "ordering_bill_left_form_line_input" , :onblur => "errormsg_blur()"%>
+              </div>
+
+              <div class="ordering_bill_left_form_line_message" style="color:#F00;" id = "error_tel2"></div>
+
+              <div id="ordering_bill_left_form_line">
+                <div id="ordering_bill_left_form_line_tt">
+                  <font>*&nbsp;</font>收餐姓名
+                </div>
+                <%= f.text_field :name ,:id=>"username", :value => ((@default_address.nil?)? "" : @default_address.name),  :class => "ordering_bill_left_form_line_input" , :onblur => "errormsg_blur()"%>
+              </div>
+              <div class="ordering_bill_left_form_line_message" style="color:#F00;" id = "username_error"></div>
+
+              <div id="ordering_bill_left_form_line">
+                <div id="ordering_bill_left_form_line_tt">
+                  送餐时间
+                </div>
+
+                <div class="field">
+                  <%= f.select :send_time, Order::SEND_TIME%><font style="color:red;"><b>(亲，根据自己实际情况选择送餐时间！)</b></font>
+                </div>
+              </div>
+
+               <div id="ordering_bill_left_form_line">
+                <div id="ordering_bill_left_form_line_tt">
+                  付款方式
+                </div>
+
+                <div class="field">
+                  <%= f.select :pay_type, Order::PAYMENT_TYPES%>
+                  <%= hidden_field_tag :integral, (@totle_price.to_f * 12.5).round %>
+                  <br/>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="ordering_bill_left_list" style="padding-top: 20px;">
+              <% @send_addresses.each.with_index do |send_address , index|%>
+              <div class="ordering_bill_left_list_line">
+                <div class="ordering_bill_left_list_checkbook">
+                  <input type="radio" name="radios"  onchange="getAddress()" style="margin-top:5px;" id="<%= index%>" value="<%= send_address.address%>"<% unless @default_address.nil? %> <% if @default_address.id == send_address.id%> checked="checked" <% end %> <% end %> />
+                </div>
+                <div class="ordering_bill_left_list_add">
+                  <label for="<%= index%>" style="cursor:pointer; margin:0;"> <% if !@default_address.nil? %>
+                    <% if @default_address.id == send_address.id%>
+                    <%= send_address.address%><font color="red">[默认]</font> <% else %>
+                    <%= send_address.address%>
+                    <% end %>
+                    <% else %>
+                    <%= send_address.address%>
+                    <% end %> </label>
+                </div>
+                <div class="ordering_bill_left_list_tel">
+                  TEL：<label id= "tel<%= index%>"><%= send_address.tel_number1%></label>
+                  &nbsp;&nbsp;&nbsp;<label id= "othertel<%= index%>"><%= send_address.tel_number2%></label>
+                  &nbsp;&nbsp;&nbsp;<label id= "name<%= index%>"><%= send_address.name%></label>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div id="ordering_bill_left_tittle" style="background:#EEE; border-top:0px; margin-top:20px; height:35px; padding-top:5px;">
+            <input id="beizhu" class="ordering_bill_form_control" value="添加备注" type="button" />
+          </div>
+
+          <div id="ordering_bill_left_remarks_about" style="display:none;">
+              <%= f.text_area :comment, :rows=>3 , :value => "亲，还有什么需要跟店家交代的么？（100字以内!）",:id => "ordering_bill_left_remarks_text" , :onfocus => "if(this.value=='亲，还有什么需要跟店家交代的么？（100字以内!）') {this.value='';}this.style.color='#000';" , :maxlength => "100", :onblur => "if(this.value=='') {this.value='亲，还有什么需要跟店家交代的么？（100字以内!）';this.style.color='#999';}"%>
+
+              <input name="重置" type="reset" class="ordering_bill_input_control" style="margin-left:20px; margin-bottom:20px;"
+              onclick="
+              document.getElementById('ordering_bill_left_remarks_about').style.display='none'
+              " value="取消备注"
+              />
+          </div>
+
+          <%= hidden_field_tag 'token', 'user_bill' %>
+
+          <div id="ordering_bill_makesure">
+            <input type="submit" id="ordering_bill_makesure_button" type="button" value="确认下单" />
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <div id="empty_food" class="ordering_bill_left" style="<%= 'display:none' if @carts && @carts.size >0%>">
+      <img src="http://bcs.duapp.com/ycxxww/weidaxue%2Fempty2.png?sign=MBO:A81a348dcf113936d6396052375d437c:o2t5JQgkNkut699F1YLm2D6Vu4w%3D&response-content-disposition=filename*=utf8''empty2.png&response-cache-control=private">
+      <a href="/" style="position: relative;left: 349px;top: -142px;display: block;height: 52px;width: 240px;text-decoration: none;">&nbsp;&nbsp;</a>
+    </div>
+
+
+
+
+
+
+      <div id="ordering_bill_right">
+
+        <div id="ordering_bill_explain">
+          <div id="ordering_bill_explain_question">
+            Q：我的餐饮多长时间能送到？
+          </div>
+          <div id="ordering_bill_explain_answer">
+            A：平均送餐时间大概在30分钟左右。
+          </div>
+
+          <div id="ordering_bill_explain_question">
+            Q：谁负责送餐吗？
+          </div>
+          <div id="ordering_bill_explain_answer">
+            A：餐品均由店家统一配送,平台负责为您提供一个在线订餐的平台，架起您与餐厅之间的桥梁,具体详情请查看
+            <a href='/about_us/protocol'>微大学服务协议</a>。
+          </div>
+
+          <div id="ordering_bill_explain_question">
+            Q：我一直没收到餐饮怎么办？？
+          </div>
+          <div id="ordering_bill_explain_answer">
+            A：在微大学订餐成功后，店家和用户将收到微大学特制短信，短信有店家联系方式，用户可以根据情况，一键拨打，向店家了解具体情况.
+          </div>
+          <div id="ordering_bill_explain_question">
+            Q：我的积分有什么用？
+          </div>
+          <div id="ordering_bill_explain_answer">
+            A： 用户可以通过签到，订餐等获得积分，当获得相应积分后，可以参与兑换奖品，兑换餐品和抽奖等活动,具体详情请参见
+            <a href='/faq/jf_rule'>积分攻略<a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+<script>
+  function dk() {
+    <%list=["address","tellphone","username"]%>
+    <%listvalue={"address"=>"送餐地址不能为空哦","tellphone"=>"联系电话不能为空哦","username"=>"收餐姓名不能为空哦"}%>
+    if(checkfiled ()){
+      <%if (Time.parse('12:20:00')<Time.now)&&(Time.parse('13:00:00')>Time.now) %>
+        var r=confirm("亲，现在用餐高峰期，多给师傅们一点时间吧!我们尽快送为你呈上可口美味.");
+        if (r==true){
+          $("#new_order").submit();
+        }else{
+          return false;
+        }
+      <%else%>
+        $("#new_order").submit();
+      <%end%>
+
+    }
+  };
+
+  $(document).ready(function() {
+    <%if flash[:duihuan]%>
+         alert("<%=flash[:duihuan]%>");
+     <%end%>
+    $("#beizhu").click(function() {
+      if($("#ordering_bill_left_remarks_about").css("display")=="none"){
+        $("#ordering_bill_left_remarks_about").css("display","block");
+      }else{
+        $("#ordering_bill_left_remarks_about").css("display","none");
+      }
+    });
+
+    $('#order_pay_type').change(function(){
+        selectvalue = $(this).children('option:selected').val()  //弹出select的值
+        if(selectvalue == "积分支付")
+        {
+                if(<%= @totle_price.to_f * 12.5 > current_user.integral.to_f %>)
+                {
+              $('#summary').html("<b>亲，继续努力哈，积分还不够。</b>");
+            }
+            else
+            {
+              $('#summary').html("<b>需要<%= (@totle_price.to_f * 12.5).round %>积分，您已有<%= current_user.integral.to_f %>积分</b	>");
+            }
+        }
+        else
+        {
+        $('#summary').html("<b>支付方式【货到付款、积分支付】,积分支付暂时仅限乐莱基餐品使用</b>");
+        }
+    });
+
+    <%@send_addresses.each.with_index.each do |send_address , index|%>
+    $("#<%=index%>").click(function() {
+      $("#address").attr("value",$("#<%=index%>").attr("value"));
+      $("#tellphone").attr("value",$("#tel<%=index%>").text());
+      $("#tellphoneother").attr("value",$("#othertel<%=index%>").text());
+      $("#username").attr("value",$("#name<%=index%>").text());
+      checkfiled ();
+    });
+    <%end%>
+
+    <%list.each do |listitem|%>
+    $("#<%=listitem%>").blur(function() {
+      checkfiled ();
+    });
+    <%end%>
+  });
+
+  function checkfiled () {
+    var flage=true;
+    <%list.each do |listitem|%>
+    if($.trim($("#<%=listitem%>").attr("value"))==""){
+      $("#<%=listitem%>_error").text("<%=listvalue[listitem]%>");
+      flage=false;
+      }else{
+        if("<%=listitem%>"=="tellphone"){
+          var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+          if(!mobile.test($("#tellphone").attr("value"))){
+            $("#tellphone_error").text("请正确填写您的联系电话");
+            flage=false;
+          }else{
+            $("#<%=listitem%>_error").text("");
+          }
+        }else{
+          $("#<%=listitem%>_error").text("");
+        }
+
+      }
+    <%end%>
+    return flage;
+  }
+</script>

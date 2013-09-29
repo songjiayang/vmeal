@@ -1,0 +1,76 @@
+<%= stylesheet_link_tag "cj_index" %>
+<div class="area adA" id="adA">
+    <div class="fi01">
+    </div>
+<div id="contentA" class="area" style="margin-top:50px;"></div>
+<div id="contentB" class="area">
+  <p class="bg<%=parse_type_to_nav_class(@type)%>">
+    <a href="/cj">正在进行的抽奖</a>
+    <a href="/cj/coming">即将开始的抽奖</a>
+    <a href="/cj/history">历史活动</a>
+  </p>
+</div>
+<%unless @type=="history"%>
+<div id="contentC" class="area">
+  <div class="right">
+    <h2>积分活动播报</h2>
+    <p>
+      已有 <%=ActivitiesUsers.count%> 名会员参与积分活动获得了礼品
+    </p>
+    <ul>
+      <%@index_activity.each do |ia|%>
+      <li>
+        <a href="/cj/<%=ia.activity.id%>"><img src="<%=ia.activity.avatar%>"></a>
+        <h3>
+          <a title="<%=ia.activity.title%>" href="/cj/<%=ia.activity.id%>">
+            <%=ia.activity.title%></a>
+          </h3>
+          <h4><em><%=ia.activity.need_score%></em>积分</h4>
+        <p>
+          <a href="#"><%=ia.user.username%></a><%=ia.parse_create_time_to_cn%>中奖
+        </p>
+        <a class="b1" href="#"></a>
+      </li>
+      <%end%>
+	 	</ul>
+   </div>
+
+		  <div class="left">
+		    <div class="block">
+		    	<%=render 'activities/list'%>
+		    </div>
+          <div class='page_div clear'>
+          <%= will_paginate @activites%>
+        </div>
+		  </div>
+</div>
+</div>
+<%else%>
+<div id="contentC" class="area lishi">
+  <div class="block clear">
+    <%=render 'activities/list'%>
+  </div>
+  <div class='page_div clear'>
+    <%= will_paginate @activites%>
+  </div>
+</div>
+<%end%>
+</div>
+<style type="text/css">
+    .pagination{
+      border-left: 1px solid #D8D8D8;
+      font: bold 16px/24px "宋体";
+      float: left;
+      position: relative;
+      right: 50%;
+    }
+    .current{
+      color: white;
+      background: #C31403;
+      width: 24px;
+      padding: 0;
+      height: 24px;
+      display: inline-block;
+    }
+</style>
+

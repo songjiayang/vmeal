@@ -1,0 +1,93 @@
+<%= render "bar"%>
+<%= form_for @store,:url=>{:controller =>"stores",:action=>"update"},:method => "put",:html => { :multipart => true } do |f| %>
+<input type="hidden" name ="id" value="<%= @store.id%>" />
+<div class="field">
+        <%= f.label :店铺名称 %>
+        <% if params["default"] == "ok"%>
+        <%= f.text_field :name ,:readonly => true%>
+        <% else %>
+        <%= f.text_field :name  %>
+        <% end %>
+</div>
+<div class="field">
+        <%= f.label :主营业务 %>
+        <%= f.text_field :main_sales %>
+</div>
+<div class="field">
+        <%= f.label :店家地址 %>
+        <%= f.text_field :address%>
+</div>
+<div class="field">
+        <%= f.label :起送价 %>
+        <%= f.text_field :send_price %>
+</div>
+<div class="field">
+        <%= f.label :公告 %>
+        <%= f.text_area :public_talk,:rows => "10" %>
+</div>
+
+<div class="field">
+        <%= f.label :简介 %>
+        <%= f.text_area :introduce ,:rows => "10"%>
+</div>
+
+<div class="field">
+        <%= f.label :开门时间 %>
+        <%= f.time_select :opentime %>
+</div>
+<div class=
+
+"field">
+        <%= f.label :歇业时间 %>
+        <%= f.time_select :closetime %>
+</div>
+<div class="field">
+        <%= f.label :标签 %>
+        <%= f.text_field :tags %>
+</div>
+<div class="field">
+        <%= f.label :店家类别 %>
+        <%= f.select :categore , StoCategory.find_all_story_category %>
+</div>
+<div class="field">
+        <%= f.label :联系电话 %>
+        <%= f.text_field :tel %>
+</div>
+<div class="field">
+        <%= f.label :店家状态 %>
+        <select id="store_isclose" name="store[isclose]">
+                <option value="0">营业</option>
+                <option value="1">打烊</option>
+                <option value="2">退出平台</option>
+        </select>
+</div>
+<div class="field">
+        <%= f.label :店家类别 %>
+        <select id="store_isphone" name="store[isphone]">
+                <option value="0">网络店家</option>
+                <option value="1">电话店家</option>
+                <option value="2">更多商家</option>
+        </select>
+</div>
+
+<div class="field">
+        <%= f.label :所在学校 %>
+        <select id="school_id" name="store[school_id]">
+                <%=School.all.each do |school|%>
+                <option value="<%=school.id%>"><%=school.name%></option>
+                <%end%>
+        </select>
+</div>
+<div class="field">
+        <%= f.label :店家排序权值 %>
+        <%= f.text_field :sortvalue %>
+</div>
+<div class="field">
+        <%= f.label :店家缩略图%>
+        <%= f.file_field :image_url %>
+</div>
+<br />
+<div class="actions">
+        <%= f.submit  :提交修改%>
+</div>
+<% end %>

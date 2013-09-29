@@ -1,0 +1,57 @@
+<%= render "bar"%>
+<ul class="nav nav-tabs">
+
+	<li title="" rel="" class="icon index_collection_link active">
+		<a class="pjax" href="/admins/store_users/"> <i class="icon-th-list"></i> <span>显示所有店长</span> </a>
+	</li>
+
+	<li title="" rel="" class="icon new_collection_link  ">
+		<a class="pjax" href="/admins/store_users/new"> <i class="icon-plus"></i> <span>新增店长</span> </a>
+	</li>
+
+	
+
+	<li class="dropdown" style="float:right">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Selected items<b class="caret"></b></a>
+		<ul class="dropdown-menu" style="left:auto; right:0;">
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('export'); jQuery('#bulk_form').submit(); return false;">Export selected Comments</a>
+			</li>
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('bulk_delete'); jQuery('#bulk_form').submit(); return false;">Delete selected Comments</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th class="header pjax headerSortDown id_field integer_type" data-href="/admin/comment?sort=id&amp;sort_reverse=true">编号</th>
+			<th class="  commentable_field polymorphic_association_type">店长用户名</th>
+			<th class="header pjax  created_at_field datetime_type" >创建时间</th>
+			<th class="header pjax  content_field text_type" > 店名</th>
+			<th class="last shrink"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @store_users.each do |store_users| %>
+		<tr>
+			<td class="id_field integer_type"><%= store_users.id%></td>
+			<td class="commentable_field polymorphic_association_type" title="FieldTest #300"><%= store_users.username%></td>
+
+			<td class="created_at_field datetime_type" title="<%= format store_users.created_at%>"><%= format store_users.created_at%></td>
+			<td class="integer_type" > <%= Store.find(store_users.store_id).name%></td>
+			<td class="last links">
+			<ul class="inline">
+
+				<li title="编辑" rel="tooltip" class="icon edit_member_link ">
+					<a class="pjax" href="/admins/store_users/<%= store_users.id%>/edit"> <i class="icon-pencil"></i> <span style="display:none">修改</span> </a>
+				</li>
+				<li title="删除" rel="tooltip" class="icon edit_member_link ">
+					<%= link_to raw('<i class="icon-remove"></i>'), [:admins,store_users], method: :delete, data: { confirm: '你确认删除吗?' } %> 
+				</li>
+			</ul></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

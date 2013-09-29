@@ -1,0 +1,34 @@
+<%= render :partial => 'tab', :locals => {:tab_index => @tab_index} %>
+<div class="main_content_details">
+    <div class="main_content_details_top">
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            &nbsp;
+        </p>
+    </div>
+    <div class="main_content_details_bottom">
+        <%if @type == "stores" %>
+            <div class="tab tab_on">
+                 收藏店家
+            </div>
+            <div class="tab tab_out">
+                <%= link_to '收藏餐品' ,collects_users_path(:type => "foods")%>
+            </div>
+        <%else @order_status ==2 %>
+
+                <div class="tab tab_out">
+                    <%= link_to '收藏店家' ,collects_users_path%>
+                </div>
+                 <div class="tab tab_on">
+                     收藏餐品
+                </div>
+              
+        <%end%>
+ </div>
+  <%= render "collections" %>
+</div>
+</div>
+
+

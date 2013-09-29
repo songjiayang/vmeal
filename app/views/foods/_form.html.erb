@@ -1,0 +1,37 @@
+<%= form_for(@food) do |f| %>
+   <div class="a_line" >
+    		<label>菜名:</label> <%= f.text_field :name ,:style=>"margin-left:11px;"%>
+		</div>
+		
+		<div class="a_line">
+    		<label>标签：</label> <%= f.text_field :tag  %>
+		</div>
+		<div class="a_line">
+    		<label>配料：</label> <%= f.text_field :ingredients  %>
+		</div>
+
+		<div class="a_line">
+    	<label>价格：</label> <%= f.text_field :price ,:class=>"input_short"%>
+    	<label>数量：</label> <%= f.text_field :sum ,:class=>"input_short"%>
+		</div>
+
+		<div class="a_line">
+    	<label>热量：</label> <%= f.text_field :energy ,:class=>"input_short"%>
+    	<label>折扣：</label> <%= f.text_field :sales ,:class=>"input_short"%>
+		</div>
+
+		<div class="a_line">
+    	<label>送餐时间：</label> <%= f.text_field :sent_time ,:class=>"input_short"%>
+		</div>
+		<div class="a_line">
+    		<label>本店类别:</label> <%= f.select :category_id ,Food.find_store_categories(session[:store_id]) %>
+		</div>
+		<div class="a_line">
+    		<label>平台类别:</label> <%= f.select :vmeal_category_name ,VmealCategore.find_all_story_category  %>
+		</div>
+		<div class="a_line">
+    		<label>缩略图：</label> <%= f.file_field :photo %>
+		</div>
+		<div class="actions"> <%= f.submit '提交' %></div>
+<%end  %>
+

@@ -1,0 +1,88 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link active ">
+        <a class="pjax" href="/admins/ads">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+        
+      <li title="新建" rel="" class="icon export_collection_link ">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_ad_path, :class => 'pjax'%>
+      </li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<div id="list">
+  <%= form_tag '/admins/ads/query', :method => :post, :class=> "pjax-form form-inline"%>
+     <div class="well ">
+          <select class="input-small " name="type">
+            <option value ="type">类型</option>
+            <option value ="status">状态</option>
+          </select>
+        <input class=" " name="query" placeholder="Filter" type="search" value="">
+          <button class="btn btn-primary"  type="submit">
+            <i class="icon-white icon-refresh"></i>
+            查询
+          </button>
+        </div>
+ </form>
+
+<table class="table table-condensed table-striped">
+  <thead>
+      <th class="header pjax headerSortDown id_field integer_type">编号</th>
+      <th class="  commentable_field polymorphic_association_type">缩略图</th>
+      <th class="header pjax  content_field text_type">跳转地址</th>
+      <th class="header pjax  created_at_field datetime_type">创建时间</th>
+      <th class="header pjax  created_at_field datetime_type">类型</th>
+      <th class="header pjax  created_at_field datetime_type">学校</th>
+      <th class="header pjax  created_at_field datetime_type">状态</th>
+      <th class="last shrink"></th>
+      </tr>
+  </thead>
+<tbody>
+  <% @ads.each do |ad|%>
+        <tr>
+          <td class="id_field integer_type"><%=ad.id%></td>
+          <td class="commentable_field polymorphic_association_type">
+            <img src="<%=ad.img_path%>" title="<%=ad.title%>" style="border-radius:50px; width:30px;height:30px;"/>
+          </td>
+            <td class="content_field text_type"><a href="<%=ad.link_to%>"><%=ad.link_to%></a></td>
+           <td class="created_at_field datetime_type"><%=ad.created_at.localtime.to_s(:db)%></td>
+           <td class="created_at_field datetime_type">
+            <span class="label label-<%= ad.ad_type==1? "warning":'info'%>">
+               <%=Ads::TYPE[ad.ad_type-1]%>
+            </span>
+           </td>
+           <td class="created_at_field datetime_type"><%=ad.school.name%></td>
+           <td class="created_at_field ">
+            <span class="label label-<%= ad.status=="使用中"? 'success':'important' %>">
+              <%=ad.status%>
+            </span>
+          </td>
+        <td class="last links">
+           <ul class="inline">
+            <%=link_to raw('<i class="icon-info-sign"></i>'),admins_ad_path(ad), title:"查看" %>
+            <%=link_to raw('<i class="icon-pencil"></i>'),edit_admins_ad_path(ad), title:"修改"%>
+            <%= link_to raw('<i class="icon-remove"></i>'), admins_ad_path(ad), method: :delete, data: { confirm: 'Are you sure?' } , title: '删除' %>
+              <%lock_class = (ad.status=="使用中"? '<i class="icon-lock"></i>': '<i class="icon-ok"></i>')%>
+            <%= link_to   raw(lock_class), 
+               admins_ad_is_locked_path(ad,:page=>@page), title:(ad.status=="使用中"? "下架": "上架") %>
+          </ul>
+        </td>
+        </tr>
+<%end%>
+
+</tbody>
+</table>
+
+<div class="pagination">
+    <ul> <%= will_paginate @ads %> </ul>
+</div>
+</div>

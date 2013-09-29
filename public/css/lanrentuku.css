@@ -1,0 +1,49 @@
+.container {
+	WIDTH: 720px;
+	HEIGHT: 387px
+}
+.container A IMG {
+	WIDTH: 720px;
+	HEIGHT: 387px
+}
+.container IMG {
+	BORDER-BOTTOM-STYLE: none;
+	BORDER-RIGHT-STYLE: none;
+	BORDER-TOP-STYLE: none;
+	BORDER-LEFT-STYLE: none
+}
+.td_f A IMG {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px
+}
+.num {
+	POSITION: absolute;
+	WIDTH: 90px;
+	FLOAT: right;
+	bottom: 10px;
+	right:10px;
+}
+.num LI {
+	TEXT-ALIGN: center;
+	LINE-HEIGHT: 20px;
+	LIST-STYLE-TYPE: none;
+	MARGIN: 1px;
+	WIDTH: 20px;
+	FONT-FAMILY: Arial;
+	BACKGROUND: url(../images/flashbutton.png) no-repeat -20px 0px;
+	FLOAT: left;
+	HEIGHT: 20px;
+	COLOR: #86a2b8;
+	FONT-SIZE: 12px;
+	CURSOR: pointer
+}
+.num LI.on {
+	LINE-HEIGHT: 20px;
+	WIDTH: 20px;
+	BACKGROUND: url(../images/flashbutton.png) no-repeat;
+	HEIGHT: 20px;
+	COLOR: #ffffff
+}

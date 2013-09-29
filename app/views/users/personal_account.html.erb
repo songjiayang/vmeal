@@ -1,0 +1,41 @@
+<%= render :partial => 'tab', :locals => {:tab_index => @tab_index} %>
+    <div class="main_content_details">
+    <div class="main_content_details_top">
+        <div class="order_top_title"> 密码修改 </div>
+    </div>
+    <div class="main_content_details_bottom">
+        <%= form_for(@user) do |f| %>
+            <div class="main_content_leftinput">
+            <div class="main_content_loglabel">
+                <p class="main_content_loglabel_title">旧密码</p>
+            <label>
+            <%= f.password_field :current_password ,:size => "oldpassword",:maxlength => "30",:class => "main_content_input" ,:value=>flash[:update_input_old_password]%>
+                    </label>
+                    <p class="main_content_loglabel_tips"><%=flash[:update_password_error1]%>&nbsp;</p>
+                </div>
+                <div class="main_content_loglabel">
+                    <p class="main_content_loglabel_title">新密码</p>
+                    <label>
+                        <%= f.password_field :password, :autocomplete => "off" ,:size => "oldpassword",:maxlength => "30", :class => "main_content_input",:value=>flash[:update_input_new_password] %>
+                    </label>
+                    <p class="main_content_loglabel_tips"><%=flash[:update_password_error2]%>&nbsp;</p>
+                </div>
+                <div class="main_content_loglabel">
+                    <p class="main_content_loglabel_title">重复密码</p>
+                    <label>
+                    <%= f.password_field :password_confirmation ,:class => "main_content_input" ,:size => "oldpassword",:maxlength => "30" ,:value=>flash[:update_input_new_password_confirmation]%>
+                    </label>
+                    <p class="main_content_loglabel_tips"><%=flash[:update_password_error3]%>&nbsp;</p>
+                </div>
+            </div>
+            <div class="main_content_rightinput">
+                <div class="main_content_loglabel">
+                    <label>
+                         <%= f.submit '修改' , :class => "loglabel_button"%>
+                        <input class="loglabel_button" type="reset" name="reset" value="重置"/>
+                    </label>
+                </div>
+            </div>
+        <% end %>
+    </div>
+ </div>

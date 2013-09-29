@@ -1,0 +1,69 @@
+<%@show_stores.each do |store_id,foods| %>
+    <%store = Store.find(store_id)%>
+    <div class="main_content_left_result">
+        <div class="result_res" id="<%= store_id %>">
+            <div class="result_res_img">
+                <img src="<%=store.image%>" />
+            </div>
+            <div class="result_res_info">
+                <div class="result_res_info_line line1">
+                    <div><%=store.name%></div>
+                    <div id="end"><%=store.tags%></div>
+                </div>
+                <div class="result_res_info_line line2">
+                    <%if store.is_business%>
+                        <div class="res_station_open">正在营业</div>
+                    <%else%>
+                        <div class="res_station_closed">暂停营业</div>
+                    <%end%>
+                    <div><a href="/stores/<%=store_id%>">进入店家>></a></div>
+                    <div>总销量:<span><%=store.sold_count%></span></div>
+                </div>
+            </div>
+            <div class="result_res_food" >
+                <% foods.first(3).each do |food|%>
+                <ul class="food">
+                  <li class="food_title">
+                    <span><%=food.name%></span>
+                    <span><%=food.sales_count%></span>
+                  </li>
+                  <li><span><%= food.price%></span>元</li>
+                  <li class="food_add" onclick="eat_post('<%=store.id %>','<%=store.name%>','<%= food.id%>','<%= food.name%>','<%= food.price%>',0);"></li>
+                </ul>
+                <% end %>
+                <% if foods.size>3%>
+                <div style="display:none" id="more_<%= store_id %>">
+                  <% foods[3..foods.size].each do |food| %>
+                  <ul class="food">
+                    <li class="food_title">
+                      <span><%=food.name%></span>
+                      <span><%=food.sales_count%></span>
+                    </li>
+                    <li><span><%= food.price%></span>元</li>
+                    <li class="food_add" onclick="eat_post('<%=store.id %>','<%=store.name%>','<%= food.id%>','<%= food.name%>','<%= food.price%>',0);"></li>
+                  </ul>
+                  <% end %>
+                </div>
+                <div class="food_more">
+                  <a id="more_click_<%= store_id %>" href="javascript:void(0)" onclick="display_more('<%= store_id %>')">展开全部<span><%=foods.size%></span>条</a>
+                  <a id="click_<%= store_id %>" href="javascript:void(0)" onclick="display('<%= store_id %>')" style="display:none">收起<span><%=foods.size - 3 %></span>条</a>
+                </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+<%end%>
+<script type="text/javascript">
+    function display_more (argument) {
+        $("#"+argument).css("height","auto");
+        $("#more_"+argument).css("display","block");
+        $("#more_click_"+argument).css("display","none");
+        $("#click_"+argument).css("display","block");
+    };
+    function display (argument) {
+        $("#"+argument).css("height","308px");
+        $("#more_"+argument).css("display","none");
+        $("#more_click_"+argument).css("display","block");
+        $("#click_"+argument).css("display","none");
+    }
+</script>

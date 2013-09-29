@@ -1,0 +1,7 @@
+ymrt_key:      key
+ymrt_password: password
+
+#miss_images
+store_image_miss:    /system/miss/store/miss.png
+food_image_miss:     /system/miss/food/miss.jpg
+user_image_miss:     /system/miss/user/miss.jpg

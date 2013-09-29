@@ -1,0 +1,79 @@
+<head>
+<%= stylesheet_link_tag "application" %>
+<link href="/css/ordering_regist.css" rel="stylesheet" type="text/css" />
+</head>
+<body scroll="no"> 
+<div class="sign_in_contentbase">
+  <div class="sign_in_empty" style="height:50px;"></div>
+    <div class="regist_logo">
+      <div class="logo">
+        <img src="/images/login/logo1.png" width="140" height="60" /></div>
+        <div class="title">|&nbsp;&nbsp;&nbsp;注册成功</div>
+      </div>
+    </div>
+<div class="sign_in_empty" style="height:60px;"></div>
+<div class="sign_in_content">
+<div class="regist_info_line" style="font-size:24px; color:#F00; text-align:center;">恭喜！注册成功！请到邮箱激活您的账户!</div>
+<div class="login_css" id="login">
+  <div class="window_title">
+    <div>
+      登录微大学
+    </div>
+    <div></div>
+  </div>
+  <div class="window_detail">
+    <%= form_for :user, :url => new_user_session_path do |f| %>
+    <form method="post" action="/users/sign_in">
+      <div class="window_label label1">
+        <p>
+          邮箱
+        </p>
+        <label> <%= f.email_field :email ,:size =>"30",:maxlength=>"30", :class => "window_input"%> </label>
+      </div>
+      <div class="window_label label1">
+        <p>
+          密码
+        </p>
+        <label> 
+          <%= f.password_field :password ,:size =>"30",:maxlength=>"30", :class => "window_input"  , :onCopy => "return false" ,:onpaste => "return false;" , :onCut => "return false" ,:onselectstart => "return false"%>
+           </label>
+      </div>
+      <div class="window_label label2">
+        <p></p>
+        <label>
+          <input type="checkbox" checked="true" name="user[remember_me]"/>
+          <span>自动登录</span> <%= f.submit '登录'%> </label>
+      </div>
+      <%end%>
+      <div class="window_label label3">
+        <p></p>
+        <label> <a href="#">忘记密码？</a> | <a href="#">注册</a> </label>
+      </div>
+      <div class="window_label label4">
+        <p></p>
+        <div class="window_qqlogin window_otherlogin">
+          <a href="/users/qqlogin">QQ登录</a>
+        </div>
+        <div class="window_blank"></div>
+        <div class="window_bloglogin window_otherlogin">
+          <a href="/users/sina_login">微博登录</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<input type="button" class="regist_submit_button" value="立即登录" style="float:none;"
+onclick="location='/users/sign_in'" />
+</div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,111 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link active">
+        <a class="pjax" href="/admins/messages">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<div id="list">
+  <%= form_tag '/admins/messages/query', :method => :post, :class=> "pjax-form form-inline"%>
+     <div class="well ">
+          <select class="input-small " name="is_clocked">
+                <option value ="0" >未屏蔽</option>
+                <option value ="1" >已屏蔽</option>
+          </select>
+          <button class="btn btn-primary"  type="submit">
+            <i class="icon-white icon-refresh"></i>
+            查询
+          </button>
+        </div>
+ </form>
+
+<table class="table table-condensed table-striped">
+  <thead>
+      <th class="header pjax headerSortDown id_field integer_type">编号</th>
+      <th class="  commentable_field polymorphic_association_type">评论用户</th>
+      <th class="header pjax  content_field text_type">品论店家</th>
+      <th class="header pjax  created_at_field datetime_type">创建时间</th>
+      <th class="header">内容</th>
+      <th class="header pjax  created_at_field datetime_type">状态</th>
+      <th class="last shrink" style="text-align:center;"></th>
+      </tr>
+  </thead>
+<tbody>
+  <% @messages.each do |message|%>
+        <tr>
+            <td class="id_field integer_type"><%=message.id%></td>
+            <td>
+              <%=message.user.username%>
+            </td>
+            <td>
+             <%=message.store.name%>
+            </td>
+           <td ><%=message.created_at.localtime.strftime("%F")%></td>
+            <td style="width:30%;">
+                <%=message.comment%>
+            </td>
+           <td class="created_at_field datetime_type">
+            <span class="label label-<%= (message.is_locked == 0)? 'success':'important' %>" id="span_<%=message.id%>">
+              <%=  (message.is_locked == 0)? '未屏蔽':'已屏蔽' %></span>
+          </td>
+        <td class="last links">
+           <ul class="inline">
+            <%if message.is_locked == 0%>
+               <a title="屏蔽操作" class="messages_opreation" style="cursor:pointer;" id="<%=message.id%>"> 
+                <i class="icon-lock"></i>
+              </a>
+            <%else%>
+               <a title='取消屏蔽' class="messages_opreation" style="cursor:pointer;" id="<%=message.id%>"> 
+                <i class="icon-ok"></i>
+              </a>
+            <%end%>
+              
+          </ul>
+        </td>
+        </tr>
+<%end%>
+
+</tbody>
+</table>
+
+<div class="pagination">
+    <ul> <%= will_paginate @messages %> </ul>
+</div>
+</div>
+
+<script type="text/javascript">
+  $(".messages_opreation").click(function(){
+      var type = $(this).attr("title") ;
+      var index_span = "#span_"+$(this).attr("id");
+      if (type == "屏蔽操作"){
+        result=$.ajax({url:"/admins/messages/is_locked/1/"+$(this).attr("id"),async:false});
+        if (result.responseText == "0"){
+          $(this).find("i").removeClass("icon-lock");
+          $(this).find("i").addClass("icon-ok");
+          $(this).attr("title","取消屏蔽");
+          $(index_span).removeClass("label-success");
+          $(index_span).addClass("label-important");
+          $(index_span).text("已屏蔽");
+        }
+      }else{
+        result=$.ajax({url:"/admins/messages/is_locked/0/"+$(this).attr("id"),async:false});
+         if (result.responseText == "0"){
+          $(this).find("i").removeClass("icon-ok");
+          $(this).find("i").addClass("icon-lock");
+          $(this).attr("title","屏蔽操作");
+          $(index_span).removeClass("label-important");
+          $(index_span).addClass("label-success");
+          $(index_span).text("未屏蔽");
+        }
+      }
+  });
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="外卖,外卖电话,西南石油大学外卖,四川音乐学院外卖,成都医学院外卖,订餐电话,订餐平台,正因村,西南石油大学,四川音乐学院,成都医学院">
+		<meta name="description" content="微大学订餐平台,汇集新都区所有美食，以大学生为受众群体的一个新式订餐平台">
+		<title>积分抽奖</title>
+		<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="bookmark" type="image/x-icon" />
+		<%= stylesheet_link_tag "application","faq" %>
+		<%= javascript_include_tag "jquery.min"%>
+		<%= csrf_meta_tags %>
+	</head>
+<body style="background: url(/temp/icon1.png);">
+<%=render 'commom/top_bar'%>
+<div class="area dealcontent faq">
+  <div class="right" style="margin-top: 70px; ">
+  <div id="fnavid" class="mod-nav">
+    <dl>
+      <dt>玩转微大学</dt>
+      <dd>
+      <a href="/">新手上路</a>
+      <a href="/faq/jf_rule" class="on">积分攻略</a>
+      <a href="#">积分活动规则</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>常见问题</dt>
+      <dd>
+      <a href="#">餐品很久没有收到</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>商家服务</dt>
+      <dd>
+      <a href="#" class="">招商规则</a>
+      </dd>
+    </dl>
+  </div>
+  <div class="teal">
+    联系我们:&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1025351182&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1025351182:50" alt="微大学客服中心" title="微大学客服中心"></a>
+    <br>
+    <em>(早9：00-晚18:00)</em>
+    <br>
+    商家合作：<a href="#" target="_blank">
+    <img border="0" alt="点击这里给我发消息" src=""></a>
+    <br>
+    <a class="fkalink" target="_blank" href="#">意见反馈</a>
+  </div>
+  <div class="ad"></div>
+</div>
+<div class="left" style="margin-top: 70px; ">
+<%= yield %>
+</div>
+<%=render 'commom/bottom_bar'%>
+</body>
+<%= javascript_include_tag "application"%>
+<%=render 'commom/tongji'%>
+</html>

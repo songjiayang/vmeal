@@ -1,0 +1,97 @@
+<%= render :partial => 'tab', :locals => {:tab_index => @tab_index} %>
+<div class="main_content_details">
+    <div class="main_content_details_top">
+        <div class="order_top_title"> 
+            已有的送餐地址  
+            <a href="javascript:void(0)" onclick="oprate_addr_form(1,0)">
+               <span style="margin-left:80%">新增送餐地址 </span>
+            </a> 
+    </div>
+    </div>
+    <div class="main_content_details_bottom">
+       <div class="main_content_details_table">
+            <table cellpadding="0px" cellspacing="0px">
+              <thead>
+                <tr>
+                    <th>地址</th>
+                    <th>电话</th>
+                    <th>备选电话</th>
+                    <th>收餐人姓名</th>
+                    <th>操作</th>
+                </tr>
+             </thead>
+            <tbody>
+            <% @send_addresses.each do |address| %>
+               <tr>
+                 <td id="addr_id_<%=address.id%>"><%= address.address%></td>
+                 <td id="tel_number1_<%=address.id%>"><%= address.tel_number1%></td>
+                 <td id="tel_number2_<%=address.id%>"><%= address.tel_number2%></td>
+                 <td id="addr_name_<%=address.id%>"><%= address.name%></td>
+                 <td>
+                    <% if current_user.default_address_id != address.id%>	
+                       &nbsp;
+                       <%= link_to '设为默认地址', set_default_address_users_path(:default_address_id => address.id)%>
+                       &nbsp;
+                    <% end %>
+                    &nbsp;
+                    <a href="javascript:void(0)" onclick="oprate_addr_form(2,<%=address.id%>)">编辑</a>&nbsp;
+                    <%= link_to '删除',destory_address_users_path(:address_id =>address.id) ,:onclick=>"return confirm('是否删除送餐地址?')"%></td>
+               </tr>
+             <% end %>
+            </tbody>
+          </table>
+       </div>
+</div>
+
+<div class="main_content_details_bottom"  style="display:none" id="addr_form">
+    <%= form_for :address ,:url=>{:action=>:address_create} do |f| %>
+        <div class="main_content_leftinput">
+        <%= f.text_field :id  , :class=> "main_content_input" , :type => "hidden" %>
+          <div class="main_content_loglabel">
+                 <p class="main_content_loglabel_title">详细地址</p>
+                 <label>
+                     <%= f.text_field :address  , :class=> "main_content_input" , :size => "30" ,:maxlength => "30" %>
+                </label>
+                <p class="main_content_loglabel_tips" id="input_addr_error">&nbsp;</p>
+         </div>
+         <div class="main_content_loglabel">
+            <p class="main_content_loglabel_title">联系电话</p>
+              <label>
+                 <%= f.text_field :tel_number1  , :class=> "main_content_input" , :size => "30" ,:maxlength => "11" %>
+              </label>
+             <p class="main_content_loglabel_tips" id='input_tel_error'>&nbsp;</p>
+         </div>
+        <div class="main_content_loglabel">
+            <p class="main_content_loglabel_title">备选电话</p>
+            <label>
+                <%= f.text_field :tel_number2  , :class=> "main_content_input" , :size => "30" ,:maxlength => "11" %>
+            </label>
+            <p class="main_content_loglabel_tips" id="input_tel_2_error">
+                    &nbsp;
+             </p>
+        </div>
+        <div class="main_content_loglabel">
+            <p class="main_content_loglabel_title">收餐人姓名</p>
+            <label>
+            <%= f.text_field :name  , :class=> "main_content_input" , :size => "30" ,:maxlength => "10" %>
+            </label>
+            <p class="main_content_loglabel_tips" id="input_name_error">
+                &nbsp; 
+             </p>
+        </div>
+    </div>
+     <div class="main_content_rightinput">
+             <div class="main_content_loglabel">
+                <label>
+                    <%= f.submit '保存', :class => "loglabel_button",:onclick=>"return vidate_input()"%>
+        <input class="loglabel_button" type="reset" name="login" value="重置" onclick="reset_error_messages()"/>
+                </label>
+            </div>
+    </div>
+    <% end %>
+   </div>
+</div>
+
+
+
+    

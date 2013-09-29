@@ -1,0 +1,81 @@
+<%= render "bar"%>
+<dl>
+	<dt class="integer_field_field integer_type label">
+		店铺名称
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.name%></pre>
+	</dd>
+	<dt class="decimal_field_field decimal_type label">
+		主营业务
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.main_sales%></pre>
+	</dd>
+	<dt class="datetime_field_field datetime_type label">
+		店家地址
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.address%></pre>
+	</dd>
+	<dt class="datetime_type label timestamp_field_field">
+		起送价
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.send_price%></pre>
+	</dd>
+	<dt class="label time_field_field time_type">
+		店家公告
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.public_talk%></pre>
+	</dd>
+	<dt class="date_field_field date_type label">
+	   店家简介
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.introduce%></pre>
+	</dd>
+	<dt class="boolean_field_field boolean_type label">
+		开门时间
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.opentime.localtime.to_s(:db)%></pre>
+	</dd>
+	<dt class="label paperclip_asset_field paperclip_type">
+		关门时间
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.closetime.localtime.to_s(:db)%></pre>
+	</dd>
+	<dt class="has_many_association_type label nested_field_tests_field">
+		标签
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.tags%></pre>
+	</dd>
+	<dt class="comment_field has_one_association_type label">
+		店家类别
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.categore%></pre>
+	</dd>
+	<dt class="comment_field has_one_association_type label">
+		联系电话
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.tel%></pre>
+	</dd>
+	<dt class="comment_field has_one_association_type label">
+		营业状态
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= Store::STORE_STATUS_ADMIN_HASH[@store.isclose]%></pre>
+	</dd>
+		<dt class="comment_field has_one_association_type label">
+		所属学校
+	</dt>
+	<dd>
+		<pre class="prettyprint"><%= @store.school.name%></pre>
+	</dd>
+</dl>

@@ -1,0 +1,88 @@
+<div class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-home"></i> 广告管理</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>缩略图</th>
+								  <th>跳转地址</th>
+								  <th> 状态</th>
+								  <th>过期时间</th>
+								  <th>类别</th>
+								  <th>操作</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
+						  	<%@ads.each_with_index do |ad,index|%>
+						  		 <tr>
+								  		<td class="center" style="width:10%;">
+								  			<img src="<%=ad.img_path%>" alt="<%=ad.title%>" 
+								  			  style="width:40px;height:40px;margin-left:3%;"
+								  			  >
+								  		</td>
+								  		<td class="center" style="width:30%;">
+								  			<p><%=ad.link_to%></p>
+								  		</td>
+											<td class="center" style="width:10%;">
+												<span class="label label-<%= ad.status=='使用中'? 'success':'important' %>">
+														<%=ad.status%>
+												</span>
+											</td>
+											<td class="center" style="width:15%;">
+													<%=ad.expiration_time%>
+											</td>
+											<td class="center" style="width:10%;">
+												<span class="label label-<%= ['success', 'important'][index%2] %>">
+													<%= Ads::TYPE[index%2]%></span>
+											</td>
+											<td class="center" style="display: none">
+													<%=ad.money%>
+											</td>
+											<td class="center" id="<%=ad.id%>">
+												<a class="btn btn-setting btn-info ad_edit_action">
+													<i class="icon-edit icon-white" ></i>  
+													修改                                            
+												</a>
+												<a class="btn btn-danger" href="#">
+													<i class="icon-edit icon-white"></i>  
+													  删除                                            
+												</a>
+											</td>
+						  		 </tr>
+						  	<%end%>
+						  </tbody>
+					  </table>            
+					</div>
+				</div><!--/span-->
+</div><!--/row-->
+
+<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				   <button type="button" class="close" data-dismiss="modal">×</button>
+				   <h3>&nbsp;</h3>
+			</div>
+			 <%=render "ads/form"%>
+			<div class="modal-footer"> 
+				<input type="submit" value="保存设置", class ='btn btn-primary'/>
+			</div>
+</div>
+
+
+<script type="text/javascript">
+$(".ad_edit_action").click(function(){
+ 		var fetchBtn = $(this);
+    var id = fetchBtn.parent().attr("id");
+    var tds = fetchBtn.parent().siblings();
+    $('#img_path').val(tds.find("img").attr("src"));
+    alert(tds.find("img").attr("src"));
+  });
+</script>
+
+

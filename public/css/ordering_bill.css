@@ -1,0 +1,575 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	padding:0px;
+	margin:0px;
+	font-family:"微软雅黑";
+	font-size:12px;
+}
+a{
+	color:#069;
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+#ordering_bill_content_base{
+	width:960px;
+	margin:0px auto;
+	height:auto;
+}
+#ordering_bill_content{
+	width:960px;
+	height:auto;
+	float:left;
+	border:#CCC 1px solid;
+	margin-top:20px;
+	margin-bottom:40px;
+}
+
+
+.ordering_bill_left{
+	width:729px;
+	float:left;
+	height:auto;
+	border-right:#CCC 1px solid;
+	
+}
+
+
+
+#ordering_bill_left_tittle{
+	width:100%;
+	height:30px;
+	font-weight:bold;
+	float:left;
+	text-indent:1em;
+	font-size:14px;
+	line-height:30px;
+	background:#7D1F0A;	
+	background-image:linear-gradient(#7D1F0A 0%,#7D1F0A 100%);
+	background-image:-moz-linear-gradient(#7D1F0A 0%,#7D1F0A 100%);
+	background-image:-webkit-linear-gradient(#7D1F0A 0%,#7D1F0A 100%);
+}
+
+#ordering_bill_left_restaurant_name{
+	width:100%;
+	height:40px;
+	float:left;
+	line-height:40px;
+	font-weight:bold;
+	color:#08C;
+	text-indent:1em;
+	font-size:16px;
+}
+
+#ordering_bill_left_restaurant_info{
+	height:auto;
+	line-height:20px;
+	float:left;
+	width:709px;
+	color:#F00;
+	padding:10px;
+	padding-top:0px;
+}
+
+#ordering_bill_left_li_tittle{
+		width:100%;
+	height:30px;
+	font-weight:bold;
+	float:left;
+	border-top:#CCC 1px solid;
+	font-size:14px;
+	line-height:30px;
+	border-bottom:#CCC 1px dashed;
+
+}
+
+#ordering_bill_left_li_tittle_name{
+	width:340px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:left;
+	padding-left:10px;
+}
+
+#ordering_bill_left_li_tittle_price{
+	width:100px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+
+#ordering_bill_left_li_tittle_number{
+	width:70px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+
+#ordering_bill_left_li_tittle_all{
+	width:80px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:center
+}
+
+#ordering_bill_li{
+	width:100%;
+	height:60px;
+	float:left;
+	
+}
+
+#ordering_bill_li_content{
+	width:100%;
+	height:auto;
+	float:left;
+}
+
+#ordering_bill_li_total{
+	width:699px;
+	float:left;
+	height:50px;
+	text-align:right;
+	line-height:30px;
+	font-size:16px;
+	padding-right:30px;
+}
+
+#ordering_bill_li_total font{
+	color:#F00;
+}
+#ordering_bill_left_about{
+	width:100%;
+	float:left;
+	height:auto;
+}
+
+#ordering_bill_left_form{
+	width:400px;
+	float:left;
+	height:auto;
+}
+
+#ordering_bill_left_form_line{
+	width:100%;
+	float:left;
+	height:30px;
+	line-height:30px;
+	margin-top:10px;
+}
+
+.ordering_bill_left_form_line_message{
+	width:300px;
+	height:30px;
+	float:left;
+	line-height:30px;
+	padding-left:100px;
+}
+
+
+#ordering_bill_left_form_line_tt{
+	width:90px;
+	float:left;
+	height:30px;
+	text-align:right;
+	line-height:30px;
+	padding-right:10px;
+}
+#ordering_bill_left_form_line_tt font{
+	color:#F00;
+}
+
+.ordering_bill_left_form_line_input{
+	width:200px;
+	float:left;
+	height:30px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:#CCC 1px solid;
+	font-family:"微软雅黑";
+}
+
+.ordering_bill_left_list{
+	width:329px;
+	float:left;
+	height:auto;
+	
+
+}
+
+.ordering_bill_left_list_line{
+	width:300px;
+	height:50px;
+	line-height:30px;
+	float:left;
+	margin:0;
+}
+.ordering_bill_left_list_checkbook{
+	width:30px;
+	height:30px;
+	line-height:30px;
+	float:left;
+	text-align:center;
+}
+.ordering_bill_left_list_add{
+	width:269px;
+	height:30px;
+	line-height:30px;
+	float:left;
+	text-decoration:none;
+}
+
+.ordering_bill_left_list_add:hover{
+	text-decoration:underline;
+}
+.ordering_bill_left_list_tel{
+	width:269px;
+	height:20px;
+	line-height:20px;
+	float:left;
+	color:#999;
+	padding-left:30px;
+}
+
+#ordering_bill_left_login{
+	width:300px;
+	float:left;
+	height:auto;
+}
+
+#ordering_bill_left_login_tittle{
+	width:290px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	height:30px;
+	float:left;
+	font-size:14px;
+	background:#EEE;
+	padding-left:5px;
+	margin-top:20px;
+	text-align:left;
+	line-height:30px;
+	color:#666;
+}
+
+#ordering_bill_left_login_line{
+	width:100%;
+	float:left;
+	height:30px;
+	margin-top:10px;
+}
+#ordering_bill_left_login_line_tittle{
+	width:70px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:right;
+	
+}
+#ordering_bill_left_login_line_tittle font{
+	color:#F00;
+}
+
+#ordering_bill_left_login_line_input{
+	width:180px;
+	float:left;
+	margin-left:10px;
+	height:30px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:#CCC 1px solid;
+	font-family:"微软雅黑";
+}
+
+#ordering_bill_left_login_line_forgetpassword{
+	width:100px;
+	float:left;
+	height:30px;
+	text-align:right;
+	line-height:30px;
+	
+}
+
+#ordering_bill_left_login_line_askregistration{
+	width:200px;
+	float:left;
+	height:30px;
+	text-align:center;
+	line-height:30px;
+}
+
+#ordering_bill_left_login_line_button{
+	width:150px;
+	height:25px;
+	float:left;
+	margin-top:5px;
+	margin-left:70px;
+	font-family:"微软雅黑";
+	cursor:pointer;
+}
+#ordering_bill_left_login_flash{
+	width:100%;
+	height:60px;
+	float:left;
+	text-align:center;
+}
+#ordering_bill_left_remarks_about{
+	width:100%;
+	float:left;
+	height:auto;
+	border-bottom:#EEE 1px dashed;
+}
+#ordering_bill_left_remarks{
+	width:670px;
+	height:auto;
+	float:left;
+	margin-left:30px;
+	border:#CCC 1px solid;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#ordering_bill_left_remarks_openbutton{
+	width:100px;
+	float:left;
+	height:30px;
+	background:none;
+	border:0px;
+	font-family:"微软雅黑";
+	font-size:14px;
+	text-align:left;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+
+
+#ordering_bill_left_remarks_tittle{
+	width:668px;
+	background:#ddffdd;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	height:30px;
+	text-indent:1em;
+	line-height:30px;
+	border:#FFF 1px solid;
+	float:left;
+}
+
+#ordering_bill_left_remarks_text{
+	width:670px;
+	min-height:60px;
+	line-height:30px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:#099 1px solid;
+	padding:5px;
+	margin:20px 20px;
+	float:left;
+	height:auto; overflow:auto;
+	 font-family:'微软雅黑'; 
+	 color:#999;
+	  font-size:14px;
+}
+
+#ordering_bill_left_remarks_control{
+	width:100%;
+	float:left;
+	line-height:30px;
+}
+
+#ordering_bill_left_remarks_button{
+	width:80px;
+	height:30px;
+	float:left;
+	margin-left:50px;
+	cursor:pointer;
+}
+
+	
+#ordering_bill_right{
+	width:228px;
+	float:left;
+	height:auto;
+}
+
+#ordering_bill_explain{
+	width:228px;
+	float:left;
+	height:auto;
+}
+
+#ordering_bill_explain_question{
+	width:210px;
+	float:left;
+	height:auto;
+	line-height:30px;
+	padding-left:9px;
+	padding-right:9px;
+	color:#7D1F0A;
+}
+#ordering_bill_explain_answer{
+	width:210px;
+	float:left;
+	height:auto;
+	line-height:30px;
+	padding-left:9px;
+	padding-right:9px;
+	color:#000;
+	border-bottom:#CCC 1px dashed;
+}
+
+#ordering_bill_explain_answer a{
+	color:#08C; 
+	font-size: 16px;
+}
+
+#ordering_bill_makesure{
+	width:100%;
+	height:auto;
+	float:left;
+	text-align:center;
+}
+
+#ordering_bill_makesure_button{
+	height:30px;
+	width:auto;
+	margin-top:5px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	margin-bottom:5px;
+	cursor:pointer;
+	color:#08C;
+	border:#08c 1px solid;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+.ordering_bill_input_control{
+	width:auto;
+	height:25px;
+	border:#099 1px solid;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	font-family:"微软雅黑";
+	cursor:pointer;
+}
+
+.ordering_bill_form_control{
+	width:auto;
+	height:30px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	font-family:"微软雅黑";
+	cursor:pointer;
+	font-weight:bold;
+	border:0px;
+	margin:10px 24px;
+	border:#999 1px solid;
+}
+
+#ordering_bill_add_info{
+	width:100%;
+	height:auto;
+	float:left;
+}
+#ordering_bill_room_info{
+	width:100%;
+	height:auto;
+	float:left;
+}
+
+#ordering_bill_default_info_line{
+	width:609px;
+	padding-left:120px;
+	float:left;
+	height:auto;
+	font-size:14px;
+	line-height:30px;
+}
+#ordering_bill_default_info_line:hover{
+	background-color:#FFE3FF;
+}
+#ordering_bill_default_info_checkout{
+	width:30px;
+	height:30px;
+	text-align:center;
+	float:left;
+	}
+#ordering_bill_default_info_text{
+		width:570px;
+		float:left;
+		height:30px;
+		height:auto;
+	}
+#ordering_bill_created_info{
+	width:579px;
+	padding-left:150px;
+	height:auto;
+	line-height:30px;
+	float:left;
+	font-size:14px;
+	color:#066;
+}
+
+.js{
+	width: 13px;
+	height: 13px;
+	text-align: center;
+	display: inline-block;
+	line-height: 13px;
+	background: #999;
+	color: #FFF;
+	cursor: pointer;
+}
+.dele{
+	width: 16px;
+	height: 40px;
+	display: block;
+	margin-right: 18px;
+	float: right;
+	border: none;
+	background: url(../images/icon/delete_hov.png) no-repeat center;
+}
+
+table{
+	float:left;	
+}
+
+table td,table th{
+	text-align:center;
+	border-bottom:#08c 1px solid;
+	line-height:30px;
+	font-family:"微软雅黑";
+}
+
+table th{
+	color:#08c;
+	border-top:#08c 1px solid;
+}
+
+table a{
+	color:#069;
+	text-decoration:none;
+}
+table a:hover{
+	text-decoration:underline;
+}

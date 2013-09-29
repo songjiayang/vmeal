@@ -1,0 +1,25 @@
+<%= form_for(@station_mail) do |f| %>
+  <% if @station_mail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@station_mail.errors.count, "error") %> prohibited this station_mail from being saved:</h2>
+
+      <ul>
+      <% @station_mail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

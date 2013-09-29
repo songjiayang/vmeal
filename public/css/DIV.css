@@ -1,0 +1,187 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+}
+
+a {
+	text-decoration:none;
+	color:#7D1F0A;
+}
+
+.login_window {
+	width:460px;
+	height:364px;
+	border:1px #7D1F0A solid;	
+	background-color: #FFF;
+}
+.login_window_message {
+	width:460px;
+	height:260px;
+	border:1px #7D1F0A solid;	
+	background-color: #FFF;
+}
+.window_title  {
+	padding:0px 15px;
+	height:36px;
+	line-height:36px;
+	background:#7D1F0A;
+}
+
+.window_title div:nth-child(1) {
+	width:414px;
+	line-height:36px;
+	color:#FFF;
+	font-weight:bold;
+	font-size:14px;
+	float:left;
+}
+
+.window_title div:nth-child(2)  {
+	display:inline-block;
+	cursor:pointer;
+	margin-top:10px;
+	width:16px;
+	height:16px;
+	/*background:url(../images/icon/closed.png);*/
+}
+
+.window_title div:nth-child(2):hover {
+	background:url(../images/icon/closed.png) 16px;
+}
+
+.window_detail {
+	padding:36px 0px;
+}
+
+.window_label {
+	margin-left:80px;	
+	display:block
+}
+
+.label1 {
+	margin-bottom:20px;
+}
+
+.label3 {
+	margin-top:18px;
+}
+
+.label3 a:hover {
+	text-decoration:underline;
+}
+
+.label4 {
+	margin-top:24px;
+}
+
+.window_label p {
+	width:30px;
+	float:left;
+	font-size:14px;
+	padding-bottom:10px;
+	margin-right:20px;
+	display:block;
+}
+
+.window_label label {
+	display:block;
+}
+
+.window_input {	
+	height:26px;
+	width:210px;
+	font-size:14px;
+	padding:5px;
+}
+.window_input_area{
+	height:150px;
+	width:450px;
+	font-size:14px;
+}
+
+.window_label span {
+	color:#666;
+}
+
+.label2 input[type="submit"] {
+	display:inline;
+	margin-left:33px;
+	border:0px;
+	width:110px;
+	height:36px;
+	color:#FFF;
+	cursor:pointer;
+}
+
+.label1 input[type="button"] {
+	display:inline;
+	border:0px;
+	width:140px;
+	height:36px;
+	color:#FFF;
+	cursor:pointer;
+}	
+
+.window_label input[type="submit"] {	
+	background-color:#601606;
+}
+
+.window_label input[type="submit"]:hover {
+	background-color:#7D1F0A;
+}
+
+.window_label input[type="button"] {	
+	background-color:#601606;
+}
+
+.window_label input[type="button"]:hover {
+	background-color:#7D1F0A;
+}
+
+.window_otherlogin {
+	width:80px;
+	height:20px;
+	float:left;
+}
+
+.window_blank {
+	width:60px;
+	height:20px;
+	float:left;
+}
+
+.window_otherlogin a {	
+	line-height:20px;
+	display:block;
+	padding-left:26px;
+	color:#fff;
+}
+
+.window_qqlogin {
+	background:#3AC8D3 url(../images/icon/qq.png) 4px no-repeat;
+}
+
+.window_bloglogin {
+	background:#D50000 url(../images/icon/sina.png) 4px no-repeat;
+}
+
+.window_qqlogin a:hover {
+	background:#53CFD9 url(../images/icon/qq.png) 4px no-repeat;
+	text-decoration:none;
+}
+
+.window_bloglogin a:hover {
+	background:#EA0000 url(../images/icon/sina.png) 4px no-repeat;
+	text-decoration:none;
+}
+
+
+.bind_window {
+	width:460px;
+	border:1px #7D1F0A solid;	
+	background-color: #FFF;
+}

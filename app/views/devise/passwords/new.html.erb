@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>注册微大学</title>
+    <link href="/css/ordering_regist.css" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/jquery-1.7.2.js" type="text/javascript"></script>
+  </head>
+  <body scroll="no">
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <div class="sign_in_contentbase">
+
+      <div class="sign_in_empty" style="height:50px;"></div>
+      <div class="regist_logo"><div class="logo">
+          <a href="/"><img border="0px" src="/images/login/logo1.png" width="140" height="60" alt="点击返回首页" title="点击返回首页"/></a></div>
+        <div class="title">|&nbsp;&nbsp;&nbsp;找回密码</div>
+      </div>
+      <div class="sign_in_empty" style="height:60px;"></div>
+      <div class="sign_in_content">
+        <div class="regist_info_name" style="margin-left: 140px;font-size: 20px;">
+          注册邮箱:
+        </div>
+
+        <div class="regist_info">
+
+          <div class="regist_info_line">
+            <%= f.email_field :email, :class => "email_field" %>
+          </div>
+
+
+          <div class="regist_info_line">
+            <div class="regist_info_name">
+
+            </div>
+            <div class="regist_info_input">
+
+              <%= f.submit "找回密码" , :class => "regist_submit_button" %>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+  </body>
+</html>
+<style type="text/css">
+  .email_field {
+  height: 40px;
+  float: left;
+  width: 300px;
+  padding-left: 10px;
+  line-height: 40px;
+  border: #CCC 1px solid;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #666;
+  font-size: 14px;
+  font-family: "微软雅黑";
+  }
+  <style>

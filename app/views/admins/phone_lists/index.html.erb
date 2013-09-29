@@ -1,0 +1,26 @@
+<div class="box-content">
+  <table class="table table-striped table-bordered bootstrap-datatable datatable ">
+    <thead>
+      <tr>
+        <th>店家</th>
+        <th>接收电话号码</th>
+        <th>内容</th>
+        <th>发送时间</th>
+      </tr>
+    </thead>   
+    <tbody>
+       <%@short_phones.each do |item|%>
+        <tr>
+        <td><%=item.store.name%></td>
+        <td><%=item.phone_number%></td>
+        <td><%=item.content%></td>
+        <td><%=item.created_at.to_s(:db)%></td>
+       </tr>
+       <%end%>
+    </tbody>
+  </table>  
+ </div>
+ <div class="pagination" >
+  <%= will_paginate @short_phones %>
+ </div>
+</div>

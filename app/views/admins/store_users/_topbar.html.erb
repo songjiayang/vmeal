@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs">
+
+	<li title="" rel="" class="icon index_collection_link ">
+		<a class="pjax" href="/admins/store_users/"> <i class="icon-th-list"></i> <span>显示所有店长</span> </a>
+	</li>
+
+	<li title="" rel="" class="icon new_collection_link active ">
+		<a class="pjax" href="/admins/store_users/new"> <i class="icon-plus"></i> <span>新增店长</span> </a>
+	</li>
+
+	
+
+	<li class="dropdown" style="float:right">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Selected items<b class="caret"></b></a>
+		<ul class="dropdown-menu" style="left:auto; right:0;">
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('export'); jQuery('#bulk_form').submit(); return false;">Export selected Comments</a>
+			</li>
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('bulk_delete'); jQuery('#bulk_form').submit(); return false;">Delete selected Comments</a>
+			</li>
+		</ul>
+	</li>
+</ul>

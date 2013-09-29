@@ -1,0 +1,55 @@
+<%= form_for :food,:url => {:controller =>"foods",:action => :update} do |f| %>
+
+<div class="a_line" >
+	<label>菜名:</label>
+	<%= f.text_field :name ,:id => "foodname" ,:style=>"margin-left:34px;"%>
+</div>
+
+<div class="a_line">
+	<label> 关键字：</label>
+	<%= f.text_field :tag  ,:id => "foodtag" ,:style=>"margin-left:10px;"%>
+</div>
+
+<div class="a_line">
+	<label>价格：</label>
+	<%= f.text_field :price ,:id => "foodprice" ,:style=>"width:40px;margin-left:20px;"%>
+	<label> 数量：</label>
+	<%= f.text_field :sum ,:id => "foodsum" ,:style=>"width:40px;"%>
+</div>
+
+<div class="a_line">
+	<label> 热量：</label>
+	<%= f.text_field :energy  ,:id => "foodenergy" ,:style=>"width:40px;margin-left:24px;"%>
+	<label> 折扣：</label>
+	<%= f.text_field :sales  ,:id => "foodsales" ,:style=>"width:40px;"%>
+</div>
+
+<div class="a_line">
+	<label> 配料：</label>
+	<%= f.text_field :ingredients  ,:id => "foodingredients" ,:style=>"margin-left:20px;"%>
+</div>
+
+<div class="a_line">
+	<label> 送餐时间：</label>
+	<%= f.text_field :sent_time ,:id => "foodsenttime"%>
+</div>
+
+<div class="a_line">
+<label> 平台类别：</label>
+<%= f.select :vmeal_category_name ,VmealCategore.find_all_story_category,:id => "foodcategoryname"  %>
+</div>
+
+<div class="a_line">
+	<label> 本店类别：</label>
+	<%= f.select :category_id ,Food.find_store_categories(session[:store_id]),:id => "foodcategory" %>
+</div>
+
+<div class="a_line">
+<label> 缩略图：</label>
+<%= f.file_field :photo %>
+</div>
+<%= f.hidden_field :id,:id => "foodid",:name => "foodid"%>
+<div class="actions">
+		<%= f.submit '提交' %>
+</div>
+<%end  %>

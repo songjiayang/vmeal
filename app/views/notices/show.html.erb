@@ -1,0 +1,42 @@
+<style type="text/css">
+		.notice{
+			padding-top: 100px;
+			font-family: "微软雅黑";
+		}
+
+		.title{
+			font-weight: 600px;
+			font-size: 30px;
+		}
+
+		.content{
+			margin-top:30px;
+			font-size: 14px;
+			padding-left: 18%;
+			padding-right: 18%;
+			text-align: left;
+		}
+
+		.content img{
+			max-width: 810px;
+		}
+
+		.updated_at{
+			margin-left: 44%;
+			font-size: 14px;
+			margin-top: 15px;
+		}
+
+</style>
+<div class="notice" align="center">
+	<div>
+	    <span class='title'><%=@notice.title%></span>
+	</div>
+  <div class="content">
+  			<%= raw @notice.content%>
+  </div>
+
+  <div class="updated_at">
+  	更新于<%= @notice.updated_at.strftime("%F")%>
+  </div>
+</div>

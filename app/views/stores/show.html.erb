@@ -1,0 +1,113 @@
+<%= javascript_include_tag "car" %>
+<%= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "restaurant" %>
+
+<div class="main">
+  <div class="main_position">
+    <%=cookies[:school]%>
+  </div>
+  <div class="main_content">
+    <div class="main_content_left">
+      <div class="main_content_left_resinfo">
+        <% cache "store_#{@store.id}_basic_info_#{@store.updated_at.to_i}", :expires_in => 1.day do %>
+        <div class="resinfo_left">
+          <div class="resinfo_left_line line1">
+            <div class="line1_child1">
+              <input type="hidden" value="<%= @store.id%>" id="store_id" />
+              <input type="hidden" value="<%= @store.name%>" id="store_name" />
+              <%= @store.name%>
+            </div>
+            <div id="end" class="line1_child2">
+              <%= @store.main_sales%>
+            </div>
+          </div>
+          <div class="resinfo_left_line line2">
+            地址：<span><%= @store.address%></span>
+          </div>
+          <div class="resinfo_left_line line3">
+            订餐电话：<span><%= @store.tel %></span>
+          </div>
+          <div class="resinfo_left_line line4">
+            营业时间：
+            <%@store.order_periods.each do |op|%>
+            <%= op.start_time%>-<%= op.end_time%>
+            <span style="color:#5F1506;"><%= "("+op.description+")"%></span>&nbsp;
+            <%end%>
+          </div>
+          <div class="resinfo_left_line line5">
+            起送价：<span><%= @store.send_price%></span>元&nbsp;&nbsp;&nbsp;送餐费：
+            <% if @store.delivery_charge == 0 %>
+            <span style = "color: red;">免费</span>
+            <% else %>
+            <span><%= @store.delivery_charge%></span>元
+            <% end %>
+          </div>
+        </div>
+        <%end%>
+        <div class="resinfo_right">
+          <div class="resinfo_right_img">
+            <img src="<%= @store.image%>" width="76px" height="76px"/>
+          </div>
+          <%if user_signed_in?%>
+          <div class="resinfo_right_like">
+            <%= follow_store @store%>
+          </div>
+          <% else %>
+          <div class="resinfo_right_like">
+            <p>
+              已有<font color="red"><%= @favoritec_count%></font>人收藏
+            </p>
+          </div>
+          <% end %>
+          <div style="float:right;width:200px;"> 
+            <div style="float:right;">
+              <div id="qqwb_share__" data-appkey="801229541" data-icon="1" data-counter="0" data-content="微大学-身边的订餐服务专家，定外卖上微大学。" data-richcontent="" data-pic="http://image.weidaxue.me/assets/icon/weidaxue.jpg">
+              </div>
+            </div>
+            <div style="float:right;">
+              <script type="text/javascript" charset="utf-8">
+              (function(){
+                var _w = 106 , _h = 24;
+                var param = {
+                  url:location.href,
+                  type:'5',
+                  count:'', /**是否显示分享数，1显示(可选)*/
+                  appkey:'2784058992', /**您申请的应用appkey,显示分享来源(可选)*/
+                  title:'微大学-身边的订餐服务专家，定外卖上微大学.', /**分享的文字内容(可选，默认为所在页面的title)*/
+                  pic:'http://image.weidaxue.me/assets/icon/weidaxue.jpg', /**分享图片的路径(可选)*/
+                  ralateUid:'2969909902', /**关联用户的UID，分享微博会@该用户(可选)*/
+                language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+                  rnd:new Date().valueOf()
+                }
+                var temp = [];
+                for( var p in param ){
+                  temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+                }
+                document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+              })()
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%if @show_comments%>
+      <%= render :partial=>"comments"%>
+      <%else%>
+      <%= render :partial=>"meal"%>
+      <% end -%>
+    </div>
+    <div id="content_right" class="main_content_right">
+      <div>
+        <div class="main_content_right_tips" style="height:138px">
+          <span>小提示</span>
+          <p>
+            <%= @store.public_talk %>
+          </p>
+        </div>
+        <%= render  :partial =>"carts/cart",:locals=>{:carts=>@carts}%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>

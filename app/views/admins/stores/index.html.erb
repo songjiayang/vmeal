@@ -1,0 +1,21 @@
+<%= render "bar"%>
+<div id="list">
+	<div class="well ">
+		<form action="/admins/stores/" method="get">
+        <input class=" " name="query" placeholder="Filter" type="search" value="">
+          <button class="btn btn-primary" type="submit">
+            <i class="icon-white icon-refresh"></i>
+            查询
+          </button>
+          <span style="float:right"><a href="/admins/stores/new" class="btn btn-info">添加新开店家</a></span>
+          </form>
+        </div>
+	<%= render 'list'%>
+	<div class="pagination">
+		<ul>
+			<%= will_paginate @stores %>
+
+		</ul>
+	</div>
+
+</div>

@@ -1,0 +1,56 @@
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="/css/ordering_shopkeeper.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+	</head>
+
+	<body>
+		<div id="ordering_personalcenter_left_content">
+
+			<div id="ordering_personalcenter_left_userimg">
+							<img src="<%= Store.where(:user_id => current_user.id).first.get_image_url%>" width="128" height="128" />
+						</div>
+						<div id="ordering_personalcenter_left_ortherinfo">
+							<div class="ordering_personalcenter_left_ortherinfo_box1"></div>
+							
+						</div>
+						<div class="ordering_personalcenter_left_menu">
+							<div class="ordering_personalcenter_left_menu_title">
+								交易管理
+							</div>
+							<div class="ordering_personalcenter_left_menu_buttons">
+								<input type="button" value="订单管理" class="ordering_personalcenter_left_menu_buttonstyle"
+								onclick="location='/stores/store_center_order'" />
+								<input type="button" value="评价管理" class="ordering_personalcenter_left_menu_buttonstyle"
+								onclick="location='/stores/store_center_comment'" />
+								<input type="button" value="留言管理" class="ordering_personalcenter_left_menu_buttonstyle"
+								onclick="location='/stores/store_center_message'" />
+								<input type="button" value="菜单管理" class="ordering_personalcenter_left_menu_buttonstyle"
+								onclick="location='/stores/store_center_add_category'" />
+							</div>
+
+							<div class="ordering_personalcenter_left_menu_title">
+								售后服务
+							</div>
+							<div class="ordering_personalcenter_left_menu_buttons">
+								<input type="button" value="投诉记录" class="ordering_personalcenter_left_menu_buttonstyle"
+								onclick="location='/stores/complaints'" />
+
+								<div class="ordering_personalcenter_left_menu_title">
+									资料管理
+								</div>
+								<div class="ordering_personalcenter_left_menu_buttons">
+									<input type="button" value="餐厅资料" class="ordering_personalcenter_left_menu_buttonstyle"
+									onclick="location='/stores/store_center_info'" />
+
+									<input type="button" value="密码安全" class="ordering_personalcenter_left_menu_buttonstyle"
+									onclick="location='/stores/store_center_password'" />
+
+								</div>
+							</div>
+						</div>
+						</div>
+
+	</body>
+</html>

@@ -1,0 +1,38 @@
+
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/ads"><%=controller_name%></a> <span class="divider">/</span></li>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link ">
+        <a class="pjax" href="/admins/schools">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+
+      <li title="新建" rel="" class="icon index_collection_link ">
+        <a class="pjax" href="/admins/schools/new">
+              <i class="icon-th-list"></i>
+              <span>New</span>
+        </a>
+      </li>
+      <li title="新建" rel="" class="icon export_collection_link active">
+        <%=link_to raw('<i class="icon-plus"></i><span>Show</span>'),
+                "#", :class => 'pjax'%>
+      </li>
+</ul>
+
+<div class="well" id="my_show_form">
+<div><label>学校名称:</balel><span><%=@school.name%></span></div>
+<div><label>开始时间:</balel><span><%=@school.created_at.to_s(:db)%></span></div>
+</div>
+
+
+

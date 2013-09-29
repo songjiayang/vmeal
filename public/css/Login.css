@@ -1,0 +1,168 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0;
+	padding:0;
+	font-family:"宋体";
+	font-size:12px;
+	color:#5F1506;
+	background:#F4EDEC;
+	}
+	
+a {
+	text-decoration:none;
+	color:#5F1506;
+}
+a img{
+border:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+	
+.top {
+	width:940px;
+	height:78px;
+	margin:auto;
+	border-bottom:#CCC dotted 1px;
+}
+
+.top_vmeal {
+	width:760px;
+	padding-top:20px;
+	float:left;
+}
+
+.top_vmeal a{
+	border:0px;	
+	}
+	
+.top_rightbox {
+	width:180px;
+	margin:36px 0 0 0;
+	float:left;
+}
+
+.top_otherlogin {
+	width:80px;
+	height:20px;
+	float:left;
+}
+
+.top_blank {
+	width:20px;
+	height:20px;
+	float:left;
+}
+
+.top_otherlogin a {	
+	line-height:20px;
+	display:block;
+	padding-left:26px;
+	color:#fff;
+}
+
+.top_qqlogin {
+	background:#3AC8D3 url(../images/icon/qq.png) 4px no-repeat;
+}
+
+.top_bloglogin {
+	background:#D50000 url(../images/icon/sina.png) 4px no-repeat;
+}
+
+.top_qqlogin a:hover {
+	background:#53CFD9 url(../images/icon/qq.png) 4px no-repeat;
+	text-decoration:none;
+}
+
+.top_bloglogin a:hover {
+	background:#EA0000 url(../images/icon/sina.png) 4px no-repeat;
+	text-decoration:none;
+}
+
+.main {
+	width:940px;
+	height:100%;
+	margin:auto;
+}
+
+.main_title {
+	width:100%;
+	margin-top:48px;
+	margin-bottom:54px;
+	text-align:center;
+	font-family:"宋体";
+	font-size:16px;
+	font-weight:bolder;
+	color:#5F1306;	
+}
+
+.main_content > div {
+	height:216px;
+	display:block;
+}
+
+.main_content_leftpic {
+	width:470px;
+	float:left;
+	background:url(../images/loginpic.gif) no-repeat 172px top;
+}
+
+.main_content_rightcontrol {
+	width:470px;
+	float:right;
+}
+	
+.main_content_loglabel {
+	margin-left:38px;
+	margin-bottom:36px;
+	display:block
+}
+
+.main_content_loglabel p {
+	width:30px;
+	float:left;
+	font-size:14px;
+	padding-bottom:10px;
+	margin-right:20px;
+	display:block;
+}
+
+.main_content_loglabel label{
+  font-size:16px;
+}
+
+.main_content_input {	
+	/*height:25px;*/
+	width:230px;
+  vertical-align:middle;
+  font-size:14px;
+	padding:10px;
+}
+
+.main_content_loglabel span {
+	color:#666;
+}
+
+.main_content_loglabel input[type="submit"] {
+	display:inline;
+	margin-left:33px;
+	border:0px;
+	width:110px;
+	height:36px;
+	background-color:#601606;
+	color:#FFF;
+	cursor:pointer;
+}
+
+.main_content_loglabel input[type="submit"]:hover {
+	display:inline;
+	margin-left:33px;
+	border:0px;
+	width:110px;
+	height:36px;
+	background-color:#7D1F0A;
+	color:#FFF;
+	cursor:pointer;
+}

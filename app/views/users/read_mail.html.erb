@@ -1,0 +1,12 @@
+<%=render 'tab'%>
+<div class="main_content_details">
+	<div class="main_content_details_top">
+		<p>
+			&nbsp;
+		</p>
+	</div>
+<%=StationMail.find(@mail_content.mail_id).content%>
+<br />
+<%= link_to '返回' , mails_users_path%>
+</div>
+

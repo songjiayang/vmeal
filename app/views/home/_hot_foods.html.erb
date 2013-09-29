@@ -1,0 +1,48 @@
+<% cache "hot_foods_#{cookies[:school]}", :expires_in => 2.hour do %>
+<div class="ordering_center_right_ranking">
+<div class="ordering_center_right_ranking_title">
+<div class="ordering_center_right_ranking_title_pic"><img src="images/icon/rank.png" width="16" height="16" /></div>
+<div class="ordering_center_right_ranking_title_text">热卖排行</div>
+</div>
+
+<div class="ordering_center_right_ranking_content">
+
+<%@hot_foods.each_with_index do |food,index|%>
+<div class="ordering_center_right_ranking_list">
+<div class="ordering_center_right_ranking_num"><%=index+1%>.</div>
+<div class="ordering_center_right_ranking_text">
+<div class="ordering_center_right_ranking_name"
+<%if food.store.is_trade?%> 
+   onclick="do_eat_post_and_redirect('<%=food.store.id %>','<%=food.store.name%>','<%= food.id%>','<%= food.name%>','<%= food.price%>');"
+<%else%>
+   onclick="only_redirect_to('<%=food.store.id%>');"
+<%end%> >
+<a style="cursor:pointer;"><%=food.name%></a>
+</div>
+<div class="ordering_center_right_ranking_pic"
+<%if food.store.is_trade?%> 
+   onclick="do_eat_post_and_redirect('<%=food.store.id %>','<%=food.store.name%>','<%= food.id%>','<%= food.name%>','<%= food.price%>');"
+<%else%>
+   onclick="only_redirect_to('<%=food.store.id%>');"
+<%end%>>
+<img src="/images/icon/buy.png" width="16" height="16" /></div>
+<div class="ordering_center_right_ranking_sales">&nbsp;<%=food.sales_count%></div>
+</div>
+</div>
+
+<%end%>
+
+</div>
+</div>
+</div>
+<%=javascript_include_tag "car"%>
+<script type="text/javascript">
+		function only_redirect_to(store_id){
+			self.location="/stores/"+store_id;
+		}
+		function do_eat_post_and_redirect(store_id,store_name,food_id,food_name,food_price){
+			eat_post(store_id,store_name,food_id,food_name,food_price,0);	
+			only_redirect_to(store_id)
+		}
+</script>
+<%end%>

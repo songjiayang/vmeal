@@ -1,0 +1,61 @@
+
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/activities"><%=controller_name%></a> <span class="divider">/</span></li>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link ">
+        <a class="pjax" href="/admins/activities">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+      <li title="新建" rel="" class="icon export_collection_link active">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_activity_path, :class => 'pjax'%>
+      </li>
+</ul>
+
+<div class="well" id="my_show_form">
+<div><label>标题:</balel><span><%=@activity.title%></span></div>
+<div><label>所需积分:</balel><span><%=@activity.need_score%></span></div>
+<div><label>价值:</balel><span><%=@activity.real_money%>元</span></div>
+<div><label>中奖名额:</balel><span><%=@activity.total_number%></span></div>
+<div><label>参与人数:</balel><span><%=@activity.join_number%></span></div>
+<div><label>价值:</balel><span><%=@activity.real_money%>元</span></div>
+<div><label>详细描述:</balel><span><%=@activity.description%></span></div>
+<div><label>活动状态:</balel><span class='btn btn-success'><%=@activity.status%></span></div>
+<%unless @activity.users.blank?%>
+<div class='bs-docs-example'>
+  中奖用户如下:<br/>
+  <table class="table table-bordered">
+      <tr>
+        <td >编号</td>
+        <td >用户名</td>
+        <td >联系地址</td>
+        <td>联系电话</td>
+      </tr>
+
+  <tbody>
+  <%@activity.users.each do |u|%>
+    <tr>
+      <td><%=u.id%></td>
+      <td><%=u.username%></td>
+      <td><%=u.good_address.address%></td>
+      <td><%=u.good_address.tel_number%></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+</div>
+<%end%>
+</div>
+
+
+

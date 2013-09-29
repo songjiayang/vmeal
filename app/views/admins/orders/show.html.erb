@@ -1,0 +1,41 @@
+<h1>订餐列表</h1>
+<table class="table table-bordered">
+  <tr>
+    <td>菜名</td>
+    <td>数量</td>
+    <td>总价</td>
+  </tr>
+  <%@order.line_items.each do |line_item|%>
+  <tr>
+    <td><%=line_item.food.name%></td>
+    <td><%=line_item.quantity%></td>
+    <td><%=line_item.total_price%></td>
+  </tr>
+  <%end%>
+</table>
+
+<h1>订单信息</h1>
+<table class="table table-bordered">
+  <tr>
+    <td>订单编号</td>
+    <td>用户名</td>
+    <td>电话</td>
+    <td>状态</td>
+    <td>总价</td>
+  </tr>
+  <tr>
+    <td><%= @order.order_number %></td>
+    <td><%= @order.user.username %></td>
+    <td><%= @order.phone %></td>
+    <td><%= Order::ORDER_STATUS_HASH[@order.order_status]%></td>
+    <td><%= @order.total_price%></td>
+  </tr>
+  <tr>
+    <td>地址</td>
+    <td colspan="4"><%= @order.address %></td>
+  </tr>
+  <tr>
+    <td>备注</td>
+    <td colspan="4"><%= @order.comment %></td>
+  </tr>
+</table>

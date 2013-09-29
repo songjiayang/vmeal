@@ -1,0 +1,4 @@
+<%=render :partial => 'admins/vmails/topbar', :locals => {:flash=>flash, :type=>2} %>
+<%= form_for  @mail, :url=>admins_vmails_path, :html=>{:class=>'form-horizontal'}  do |builder| %>
+  <%=render :partial => 'admins/vmails/form', :locals => {:f=>builder} %>
+<%end%>

@@ -1,0 +1,56 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link active">
+        <a class="pjax" href="/admins/schools">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>  
+      <li title="" rel="" class="icon history_index_collection_link ">
+            <a class="pjax" href="/admins/schools/new">
+              <i class="icon-book"></i>
+              <span>New</span>
+            </a>
+      </li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<div id="list">
+<table class="table table-condensed table-striped">
+  <thead>
+      <th class="header pjax headerSortDown id_field integer_type">编号</th>
+      <th class="  commentable_field polymorphic_association_type">学校名称</th>
+      <th class="header pjax  created_at_field datetime_type">创建时间</th>
+      <th class="last shrink"></th>
+      </tr>
+  </thead>
+<tbody>
+  <% @schools.each do |school|%>
+        <tr>
+            <td class="id_field integer_type"><%=school.id%></td>
+            <td class="commentable_field polymorphic_association_type" title="<%=school.name%>">
+              <a href="/admins/schools/<%=school.id%>" class="pjax"><%=school.name%></a>
+            </td>
+           <td class="created_at_field datetime_type"><%=school.created_at.localtime.to_s(:db)%></td>
+        <td class="last links">
+           <ul class="inline">
+            <%=link_to raw('<i class="icon-info-sign"></i>'),admins_school_path(school), title:"查看" %>
+            <%=link_to raw('<i class="icon-pencil"></i>'),edit_admins_school_path(school), title:"修改"%>
+            <%= link_to raw('<i class="icon-remove"></i>'), admins_school_path(school), method: :delete, data: { confirm: 'Are you sure?' } , title: '删除' %>
+          </ul>
+        </td>
+        </tr>
+<%end%>
+
+</tbody>
+</table>
+
+<div class="pagination">
+    <ul> <%= will_paginate @users %> </ul>
+</div>
+</div>

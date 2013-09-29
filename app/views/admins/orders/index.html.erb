@@ -1,0 +1,22 @@
+<%=render "admins/orders/list"%>
+<%= javascript_include_tag "application" ,"http://localhost:9292/faye.js" %>
+<script type="text/javascript">
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  faye.subscribe("/faye/orders/new",function(data){
+    var new_orders = data.new_orders;
+    $.each(new_orders, function(index,order_id){
+      $.get("/orders/" + order_id).success(function(data){
+        var a_new_order = ('<tr><td class="center">' + data.order_id + '</td>');
+        a_new_order += ('<td class="center">' + data.store_name + '</td>');
+        a_new_order += ('<td class="center">'+ data.money+'元</td>');
+        a_new_order += ('<td class="center">'+data.pay_type+'</td>');
+        a_new_order += ('<td class="center">'+data.created_at+'</td>');
+        a_new_order += ('<td class="center">'+ data.sent_time+'</td>');
+        a_new_order += ('<td class="center"><span class="label label-success">'+data.status+'</span></td>');
+        a_new_order += ('<td class="center"><a class="btn btn-success" href="/admins/orders/'+data.id+'">');
+        a_new_order += ('<i class="icon-zoom-in icon-white"></i>查看</a>');
+        $('tbody').prepend(a_new_order);
+      });
+    });
+  });
+</script>

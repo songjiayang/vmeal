@@ -1,0 +1,99 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link active">
+        <a class="pjax" href="/admins/users">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+        
+      <li title="" rel="" class="icon export_collection_link ">
+        <a class="pjax" href="/admins/users/export">
+              <i class="icon-share"></i>
+            <span>Export</span>
+        </a>
+      </li>
+        
+          <li title="" rel="" class="icon history_index_collection_link ">
+            <a class="pjax" href="/admin/comment/history">
+              <i class="icon-book"></i>
+              <span>History</span>
+            </a>
+          </li>
+        
+<li class="dropdown" style="float:right">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Selected items<b class="caret"></b></a>
+      <ul class="dropdown-menu" style="left:auto; right:0;">
+        <li><a href="/admins/users?type=2" >normal</a></li>
+        <li><a href="/admins/users?type=1" >clocked</a></li>
+        <li><a href="/admins/users?type=0" >everyone</a></li>
+        <li><a href="/admins/users?type=3" >积分排序</a></li>
+      </ul>
+</li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<div id="list">
+  <%= form_tag '/admins/users/query', :method => :post, :class=> "pjax-form form-inline"%>
+     <div class="well ">
+          <select class="input-small " name="type">
+            <option value ="email">邮箱</option>
+            <option value ="username">用户名</option>
+          </select>
+        <input class=" " name="query" placeholder="Filter" type="search" value="">
+          <button class="btn btn-primary"  type="submit">
+            <i class="icon-white icon-refresh"></i>
+            查询
+          </button>
+        </div>
+ </form>
+
+<table class="table table-condensed table-striped">
+  <thead>
+      <th class="header pjax headerSortDown id_field integer_type">编号</th>
+      <th class="  commentable_field polymorphic_association_type">用户名</th>
+      <th class="header pjax  content_field text_type">邮箱</th>
+      <th class="header pjax  content_field text_type">积分</th>
+      <th class="header pjax  created_at_field datetime_type">创建时间</th>
+      <th class="header pjax  created_at_field datetime_type">状态</th>
+      <th class="last shrink"></th>
+      </tr>
+  </thead>
+<tbody>
+  <% @users.each do |user|%>
+        <tr>
+            <td class="id_field integer_type"><%=user.id%></td>
+            <td class="commentable_field polymorphic_association_type" title="<%=user.username%>">
+              <a href="/admins/users/<%=user.id%>" class="pjax"><%=user.username%></a>
+            </td>
+            <td class="content_field text_type"> <%=user.email%></td>
+            <td class="content_field text_type"> <%=user.integral%></td>
+           <td class="created_at_field datetime_type"><%=user.created_at.localtime.to_s(:db)%></td>
+           <td class="created_at_field datetime_type">
+            <span class="label label-<%= user.is_locked==0? 'success':'important' %>">
+              <%= user.is_locked==0? '使用中':'已锁定' %></span>
+          </td>
+        <td class="last links">
+           <ul class="inline">
+            <%= link_to raw('<i class="icon-remove"></i>'), admins_user_path(user),method: :delete, data: { confirm: 'Are you sure?' } , title: '删除' %>
+              <%= link_to raw('<i class="icon-book"></i>'), admins_user_history_path(user), title: '历史' %>
+              <%lock_class = (user.is_locked==0? '<i class="icon-lock"></i>': '<i class="icon-ok"></i>')%>
+             <%= link_to   raw(lock_class), 
+               admins_user_is_locked_path(user,:page=>@page), title:(user.is_locked==0? "锁定": "解锁") %>
+          </ul>
+        </td>
+        </tr>
+<%end%>
+
+</tbody>
+</table>
+
+<div class="pagination">
+    <ul> <%= will_paginate @users %> </ul>
+</div>
+</div>

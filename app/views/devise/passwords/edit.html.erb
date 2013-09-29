@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册微大学</title>
+<link href="/css/ordering_forgetpassword.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body scroll="no"> 
+	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+	<%= f.hidden_field :reset_password_token %>
+<div class="sign_in_contentbase">
+<div class="sign_in_empty" style="height:50px;"></div>
+<div class="regist_logo"><div class="logo">
+<a href="/"><img border="0px" src="/images/login/logo1.png" width="140" height="60" alt="点击返回首页" title="点击返回首页"/></a></div>
+<div class="title">|&nbsp;&nbsp;&nbsp;密码重置</div>
+</div>
+<div class="sign_in_empty" style="height:60px;"></div>
+<div class="sign_in_content">
+  <div class="regist_info">
+  <div class = "regist_info_error_line">
+  	<%if devise_error_messages!.to_s.include?("doesn't match confirmation") %>
+	  亲，两次输入密码不一致，请重新输入！
+	  <% elsif devise_error_messages!.to_s.include?("is too short (minimum is 6 characters)") %>
+	  亲，密码至少为6位哦,重新输入密码吧！
+	  <% else %>
+	<% end %>
+  </div>
+<div class="regist_info_line">
+<div class="regist_info_name">
+重设密码
+</div>
+<div class="regist_info_input">
+<%= f.password_field :password , :class => "regist_info_inputstyle"%>
+
+</div>
+</div>
+<div class="regist_info_error_line"></div>
+
+
+
+<div class="regist_info_line">
+<div class="regist_info_name">
+再次确认
+</div>
+<div class="regist_info_input">
+<%= f.password_field :password_confirmation ,:class => "regist_info_inputstyle"%>
+</div>
+</div>
+
+
+<div class="regist_info_error_line"></div>
+
+
+<div class="regist_info_error_line">
+
+</div>
+
+<div class="regist_info_line">
+<div class="regist_info_name">
+
+</div>
+<div class="regist_info_input">
+<%= f.submit "确认重置密码",:class => "regist_submit_button" , :width => "80px" %>
+&nbsp;&nbsp;&nbsp;
+
+</div>
+</div>
+  </div>
+
+</div>
+</div>
+<% end %>
+</body>
+</html>

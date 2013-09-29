@@ -1,0 +1,220 @@
+<div class="top">
+  <div class="top_vmeal">
+    <a href="/"><img src="/images/icon/vmeal.png" /></a><span>店家中心</span>
+  </div>
+  <div class="top_rightbox">
+    <a href="/stores/logout">退出中心</a>
+  </div>
+</div>
+<div class="main">
+  <div class="main_content">
+    <div class="main_content_left">
+      <div class="main_content_left_resinfo">
+        <div class="resinfo_left">
+          <div class="resinfo_left_line line1">
+            <div>
+              <%= @store.name%>
+            </div>
+            <div id="end"></div>
+          </div>
+          <div class="resinfo_left_line line2">
+            地址：<span><%= @store.address%></span>
+          </div>
+          <div class="resinfo_left_line line3">
+            订餐电话：<span><%= @store.tel%></span>
+          </div>
+          <div class="resinfo_left_line line4">
+            营业时间：
+            <%@store.order_periods.each do |op|%>
+            <%= op.start_time%>-<%= op.end_time%>
+            (<%= op.description%>)&nbsp;
+            <%end%>
+            &nbsp;&nbsp;&nbsp;
+            <a href="javascript:void(0)" onclick="show_storeinfo('#order_period')"> <%= "修改" unless @store.order_periods.blank?%></a>&nbsp; <a href="javascript:void(0)" onclick="show_storeinfo('#order_period_new')"> <%= "添加" if @store.order_periods.size<3 %></a>
+                                                                                                                                                                                                                              </div>
+          <div class="resinfo_left_line line5">
+            起送价：<span><%= @store.send_price%></span>元&nbsp;&nbsp;&nbsp;送餐费：
+            <% if @store.delivery_charge == 0 %>
+            <span style = "color: red;">免费</span>
+            <% else %>
+            <span><%= @store.delivery_charge%></span>元
+            <% end %>
+            <% if @store.isclose == 0%>
+            <span style="margin-left:25px;color:red;"><b>如果不能营业点击右边按钮自主关店-></b></span>
+            <% else %>
+            <span style="margin-left:45px;color:red;"><b>点击右边按钮打开店铺正常营业-></b></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="resinfo_right">
+          <div class="resinfo_right_img">
+            <img src="<%= @store.image%>" width="76px" height="76px"/>
+          </div>
+          <div class="resinfo_right_like">
+            <% if @store.isclose == 0%>
+            <%= link_to '正在营业' ,close_stores_path%>
+            <% else %>
+            <%= link_to '点击营业' ,open_stores_path%>
+            <% end %>
+          </div>
+        </div>
+        <div class="resinfo_edit">
+          <a href="javascript:void(0)" onclick="show_storeinfo('#storeinfo')">编辑信息>></a>
+          </div>
+        </div>
+        <div class="main_content_left_result">
+          <%= render 'topbar'%>
+          <% if @type == "orders"%>
+          <%= render 'orders'%>
+          <% elsif @type == "foods" %>
+          <%= render 'foods'%>
+          <% elsif @type == "messages" %>
+          <%= render 'messages'%>
+          <% elsif @type == "categories" %>
+          <%= render 'categories'%>
+          <% elsif @type == "finance"%>
+          <%= render 'finance'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="main_content_right">
+      <div class="right main_content_right_tips">
+        <span>小提示</span>
+        <p>
+          <%= @store.public_talk %>
+        </p>
+        <div class="tips_edit">
+          <a href="javascript:void(0)" onclick="show_storeinfo('#store_notice')">编辑提示>></a>
+        </div>
+      </div>
+      <div class="right main_content_right_query">
+        <span>查询订单</span>
+        <p>
+          <%= form_for @store ,:url=>{:action=>:search} do |f|%>
+          <%= f.text_field :date,:value => Time.now.to_date,:onclick => "WdatePicker()" %>
+          <%= f.submit  :查询%>
+          <% end %>
+        </p>
+      </div>
+      <div class="right main_content_right_info">
+        <span>订餐统计列表</span>
+        <br/>
+        <br/>
+        <p>
+          订单 <span><%= @orders_count%></span>笔  金额<span>&nbsp;<%= @store_total_order_price%></span>元
+        </p>
+        <p>
+          弃单 <span><%= @orders_fail%></span>笔 金额<span>&nbsp;<%= @store_order_fail_price%></span>元
+        </p>
+        <p>
+          成功 <span><%= @orders_count -  @orders_fail %></span>笔 金额<span>&nbsp;<%= @store_total_order_price - @store_order_fail_price %></span>元
+        </p>
+        <br/>
+        <br/>
+        <span>餐品统计排行</span>
+        <br/>
+        <br/>
+        <% @hot_foods.each_with_index do | food , index | %>
+        <p style="margin-bottom: 5px">
+          <span><%= index + 1%>.</span><%= food[0]%> <span><%= food[1]%>份</span>
+        </p>
+        <% end %>
+        <br/>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="storeinfo" style="display: none">
+  <%= form_for @store,:url=>{:action=>:update} do |f| %>
+  <div class="field">
+    <%= f.label :店铺名称 %>
+    <%= f.text_field :name ,:size=>30%>
+  </div>
+  <div class="field">
+    <%= f.label :外卖费用 %>
+    <%= f.text_field :delivery_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :主营业务 %>
+    <%= f.text_field :main_sales %>
+  </div>
+  <div class="field">
+    <%= f.label :店家地址 %>
+    <%= f.text_field :address ,:size=>40%>
+  </div>
+  <div class="field">
+    <%= f.label :起送价 %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :send_price ,:size=>10%>
+  </div>
+  <div class="field">
+    <%= f.label :联系电话 %>
+    <%= f.text_field :tel ,:size=>16%>
+  </div>
+  <div class="field">
+    <%= f.label :店家缩略图%>
+    <%= f.file_field :image_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit  :提交修改%>
+  </div>
+  <% end %>
+</div>
+
+<div id="store_notice" style="display: none">
+  <%= form_for @store,:url=>{:action=>:update} do |f| %>
+  <div class="field">
+    <%= f.label :公告 %>
+    <br />
+    <%= f.text_area :public_talk%>
+  </div>
+  <div class="actions">
+    <%= f.submit  :提交修改%>
+  </div>
+  <% end %>
+</div>
+
+<div id="order_period" style="display: none">
+  <%= form_for @store,:url=>{:action=>:order_periods} do |f| %>
+  <h3>时间段设置</h3>
+  <div id='order_periods' class="order_periods">
+    <%= f.fields_for :order_periods do |builder| %>
+    <%= render "order_period", f:builder%>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit  :提交修改,:class=>"command"%>
+  </div>
+  <% end %>
+</div>
+
+<div id="order_period_new" style="display: none">
+  <%= form_for :store,:url=>{:action=>:order_periods} do |f| %>
+  <div id='order_periods' class="order_periods">
+    <%= f.text_field :task  , :class=> "main_content_input" , :type => "hidden" ,:value=>"new" %>
+    <%= f.fields_for :order_periods do |builder| %>
+    <%= render "order_period", f:builder%>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit  :提交修改,:class=>"command"%>
+  </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#store_date").focusin(function() {
+  if ($(this).attr("value") == "点击选择日期") {
+  $("#store_date").attr("value", "");
+  }
+  });
+  $("#store_date").focusout(function(){
+  if($(this).attr("value")==""){
+  $("#store_date").attr("value","点击选择日期");
+  }
+  });
+  });
+</script>

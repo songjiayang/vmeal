@@ -1,0 +1,2 @@
+module SmSeasonFoodHelper
+end

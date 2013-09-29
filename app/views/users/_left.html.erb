@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微菜单</title>
+<link href="/css/ordering_personalcenter.css" rel="stylesheet" type="text/css" />
+<script src="/javascripts/jquery-1.7.2.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div id="ordering_personalcenter_left_content">
+
+<div id="ordering_personalcenter_left_userimg">
+  <img src="<%=current_user.get_image_url%>" width="128" height="128" /> </div>
+<div id="ordering_personalcenter_left_ortherinfo">
+<div class="ordering_personalcenter_left_ortherinfo_box1"></div>
+<div class="ordering_personalcenter_left_ortherinfo_box2">
+<input type="button" class="change_img_button" value="修改头像"
+onclick="location='person_center_avatar'" />
+</div>
+</div>
+<div class="ordering_personalcenter_left_menu">
+<div class="ordering_personalcenter_left_menu_title">交易管理</div>
+<div class="ordering_personalcenter_left_menu_buttons">
+<input type="button" value="我的微单" class="ordering_personalcenter_left_menu_buttonstyle" 
+onclick="location='/users/person_center_order_uncomment';"/>
+
+
+
+<input type="button" value="我的收藏" class="ordering_personalcenter_left_menu_buttonstyle"  
+onclick="location='/users/person_center_fav_food';" />
+
+
+
+<input type="button" value="我的积分" class="ordering_personalcenter_left_menu_buttonstyle" 
+onclick="location='/users/person_center_integral';" /> 
+
+<input type="button" value="我的留言" class="ordering_personalcenter_left_menu_buttonstyle"  
+onclick="location='/users/person_center_message';" />
+<input type="button" value="我的评价" class="ordering_personalcenter_left_menu_buttonstyle"  
+onclick="location='/users/person_center_comment';" />
+<input type="button" value="地址管理" class="ordering_personalcenter_left_menu_buttonstyle" 
+onclick="location='/users/person_center_address';" />
+</div>
+
+<div class="ordering_personalcenter_left_menu_title">售后服务</div>
+<div class="ordering_personalcenter_left_menu_buttons">
+<input type="button" value="送餐投诉" class="ordering_personalcenter_left_menu_buttonstyle" 
+onclick="location='/users/user_complaints';" /> 
+</div>
+
+
+<div class="ordering_personalcenter_left_menu_title">资料管理</div>
+<div class="ordering_personalcenter_left_menu_buttons">
+<input type="button" value="个人资料" class="ordering_personalcenter_left_menu_buttonstyle" 
+onclick="location='person_center_info';" />
+<input type="button" value="密码安全" class="ordering_personalcenter_left_menu_buttonstyle" 
+onclick="location='/users/person_center_password';" />
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

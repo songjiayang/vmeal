@@ -1,0 +1,13 @@
+<%= form_for [:admins,@station_mail] do |f| %>
+<div class="field">
+	<%= f.label :站内信标题 %>
+	<%= f.text_field :title %>
+</div>
+<div class="field">
+	<%= f.label :站内信内容 %>
+	<%= f.text_area :content %>
+</div>
+<div class="actions">
+	<%= f.submit '提交' %>
+</div>
+<% end %>

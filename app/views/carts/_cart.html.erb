@@ -1,0 +1,63 @@
+<span id="user_loged" style="display: none"><%= "ok" if current_user %></span>
+<div class="main_content_right_order">
+	<div id="order_title">
+		我的菜篮子
+	</div>
+	<% if carts %>
+	<% @totle_price = 0%>
+	<%carts.each do |store_id,v| %>
+	<div id ="store_id_<%= store_id %>" class="order_content">
+		<% @total = 0.0 %>
+		<% v["line_items"].values.map { |e| @total += (e["count"].to_i * e["price"].to_f) } %>
+		<input type="hidden" value="<%= @total%>" id="store_price_<%= store_id%>" />
+		<div class="res_name">
+			<div>
+				<%= v["store_name"]%>
+			</div>
+			<div title="删除已点餐品">
+				<input id="delete" type="button" onclick="clear_store_food(<%= store_id %>);"/>
+			</div>
+		</div>
+		<table class="foodlist" cellpadding="0px" cellspacing="0px">
+			<thead>
+				<tr>
+					<td>菜品</td>
+					<td>单价</td>
+					<td>&nbsp;</td>
+				</tr>
+			</thead>
+			<tbody id="body<%= store_id %>">
+				<%v["line_items"].each do |food_id,foods|%>
+				<tr id="food_id_<%= food_id%>">
+					<td><%= foods["food_name"]%></td>
+					<td><span id="food_price_<%= food_id%>"><%= foods["price"]%></span>元</td>
+					<td><a onclick="reduce(<%= store_id %>,<%= food_id %>,<%= foods["price"] %>);">-</a><span id="food_num_<%= food_id%>"><%= foods["count"] %></span><a onclick="add_food_num(<%= store_id %>,<%= food_id %>,<%= foods["price"] %>);">+</a><span>&nbsp;</span><a onclick="remove_food(<%= store_id %>,<%= food_id %>,<%= foods["price"] %>);">×</a></td>
+				</tr>
+				<%end%>
+				<% @totle_price += v["total_price"]%>
+			</tbody>
+		</table>
+	</div>
+	<% end -%>
+	<% end %>
+	<div id="foot" style="<%='display:none' if carts.nil? || carts.size == 0%>">
+	<table class="foodlist" cellpadding="0px" cellspacing="0px">
+		<tfoot>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>总价:<span id="total_price"><%= @totle_price.to_f%></span>元</td>
+			</tr>
+		</tfoot>
+	</table>
+	<div class="order_pay">
+		<input type="button" name="confirm" value="确认下单" onclick="post_my_cart()"/>
+	</div>
+	</div>
+	<div id="empty_food" class="order_pay" style="<%='display:none' if carts&&carts.size > 0%>"><p id="window_height"></p>
+		<img src="http://bcs.duapp.com/ycxxww/weidaxue%2Fempty1.png?sign=MBO:A81a348dcf113936d6396052375d437c:7%2FLSVXB55p3F5X%2BxIE8CMfv3Tdw%3D&response-content-disposition=filename*=utf8''empty1.png&response-cache-control=private">
+  </div>
+</div>
+
+<%= render :partial =>"commom/login_form" ,:locals=>{type: 2}%>
+

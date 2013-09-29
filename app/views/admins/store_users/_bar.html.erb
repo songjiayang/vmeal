@@ -1,0 +1,11 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/store_users"><%=controller_name%></a> <span class="divider">/</span></li>
+        <%if ["edit"].index action_name.to_s%>
+         <li><%=link_to @store_user.id, admins_station_mails_path(@store_user)%> <span class="divider">/</span></li>
+        <%end%>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>

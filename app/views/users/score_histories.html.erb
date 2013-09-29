@@ -1,0 +1,63 @@
+<%= render :partial => 'tab', :locals => {:tab_index => @tab_index} %>
+<div class="main_content_details">
+    <div class="main_content_details_top">
+    		<br/>
+        <p>
+          <span style="margin-left:15px; font-size:14px;font-weight:bold;">
+          	我的积分
+          </span>
+           可用积分：<font style='font-weight:bold;color:#C41304;'><%=current_user.integral%></font>
+           &nbsp;分
+          <a style="margin-left:20px;" href="/faq/jf_rule">积分明细</a>
+          <a style="margin-left:10px;" href="/cj">我要抽奖</a>
+        </p>
+        <br/><br/>
+        <p>
+            &nbsp;
+
+        </p>
+    </div>
+    <div class="main_content_details_bottom">
+				<div class="tab tab_<%= @type==""? "on": "out"%>">
+					  <%= link_to '积分明细' ,score_histories_users_path%>
+				</div>
+				<div class="tab tab_<%= @type=="add"? "on": "out"%>">
+					<%= link_to '积分增加' ,score_histories_users_path(:type=>"add")%>
+				</div>
+				<div class="tab tab_<%= @type=="sub"? "on": "out"%>">
+					<%= link_to '积分消耗' ,score_histories_users_path(:type=>"sub")%>
+				</div>
+	<div class="main_content_details_table">
+		<table cellpadding="0px" cellspacing="0px">
+			<thead>
+				<tr>
+					<th>日期</th>
+					<th>操作</th>
+					<th>详细描述</th>
+					<th>积分</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%@score_histories.each do |sh|%>
+					<tr>
+							<th style="width:20%;"><%=sh.created_at.localtime.to_s(:db)%></th>
+							<th style="width:20%;"><%=ScoreHistories::TYPE[sh.change_type-1]%></th>
+							<th style="width:40%;">
+									<%if sh.activity%>
+										<a href="/cj/<%=sh.activity.id%>">
+											<%="[#{sh.activity.title}]-[#{the_activity_status(sh.activity.end_time)}]"%>
+										</a>
+									<%else%>
+									  <%=sh.detail%>
+									<%end%>
+							</th>
+							<th style="width:20%;"><%="+" if sh.change_score>0%><%=sh.change_score%></th>
+					</tr>
+				<%end%>
+			</tbody>
+		</table>
+	</div>
+	<%= will_paginate @score_histories %>
+</div>
+</div>
+

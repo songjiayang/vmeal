@@ -1,0 +1,47 @@
+
+<%= form_for(@order,:url => url_for(:controller => '/order_manager', :action => 'search')) do |f| %>
+<table>
+    <tr>
+    	<td><%= f.label '起始时间：' %></td>
+   	   <td><%= f.datetime_select :created_at %></td>
+   		<td><%= f.label '结束时间：' %></td>
+   	   <td><%= f.datetime_select :updated_at %></td>
+    
+    	<td><%= f.label '条件搜索：' %></td>
+   	   <td><%= f.select :order_status, Order::ORDER_STATUS %></td>
+   	  	<td> <%= f.submit '查询'%></td>
+  </tr>
+</table>
+   
+<% end %>
+
+<table>
+  <tr id="item">
+    <th>订单编号</th> 
+    <th>所属店家</th>
+    <th>下单时间</th>
+    <th>订单状态</th>
+    <th>所属订单者</th>
+    <th>地址</th>
+    <th></th>
+    <th></th>
+    <th>操作</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.id %></td>
+   <td><%= order.store.name %></td>
+    <td><%= order.created_at.localtime.to_s(:db) %></td>
+    <td><%= order.translate_status_to_s %></td>
+    <td><%= order.user.username %></td>
+    <td><%= order.address %></td>
+    <td><%= link_to '订单详情', order_manager_path(order) %></td>
+    <td><%= link_to '修改订单状态',  midify_status_order_manager_index_path(:id=>order.id) %></td>
+    <td><%= link_to '订单被水',  set_be_watered_order_manager_index_path(:id=>order.id) %></td>
+    <td><%= link_to '删除', destroy1_order_manager_index_path(:id=>order.id)%></td>
+  </tr>
+<% end %>
+</table>

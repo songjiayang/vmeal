@@ -1,0 +1,124 @@
+function eat (store_id,food_id,food_name,food_price,store_name) {
+	if($("#store_id_"+store_id).length >0){
+		if($("#food_id_"+food_id).length > 0){
+			add_num(store_id,food_id,food_price);
+		}else{
+			$("#body"+store_id).append(
+				"<tr id='food_id_"+food_id+"'><td>"+food_name+"</td><td><span id='food_price_"+food_id+"'>"+food_price+"</span>元</td><td><a onclick='reduce("+store_id+","+food_id+","+food_price+");'>-</a><span id='food_num_"+food_id+"''>1</span><a onclick='add_food_num("+store_id+","+food_id+","+food_price+");'>+</a><span>&nbsp;</span><a onclick='remove_food("+store_id+","+food_id+","+food_price+");'>×</a>	</td></tr>"
+			);
+		add_price(food_price);
+		}
+	}else{
+		$("#order_title").after(
+			"<div id ='store_id_"+store_id+"' class='order_content'><input type='hidden' value='"+food_price+"' id='store_price_"+store_id+"' /><div class='res_name'><div>"+store_name+"</div><div title='删除已点餐品'><input id='delete' type='button' onclick = 'clear_store_food("+store_id+");'/></div></div><table class='foodlist' cellpadding='0px' cellspacing='0px'><thead><tr><td>菜品</td>	<td>单价</td><td>&nbsp;</td></tr></thead><tbody id='body"+store_id+"'><tr id='food_id_"+food_id+"'><td>"+food_name+"</td><td><span id='food_price_"+food_id+"'>"+food_price+"</span>元</td><td><a onclick='reduce("+store_id+","+food_id+","+food_price+");'>-</a><span id='food_num_"+food_id+"'>1</span><a onclick='add_food_num("+store_id+","+food_id+","+food_price+");'>+</a><span>&nbsp;</span><a onclick='remove_food("+store_id+","+food_id+","+food_price+")'>×</a></td></tr></tbody></table></div>");
+		add_price(food_price);
+	}
+};
+
+function clear_store_food (store_id) {
+	eat_post(store_id,"","","","",3);
+}
+
+function add_food_num (store_id,food_id,food_price) {
+	eat_post(store_id,"",food_id,"",food_price,0)
+};
+
+function reduce (store_id,food_id,food_price) {
+	eat_post(store_id,"",food_id,"",food_price,1);
+};
+
+function remove_food (store_id,food_id,food_price) {
+	eat_post(store_id,"",food_id,"",food_price,2);
+};
+
+function add_num (store_id,food_id,food_price) {
+	$("#food_num_"+food_id).text((parseFloat($("#food_num_"+food_id).text())+1));
+	add_price(food_price);
+	$("#store_price_"+store_id).attr("value",parseFloat($("#store_price_"+store_id).attr("value"))+parseFloat(food_price));
+}
+
+function add_price (price) {
+	$("#total_price").text(parseFloat($("#total_price").text())+parseFloat(price));
+}
+
+function reduce_price (price) {
+	$("#total_price").text(parseFloat($("#total_price").text())-parseFloat(price));	
+}
+
+function eat_post (store_id,store_name,food_id,food_name,food_price,type) {
+	$.ajax({
+    type : "POST",
+    url : "/carts/action/",
+    beforeSend : function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));},
+    data : {store_id : store_id,store_name : store_name,food_id : food_id,food_name : food_name,price : food_price,type :type},
+    dataType : "json",
+    success : function(data) {
+    	if (data.status=="ok"){
+	    	if (type == 0) {
+	    		if (store_name == "") {
+	    			add_num(store_id,food_id,food_price);
+	    		}else{
+	    			eat(store_id,food_id,food_name,food_price,store_name);
+	    		};
+	    		$("#foot").css("display","block");
+	    		$("#empty_food").css("display","none");
+	    	}else if (type == 1){
+	    		if ((parseInt($("#food_num_"+food_id).text()))==1) {
+						remove_food(store_id,food_id);
+					}else{
+						$("#food_num_"+food_id).text((parseFloat($("#food_num_"+food_id).text())-1));
+						reduce_price(food_price);
+						$("#store_price_"+store_id).attr("value",parseFloat($("#store_price_"+store_id).attr("value"))-parseFloat(food_price));
+					}
+	    	}else if (type == 2){
+	    		reduce_price(parseInt($("#food_num_"+food_id).text())*parseFloat($("#food_price_"+food_id).text()));
+					$("#food_id_"+food_id).remove();
+					if ($( "#body"+store_id+":has(tr)" ).length==0)
+					{
+						$("#store_id_"+store_id).remove();		
+					}
+					$("#store_price_"+store_id).attr("value",parseFloat($("#store_price_"+store_id).attr("value"))-(parseInt($("#food_num_"+food_id).text())*parseFloat($("#food_price_"+food_id).text())));
+					if($(".order_content").size()==0){
+						$("#foot").css("display","none");
+						$("#empty_food").css("display","block");
+					}
+	    	}else if (type == 3){
+	    		reduce_price($("#store_price_"+store_id).attr("value"));
+					$("#store_id_"+store_id).remove();
+					if($(".order_content").size()==0){
+						$("#foot").css("display","none");
+						$("#empty_food").css("display","block");
+					}
+	    	};
+	    };
+    }});
+};
+
+
+
+$(document).ready(function () {
+	$(window).scroll(function () {
+		if ($(window).scrollTop()>238) {
+			$(".main_content_right_order").css({position:"fixed",display:"block"});
+			$(".main_content_right_order").css("margin-top","-218px");
+		}else{
+			$(".main_content_right_order").css("margin-top","18px");
+			$(".main_content_right_order").css("position","");
+		};
+	})
+});
+
+
+function post_my_cart(){
+	if ($("#total_price").text() == 0 ){
+		alert(" 购物车为空，赶快去吃吧！");
+		return false;
+	}else if ($("#user_loged").text() != "ok"){
+	 $("#user_redirect").val(1);
+  	 dk();
+  }else{
+  		window.location.replace("/users/bill")
+  }
+
+}
+

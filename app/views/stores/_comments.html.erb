@@ -1,0 +1,42 @@
+<div class="main_content_left_result">
+			<div class="tab_left tab_out">
+					<%=link_to "菜单",store_path(@store)%>
+			</div>
+			<div class="tab_right tab_on">
+        <span>评论</span>
+      </div>
+			<div class="message_content">
+	  <% @store_comments.each do |message|  %>
+			<ul class="message">
+					<img src="<%=message.user.get_image_url(:thumb)%>" style="border-radius:50px;">
+					<span class="username"><%=message.user.username%></span>
+					<span class="time"><%=message.created_at.to_s(:db)%></span>
+					<p><%=message.comment.blank?? "还不错哦～～":message.comment%><p>
+					<%if message.reply%>
+					<div style="margin-left:68px;margin-bottom: 12px;">
+						 <fieldset>
+						 	  <legend>店长回复</legend>
+						 		<p><%= message.reply.comment%><p>
+						 </fieldset>
+					 </div>
+					<%end%>
+			</ul>
+	 <% end %>
+	 <%= will_paginate @store_comments %>
+	</div>
+</div>
+
+<style type="text/css">
+	fieldset{
+		border:2px groove;
+		margin-right: 10px;
+		text-align: left;
+	}
+
+	legend{
+		font-size: 14px;
+    color: #3366FF;
+}
+	}
+
+</style>

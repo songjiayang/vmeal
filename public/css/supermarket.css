@@ -1,0 +1,197 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body{
+	margin:0;
+	padding:0;
+	font-family:"微软雅黑";
+	font-size:12px;
+}
+
+.supermarket_contentbase{
+	width:960px;
+	height:auto;
+	margin:0px auto;
+}
+
+.supermarket_content{
+	width:960px;
+	float:left;
+	height:auto;
+	padding-bottom:40px;
+}
+
+.supermarket_left{
+	width:230px;
+	float:left;
+	height:auto;
+}
+
+.supermarket_left{
+	width:240px;
+	float:left;
+	height:auto;
+}
+
+.supermarket_left_title{
+	width:220px;
+	float:left;
+	height:40px;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:40px;
+	font-size:16px;
+	color:#09C;
+	font-family:"微软雅黑";
+	border-bottom:#09C 2px solid;
+	
+}
+
+.supermarket_left_content{
+	width:238px;
+	float:left;
+	height:auto;
+	background:#eee;
+	border-left:#DDD 1px solid;
+	border-right:#DDD 1px solid;
+	border-bottom:#DDD 1px solid;
+}
+
+.supermarket_left_category_title{
+	width:218px;
+	height:36px;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:36px;
+	float:left;
+	font-family:"微软雅黑";
+	font-size:14px;
+}
+
+.supermarket_left_category_content{
+	width:218px;
+	height:auto;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:36px;
+	float:left;
+	padding-bottom:5px;
+}
+.supermarket_left_category_button{
+	width:auto;
+	height:25px;
+	border:#09C 1px solid;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background:none;
+	margin:8px 3px;
+	cursor:pointer;
+	line-height:25px;
+	padding:3px;
+	font-family:"微软雅黑";
+	font-size:11px;
+	text-decoration:none;
+}
+
+
+.supermarket_right{
+	width:720px;
+	height:auto;
+	float:left;
+}
+
+.supermarket_right_content{
+	width:720px;
+	height:auto;
+	float:left;
+}
+
+.supermarket_right_notice{
+	width:700px;
+	height:40px;
+	float:left;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:40px;
+	font-size:12px;
+	color:#F00;
+	
+}
+
+.supermarket_right_box{
+	width:168px;
+	float:left;
+	margin-left:10px;
+	margin-bottom:10px;
+	border:#DDD 1px solid;
+	height:auto;
+	
+}
+
+.supermarket_right_box_img{
+	padding:4px;
+	float:4px;
+	width:160px;
+	height:160px;
+	z-index: -1000;
+	}
+.supermarket_right_box_img img{
+	border: #DDD 1px solid;
+}
+
+.supermarket_right_box_name{
+	width:158px;
+	height:25px;
+	float:left;
+	line-height:25px;
+	font-size:12px;
+	font-family:"微软雅黑";
+	color:#666;
+	text-align:center;
+	position:absolute;
+	margin-top:-26px;
+	margin-left:1px;
+	z-index:1000;	
+}
+.supermarket_right_box_line{
+	width:160px;
+	height:30px;
+	float:left;
+	padding-left:4px;
+	padding-right:4px;
+	font-family:"微软雅黑";
+
+}
+.supermarket_right_box_price{
+	width:60px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#F00;
+
+}
+
+.supermarket_right_box_control{
+	width:100px;
+	float:left;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+
+.supermarket_right_box_control_button{
+	width:auto;
+	height:25px;
+	border:0;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background:none;
+	cursor:pointer;
+	font-family:"微软雅黑";
+	color:#F90;
+	margin-top:2px;
+}

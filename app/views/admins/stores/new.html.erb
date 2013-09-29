@@ -1,0 +1,17 @@
+<%= render "bar"%>
+<ul class="nav nav-tabs">
+
+	<li title="" rel="" class="icon index_collection_link ">
+		<a class="pjax" href="/admins/stores/"> <i class="icon-th-list"></i> <span>店家列表</span> </a>
+	</li>
+</ul>
+<%= form_for @store,:url=>{:controller =>"/admins/stores",:action=>"create"},:html => { :multipart => true } do |f| %>
+<input type="hidden" name ="id" value="<%= @store.id%>" />
+<div class="field">
+	<%= f.label :店铺名称 %>
+	<%= f.text_field :name %>
+</div>
+<div class="actions">
+	<%= f.submit  :创建新店%>
+</div>
+<% end %>

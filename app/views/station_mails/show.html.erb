@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @station_mail.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @station_mail.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_station_mail_path(@station_mail) %> |
+<%= link_to 'Back', station_mails_path %>

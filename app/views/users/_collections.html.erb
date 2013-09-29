@@ -1,0 +1,30 @@
+     
+    <%if @type == "stores" %>
+     <% @favorite_stores.each do |fav_store| %>
+                <div class="collect_res">
+                    <div class="ordering_center_left_restaurant_box">
+                        <div class="ordering_center_left_restaurant_head"><img src="<%= fav_store.store.image%>" width="76" height="76" /></div>
+                        <div class="ordering_center_left_restaurant_detail">
+                            <div class="ordering_center_left_restaurant_line1"><a href="/stores/<%= fav_store.store_id%>"><%= fav_store.store.name%></a></div>
+                            <div class="ordering_center_left_restaurant_line2"><%= fav_store.store.categore%></div>
+                            <div class="ordering_center_left_restaurant_line3"><%=fav_store.store.sold_count%></div>
+                            <div class="ordering_center_left_restaurant_line4"><%=fav_store.store.open_time%></div>
+                        </div>
+                    </div>
+                 </div>
+         <% end %>
+    <%else%>
+     <div class="result_res_food">
+              <% @favorite_foods.each do |food|%>
+                    <ul class="food">
+                        <li class="food_title"> 
+                            <span><%=food.name%></span> <span>%=food.count%></span> </li>
+                        <li><span><%=food.price%></span>元</li>
+                        <li class="food_add"></li>
+                        <li><a href="#">删除</a></li>
+                    </ul>
+                </div>
+                <div class="result_res_more"> <a href="#">展开全部>></a> </div>
+            <%end%>
+         
+    <%end%>

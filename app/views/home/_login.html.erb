@@ -1,0 +1,45 @@
+<link href="/css/ordering_home.css" type="text/css" rel="stylesheet" />
+<div class="ordering_mainfocus_right">
+	<% if user_signed_in? %>
+    <div align="center" class="ordering_mainfocus_right">
+    <div class="ordering_mainfocus_right_loginimg"> <a href="/users/home"><img src="<%=current_user.get_image_url("thumb")%>" id="userimg" width="70" height="70" border="0"></a><div style="color: #7D1F0A;">
+    	(<span id="my_score_home"><%= current_user.integral%></span>积分)
+    </div>
+  </div>
+    <div class="ordering_mainfocus_right_username"> <a href="/users/home" class="ordering_mainfocus_right_login_name"><%= current_user.username%></a></div>
+    <div class="ordering_mainfocus_right_others">
+    <a href="/logout">注销登录</a>&nbsp;
+    <a href="/users/orders/building">我的订单</a>&nbsp;
+    <a href="/cj">我要抽奖</a>&nbsp;
+    
+</div>
+      </div>
+	<% else %>
+	<div class="ordering_mainfocus_right_ask">
+		已经有<font color="#7D1F0A"><%=@users_count%></font>吃货吃爽，你也参与？
+	</div>
+	<div class="ordering_mainfocus_right_login">
+		<input type="button" onclick="dk()" class = "ordering_mainfocus_right_button" value="登录">
+	</div>
+
+	<div class="ordering_mainfocus_right_none">
+		尚无账号？<a href="/users/sign_up">点击注册</a>
+	</div>
+	<div class="ordering_mainfocus_right_otherlogin">
+		<div class="ordering_mainfocus_right_otherbox qqlogin">
+			<div class="ordering_mainfocus_right_link">
+				<a href="/users/qqlogin">QQ登录</a>
+			</div>
+		</div>
+		<div class="ordering_mainfocus_right_otherbox bloglogin">
+			<div class="ordering_mainfocus_right_link">
+				<a href="/users/sina_login">微博登录</a>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
+</div>
+
+<%= render :partial =>"commom/login_form" ,:locals=>{:type=>1}%>
+

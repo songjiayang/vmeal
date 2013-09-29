@@ -1,0 +1,46 @@
+<div class="ordering_bottom">
+	<div class="ordering_bottom_center">
+		<div class="ordering_bottom_left" style="width:695px;">
+			<div class="ordering_bottom_line">
+				<div class="ordering_bottom_link"><a href="/about_us/aboutus">关于我们</a></div>
+				<div class="ordering_bottom_link"><a href="/about_us/contactus">联系我们</a></div>
+				<div class="ordering_bottom_link"><a href="/about_us/dianrui">点睿科技</a></div>
+				<div class="ordering_bottom_link"><a href="/about_us/legal">法律声明</a></div>
+				<div class="ordering_bottom_link"><a href="/about_us/joinus">商家/广告招商</a></div>
+				<div class="ordering_bottom_link"><a href="/about_us/protocol">服务协议</a></div>
+			</div>
+			<div class="ordering_bottom_line">Copyright©2012-2020  weidaxue.me微大学 版权所有</div>
+		</div>
+		<div class="ordering_bottom_right" style="width:265px;margin-top:-5px;">
+			<img src="/temp/ewm.jpg" width="70" height="70" id="wx_image" />
+			<div style="width:185px;float:right;height:70px;margin-left:2px;line-height:19px;">
+					<span style="color:#FFFF00;font-family:'微软雅黑';font-size:14px;">关注微大学微信</span><br/>
+					<span style="color:#fff;">1&nbsp;查找微信号:<font color="#FeFF00"> weixinweidaxue </font> </span><br/>
+					<span style="color:#fff;">2&nbsp;用微信扫描左侧二维码<br />&nbsp;&nbsp;&nbsp;(点击可查看大图)</span>
+				<div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+      var window_height = $(window).height();
+      var bottom_height = $(".ordering_bottom").offset().top;
+      if ((parseInt(bottom_height)+60)< parseInt(window_height)){
+      $(".ordering_bottom").offset({ top: parseInt(window_height)-90});
+      }
+    $("#wx_image").click(function () {
+      $.layer({
+        type : 2,
+        closeBtn : [0,true],
+        iframe : {
+            src : 'http://www.weidaxue.me/temp/ewm.jpg'
+        },
+        title : ['' , false],
+        area : ['430px','430px'],
+        success : function(){ //层加载成功后进行的回调
+            layer.shift('right-bottom',1000); //浏览器右下角弹出
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag "cj_detail",'cj_error' %>
+ <div class="area nav_label" style="margin-top:70px;">
+      <a href="/" target="_blank">微大学</a>&nbsp;&gt;&nbsp;
+      <a href="/cj" target="_blank">幸运抽奖</a>&nbsp;&gt;&nbsp;
+       抽奖失败
+</div>
+
+<div id="cententA" class="area">
+
+	<p class="">
+  <strong>真遗憾！</strong>
+  <%if @error_type ==2 %>
+    您当前积分不足<%=@need_score%>积分，赚取足够的积分再来参加活动吧！您可以去看看<a target='_blank' href='/faq/jf_rule'>积分攻略</a>
+   <%else%>
+       您的收货信息待完善，请先填写地址信息，否则获得的礼品无法进行配送,请到个人中心填写您的
+       <a target='_blank' href='/users/welfare/address'>收货地址</a>
+   <%end%>
+  </p>
+</div>

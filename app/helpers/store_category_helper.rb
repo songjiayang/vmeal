@@ -1,0 +1,2 @@
+module StoreCategoryHelper
+end

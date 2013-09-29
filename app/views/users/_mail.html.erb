@@ -1,0 +1,44 @@
+<div class="main_content_details_bottom">
+	<%if @status%>
+	<div class="tab tab_out">
+		<%= link_to '未读消息' ,mails_users_path(:status => "unread")%>
+	</div>
+	<div class="tab tab_on">
+		已读消息
+	</div>
+	<%else%>
+	<div class="tab tab_on">
+		未读消息
+	</div>
+	<div class="tab tab_out">
+		<%= link_to '已读消息' ,mails_users_path(:status => "readed")%>
+	</div>
+	<%end%>
+	<div class="main_content_details_table">
+		<table cellpadding="0px" cellspacing="0px">
+			<thead>
+				<tr>
+					<th>信件名</th>
+					<th>发件人</th>
+					<th>日期</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% unless @mail.nil? %>
+				<% @mail.each do |mail| %>
+				<tr>
+					<td><%= StationMail.find(mail.mail_id).title%></td>
+					<td><%= User.find(mail.send_user_id).username%></td>
+					<td><%= mail.created_at.localtime.to_s(:db)%></td>
+					<td><a href="javascript:void(0)" onclick="read_mail('#read_mail',<%= mail.id%>)">阅读 </a>&nbsp;<%= link_to '删除',delete_mail_users_path(:id => mail.id)%></td>
+				</tr>
+				<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div id="read_mail" style="display: none">
+	<div id="read_content" style="margin-top: 20px"></div>
+</div>

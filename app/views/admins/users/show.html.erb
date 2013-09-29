@@ -1,0 +1,42 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/ads"><%=controller_name%></a> <span class="divider">/</span></li>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link ">
+        <a class="pjax" href="/admins/users">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+      <li title="查看" rel="" class="icon export_collection_link active">
+        <%=link_to raw('<i class="icon-plus"></i><span>Show</span>'),
+                "#", :class => 'pjax'%>
+      </li>
+</ul>
+
+
+<h1>用户详情</h1>
+<table class="table table-bordered">
+  <tr>
+    <td>编号</td>
+    <td>用户名</td>
+    <td>邮件</td>
+    <td>注册时间</td>
+    <td>是否点过餐</td>
+  </tr>
+  <tr>
+    <td><%= @user.id %></td>
+    <td><%= @user.username %></td>
+    <td><%= @user.email %></td>
+    <td><%= @user.created_at.to_s(:db) %></td>
+    <td><%= @user.orders.blank?? "no":"yes" %></td>
+  </tr>
+</table>
+

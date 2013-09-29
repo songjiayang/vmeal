@@ -1,0 +1,25 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/ads"><%=controller_name%></a> <span class="divider">/</span></li>
+        <%if ["edit"].index action_name.to_s%>
+         <li><%=link_to @ad.id, admins_ad_path(@ad)%> <span class="divider">/</span></li>
+        <%end%>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link ">
+        <a class="pjax" href="/admins/ads">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+      <li title="新建" rel="" class="icon export_collection_link active">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_ad_path, :class => 'pjax'%>
+      </li>
+</ul>

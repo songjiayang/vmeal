@@ -1,0 +1,254 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+	font-size:12px;
+}
+
+.market_contentbase{
+	width:960px;
+	height:auto;
+	margin:0px auto;
+}
+
+.market_content{
+	width:960px;
+	height:auto;
+	float:left;
+	padding-top:20px;
+	margin-bottom: 20px;
+}
+
+.market_left{
+	width:170px;
+	float:left;
+}
+.market_left_title{
+	width:170px;
+	height:44px;
+	float:left;
+}
+
+.market_left_content{
+	width:168px;
+	height:auto;
+	float:left;
+	border-left:#cccccc 1px solid;
+	border-right:#cccccc 1px solid;
+	border-bottom:#cccccc 1px solid;
+}
+
+.market_left_time{
+	width:168px;
+	height:52px;
+	float:left;
+}
+
+.market_left_text1{
+	padding-top:20px;
+	padding-left:8px;
+	padding-right:8px;
+	padding-bottom:10px;
+	width:152px;
+	line-height:20px;
+	float:left;
+	font-family:"宋体";
+}
+.market_left_text2{
+	padding-top:10px;
+	padding-left:8px;
+	padding-right:8px;
+	padding-bottom:10px;
+	width:152px;
+	line-height:20px;
+	float:left;
+	font-family:"宋体";
+	color:#FF6400;
+}
+
+.market_right{
+	width:783px;
+	float:left;
+	margin-left:6px;
+}
+
+.market_right_category{
+	height:43px;
+	width:780px;
+	float:left;
+	margin-left:3px;
+	border-bottom:#FF6400 1px solid;
+	margin-bottom:7px;
+	overflow:hidden;
+}
+
+.market_right_nav_border{
+	height:35px;
+	margin-top:9px;
+	width:540px;
+	float:left;
+	margin-left:240px;
+}
+
+.market_right_nav{
+	height:35px;
+	width:85px;
+	padding-left:45px;
+	padding-right:20px;
+	float:left;
+	font-family:"微软雅黑";
+	font-size:20px;
+	color:#FFF;
+	line-height:35px;
+	font-weight:bolder;
+	background:url(/images/markt/bg1.png);
+}
+
+.market_right_nav_select{
+	height:35px;
+	width:85px;
+	padding-left:45px;
+	padding-right:20px;
+	float:left;
+	font-family:"微软雅黑";
+	font-size:20px;
+	color:#FFF;
+	line-height:35px;
+	font-weight:bolder;
+	background:url(/images/markt/bg2.png);
+	position:relative;
+}
+
+.market_right_nav:hover{
+	height:35px;
+	width:85px;
+	padding-left:45px;
+	padding-right:20px;
+	float:left;
+	font-family:"微软雅黑";
+	font-size:20px;
+	color:#FFF;
+	line-height:35px;
+	font-weight:bolder;
+	background:url(/images/markt/bg2.png);
+	cursor:pointer;
+}
+
+.market_right_main{
+	width:783px;
+	height:auto;
+	float:left;
+}
+
+.market_right_box{
+	width:256px;
+	height:145px;
+	border:#cccccc 1px solid;
+	margin-left:3px;
+	float:left;
+	margin-top:3px;
+}
+
+.market_right_box_left{
+	width:100px;
+	height:145px;
+	float:left;
+}
+.market_right_box_img{
+	width:90px;
+	height:90px;
+	padding-left:10px;
+	padding-top:10px;
+	padding-right:0px;
+	padding-bottom:5px;
+}
+.market_right_box_img img{
+	width:88px;
+	height:88px;
+	float:left;
+	border:#cccccc 1px solid;
+}
+
+.market_right_box_price{
+	width:100px;
+	height:40px;
+	float:left;
+	font-family:"微软雅黑";
+	text-align:center;
+	font-weight:bold;
+	color:#FF0000;
+	line-height:43px;
+	font-size:14px;
+}
+.market_right_box_right{
+	width:156px;
+	height:145px;
+	float:left;
+}
+.market_right_box_name{
+	width:136px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom:5px;
+	height:20px;
+	line-height:20px;
+	overflow: hidden;
+	font-family: "宋体";
+	font-size: 12px;
+}
+
+.market_right_box_specification{
+	width:136px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:5px;
+	padding-bottom:10px;
+	height:15px;
+	line-height:15px;
+	font-family: "宋体";
+	font-size: 12px;
+}
+
+.market_right_box_button{
+	height:36px;
+	width:136px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:3px;
+}
+.market_right_box_button_add{
+	height:33px;
+	width:136px;
+	border:#FF6400 1px solid;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background:url(/images/markt/button1.jpg);
+	font-family:"微软雅黑";
+	font-size:18px;
+	color:#FFF;
+	cursor:pointer;
+    text-shadow:0px 0px 4px #999999;
+	-moz-text-shadow:0px 0px 4px #999999;
+	-webkit-text-shadow:0px 0px 4px #999999;
+}
+
+.market_right_box_button_buy{
+	height:33px;
+	width:136px;
+	border:#FF6400 1px solid;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background:url(/images/markt/button2.jpg);
+	font-family:"微软雅黑";
+	font-size:18px;
+	color:#FF6400;
+	cursor:pointer;
+    text-shadow:0px 0px 4px #999999;
+	-moz-text-shadow:0px 0px 4px #999999;
+	-webkit-text-shadow:0px 0px 4px #999999;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--
+		Charisma v1.0.0
+
+		Copyright 2012 Muhammad Usman
+		Licensed under the Apache License v2.0
+		http://www.apache.org/licenses/LICENSE-2.0
+
+		http://usman.it
+		http://twitter.com/halalit_usman
+		-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="外卖,外卖电话,西南石油大学外卖,四川音乐学院外卖,成都医学院外卖,订餐电话,订餐平台,正因村,西南石油大学,四川音乐学院,成都医学院">
+		<meta name="description" content="微大学订餐平台,汇集新都区所有美食，以大学生为受众群体的一个新式订餐平台">
+		<title><%= ADMIN[:title]%></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- The styles -->
+		<style type="text/css">
+			body {
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+		</style>
+		<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!-- The fav icon -->
+		<%= stylesheet_link_tag "admin_login" %>
+		<link rel="shortcut icon" href="/temp/favicon.ico">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+
+				<div class="row-fluid">
+					<div class="span12 center login-header">
+						<h2>Welcome to Vmeal</h2>
+					</div><!--/span-->
+				</div><!--/row-->
+
+				<div class="row-fluid">
+					<div class="well span5 center login-box">
+						<div class="alert alert-info">
+							<%if flash[:error]%>
+							<font style="color:red"><%= flash[:error]%></font>
+							<%else%>
+							<%= flash[:info].blank?? "Please login with your Username and Password." : flash[:info]%>
+							<%end%>
+						</div>
+						<%= yield%>
+					</div><!--/span-->
+				</div><!--/row-->
+			</div><!--/fluid-row-->
+
+		</div><!--/.fluid-container-->
+	</body>
+	<%= render 'commom/tongji'%>
+</html>

@@ -1,0 +1,59 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="/admins">Home</a> <span class="divider">/</span></li>
+        <li class="active"><%=controller_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link active ">
+        <a class="pjax" href="/admins/vmails">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+        
+      <li title="新建" rel="" class="icon export_collection_link ">
+        <%=link_to raw('<i class="icon-plus"></i><span>Add new</span>'),
+                new_admins_vmail_path, :class => 'pjax'%>
+      </li>
+</ul>
+<%=render :partial => 'admins/flash', :locals => {:flash => flash} %>
+<div id="list">
+<table class="table table-condensed table-striped">
+  <thead>
+      <th class="header pjax headerSortDown id_field integer_type">编号</th>
+      <th class="  commentable_field polymorphic_association_type">标题</th>
+      <th class="header pjax  content_field text_type">创建时间</th>
+      <th class="header pjax  created_at_field datetime_type">状态</th>
+      <th class="last shrink"></th>
+      </tr>
+  </thead>
+<tbody>
+  <% @mails.each do |mail|%>
+        <tr>
+          <td class="id_field integer_type"><%=mail.id%></td>
+          <td class="commentable_field polymorphic_association_type">
+              <%=mail.title%>
+          </td>
+           <td class="created_at_field datetime_type"><%=mail.created_at.localtime.to_s(:db)%></td>
+           <td class="created_at_field ">
+            <span class="label label-<%= mail.is_send==1? 'success':'important' %>">
+              <%=Vmail::STATUS[mail.is_send.to_i]%>
+            </span>
+          </td>
+        <td class="last links">
+          <a href="/admins/vmails/<%=mail.id%>">
+            <button class="btn btn-success">查询详情</button>
+          </a>
+        </td>
+        </tr>
+<%end%>
+
+</tbody>
+</table>
+
+<div class="pagination">
+    <ul> <%= will_paginate @mails %> </ul>
+</div>
+</div>

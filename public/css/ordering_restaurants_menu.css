@@ -1,0 +1,565 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body{
+	padding:0px;
+	margin:0px;
+	font-family:"微软雅黑";
+	font-size:12px;
+}
+
+
+#paper{
+	width:960px;
+	height:auto;
+	float:left;
+	padding-top:10px;
+	padding-bottom:40px;
+}
+
+
+#ordering_restaurants_menu_content{
+	width:960px;
+	margin:0px auto;
+	height:auto;
+}
+
+
+#ordering_restaurants_menu_left{
+	width:728px;
+	height:auto;
+	float:left;
+}
+#ordering_restaurants_menu_left_in{
+	width:729px;
+	height:auto;
+	float:left;
+}
+
+.ordering_restaurants_menu_classification{
+	width:719px;
+	height:60px;
+	float:left;
+	padding-left:10px;
+	border-bottom:#FC0 2px solid;
+	text-indent:1em;
+	line-height:60px;
+	font-size:20px;
+	font-weight:bold;
+}
+
+#ordering_restaurants_menu_li_1{
+	width:100%;
+	height:60px;
+	float:left;
+	border-bottom:#CCC 1px dashed;
+}
+
+
+#ordering_restaurants_menu_li_2{
+	width:100%;
+	height:60px;
+	float:left;
+	border-bottom:#CCC 1px dashed;
+}
+
+
+#ordering_restaurants_menu_li_name{
+	width:300px;
+	height:100%;
+	float:left;
+	line-height:60px;
+	font-size:16px;
+}
+#ordering_restaurants_menu_li_name_in{
+	text-indent:1em;
+}
+
+
+#ordering_restaurants_menu_li_price{
+	width:60px;
+	height:100%;
+	line-height:60px;
+	float:left;
+	text-align:center;
+}
+
+#ordering_restaurants_menu_li_order{
+	width:80px;
+	height:60px;
+	float:left;
+	text-align:center;
+}
+
+#ordering_restaurants_menu_li_button{
+	width:auto;
+	height:25px;
+	margin:15px auto;
+	cursor:pointer;
+	font-family:"微软雅黑";
+	font-size: 10px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:#DF7700 1px solid;
+	text-decoration:none;
+	background:url(../images/button/order_button_bg.gif);
+}
+
+.ordering_restaurants_menu_special_button{
+	width:auto;
+	height:25px;
+	float:left;
+	margin-left:4px;
+	cursor:pointer;
+	font-size: 10px;
+	font-family:"微软雅黑";
+	border:#DF7700 1px solid;
+	background:url(../images/button/order_button_bg.gif);
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+
+#ordering_restaurants_menu_li_control{
+	width:200px;
+	height:60px;
+	line-height:60px;
+	float:left;
+}
+
+#ordering_restaurants_menu_li_record{
+	width:80px;
+	height:60px;
+	line-height:30px;
+	float:left;
+	text-align:center;
+	color:#999;
+}
+#ordering_restaurants_menu_li_box{
+	width:100%;
+	height:30px;
+	float:left;
+	text-align:center;
+	}
+#ordering_restaurants_menu_li_box a{
+	width:100%;
+	height:30px;
+	color:#099;
+	float:left;
+	text-decoration:none;
+	}
+#ordering_restaurants_menu_li_box a:hover{
+	text-decoration:underline;
+}
+
+#ordering_restaurants_menu_li_score{
+	width:120px;
+	height:60px;
+	line-height:30px;
+	float:left;
+}
+
+
+
+#ordering_restaurants_menu_right{
+	width:230px;
+	height:auto;
+	float:right;
+	margin-top:40px;
+	border-top:#DDD 1px solid;
+	border-right:#DDD 1px solid;
+	border-left:#DDD 1px solid;
+	border-bottom:#DDD 1px solid;
+	
+}
+
+#ordering_restaurants_menu_right_introduction{
+	width:100%;
+	height:auto;
+	float:left;
+}
+
+#ordering_restaurants_menu_right_introduction_text{
+	width:210px;
+	height:auto;
+	line-height:30px;
+	float:left;
+	padding-left:10px;
+}
+
+#ordering_restaurants_right_name{
+	width:220px;
+	height:auto;
+	line-height:40px;
+	float:left;
+	font-size:16px;
+	padding-left:5px;
+	padding-right:5px;
+	font-weight:bold;
+	color:#F60;
+}
+#ordering_restaurants_right_img{
+	width:220px;
+	float:left;
+	height:auto;
+	padding:5px;
+}
+
+#ordering_restaurants_right_line{
+	width:220px;
+	height:auto;
+	line-height:25px;
+	float:left;
+	font-size:12px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+
+
+
+
+
+
+
+
+
+.img_a{
+	border:0px;
+	}
+
+
+
+
+/*评价*/
+
+
+#ordering_restaurants_evaluate_classification{
+	width:729px;
+	height:60px;
+	float:left;
+	border-bottom:#FC0 2px solid;
+	line-height:60px;
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+}
+
+#ordering_restaurants_evaluate_grade{
+	width:80px;
+	height:60px;
+	float:left;
+	line-height:60px;
+	}
+#ordering_restaurants_evaluate_comment{
+	width:320px;
+	height:60px;
+	float:left;
+}
+
+#ordering_restaurants_evaluate_user{
+	width:100px;
+	height:60px;
+	float:left;
+	line-height:60px;
+}
+
+#ordering_restaurants_evaluate_dish{
+	width:120px;
+	height:60px;
+	float:left;
+}
+
+#ordering_restaurants_evaluate_control{
+	width:100px;
+	height:60px;
+	float:left;
+
+}
+
+#ordering_restaurants_evaluate_box{
+	width:100%;
+	height:30px;
+	float:left;
+	line-height:30px;
+}
+
+#ordering_restaurants_evaluate_li_1{
+	width:729px;
+	height:60px;
+	float:left;
+	border-bottom:#CCC 1px dashed;
+	text-align:center;
+}
+
+#ordering_restaurants_evaluate_li_1:hover{
+	background:#f1f7fd;
+}
+
+#ordering_restaurants_evaluate_li_2{
+	width:729px;
+	height:60px;
+	float:left;
+	text-align:center;
+	border-bottom:#CCC 1px dashed;
+}
+
+#ordering_restaurants_evaluate_li_2:hover{
+	background:#fbfdf1;
+}
+
+
+/*留言*/
+
+.ordering_restaurants_message{
+	width:670px;
+	float:left;
+	margin-left:20px;
+	padding:10px;
+	
+}
+
+
+.ordering_restaurants_message_ask{
+	width:470px;
+	height:auto;
+	float:left;
+
+	padding:10px;
+	margin-left:10px;
+	border:#09C 2px solid;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+
+}
+
+
+.ordering_restaurants_message_ask:hover{
+	background:#f1f7fd;
+}
+.ordering_restaurants_message_ask_text{
+	width:100%;
+	height:auto;
+	float:left;
+	line-height:40px;
+	font-size:14px;
+	color:#069;
+	text-indent:2em;
+
+}
+
+
+#ordering_restaurants_message_ask_textarea{
+	width:600px;
+	min-height:80px;
+	background:#FFF;
+	font-size:12px;
+	line-height:15px;
+	float:left;
+	font-family:"微软雅黑";
+	margin-top:10px;
+	border:#9CF 1px solid;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	padding:10px;
+	overflow:auto;
+}
+
+.ordering_restaurants_message_ask_user{
+	width:100%;
+	height:20px;
+	text-align:left;
+	float:left;
+	line-height:20px;
+	font-size:10px;
+	
+}
+.ordering_restaurants_message_answer{
+	width:470px;
+	height:auto;
+	float:left;
+	margin-left:180px;
+	padding:10px;
+	line-height:30px;
+	margin-top:10px;	
+	border:#0C6 2px solid;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+
+.ordering_restaurants_message_answer:hover{
+	background:#CCF2D2;
+}
+
+
+
+#ordering_restaurants_specialdish{
+	width:729px;
+	float:left;
+	height:auto;
+	margin:10px;
+	
+}
+#ordering_restaurants_specialdish_title{
+	line-height:40px;
+	width:719px;
+	height:40px;
+	float:left;
+	font-size:16px;
+	padding-left:10px;
+	font-weight:bold;
+}
+
+#ordering_restaurants_specialdish_img{
+	width:200px;
+	height:190px;
+	float:left;
+}
+#ordering_restaurants_specialdish_img img{
+	width:180px;
+	height:180px;
+	margin:10px 0px;
+	border:#CCC 1px solid;
+	border:0;
+}
+#ordering_restaurants_specialdish_detail{
+	width:220px;
+	height:150px;
+	float:left;
+	margin-left:20px;
+}
+
+
+#ordering_restaurants_specialdish_main{
+	width:480px;
+	float:left;
+	height:200px;
+}
+
+#ordering_restaurants_specialdish_detail_line{
+	height:30px;
+	float:left;
+	width:100%;
+	line-height:30px;
+}
+
+#ordering_restaurants_specialdish_blog{
+	height:30px;
+	float:left;
+	width:480px;
+	line-height:30px;
+	padding:5px;
+	padding-left:10px;
+	text-align:center;
+}
+
+.ordering_restaurants_specialdish_blog_box{
+	width:auto;
+	height:30px;
+	float:left;
+	overflow:hidden;
+	padding-right:5px;
+	padding-left:5px;
+}
+
+#ordering_restaurants_specialdish_button{
+	width:auto;
+	height:30px;
+	cursor:pointer;
+	font-family:"微软雅黑";
+}
+
+#ordering_restaurants_specialdish_button:hover{
+	cursor:pointer;
+}
+
+.ordering_favorite_restaurant_tutton{
+	width:auto;
+	height:25px;
+	float:left;
+	font-family:"微软雅黑";
+	background:none;
+	border:0px;
+	font-size:14px;
+	text-decoration:none;
+	color:#099;
+	cursor:pointer;
+}
+
+.ordering_favorite_restaurant_tutton:hover{
+	text-decoration:underline;
+}
+
+
+.ordering_restaurants_menu_category_note{
+	width:14px;
+	height:auto;
+	float:left;
+	margin-left:-22px;
+	position:fixed;
+	top:300px;
+	border:#DDD 1px solid;
+	padding:3px;
+	text-align:center;
+	cursor:pointer;
+	background:url(/temp/bg.gif);
+}
+
+.ordering_restaurants_menu_category_border{
+	width:120px;
+	height:auto;
+	float:left;
+	margin-left:-122px;
+	border:#DDD 1px solid;
+	position:fixed;
+	top:300px;
+	z-index:100;
+	background:#FFF;
+	display:none;
+	background:url(/temp/bg.gif);
+}
+
+.ordering_restaurants_menu_categorys{
+	height:25px;
+	width:100px;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:25px;
+	cursor:pointer;
+	text-align:center;
+	text-decoration:none;
+	overflow:hidden;
+
+}
+
+.ordering_restaurants_menu_categorys:hover{
+	color:#000000;
+	background:#DDD;
+}
+.ordering_restaurants_menu_catogerys:active{
+	color:#000000;
+}
+.ordering_restaurants_menu_catogerys:visited{
+	color:#000000;
+}
+
+
+
+.categorys_link{
+	color:#000000;
+	text-decoration:none;
+}
+
+.categorys_link:hover{
+	color:#000000;
+	text-decoration:none;
+}
+
+.categorys_link:visited{
+	color:#000000;
+	text-decoration:none;
+}

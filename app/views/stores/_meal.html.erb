@@ -1,0 +1,151 @@
+<div class="main_content_left_result">
+        <div class="tab_left tab_on">
+                菜单
+        </div>
+        <div class="tab_right tab_out">
+                <%=link_to "评论",store_path(@store,:st=>"ok")%>
+  </div>
+  <div id="categorys"  style="border: 1px solid #7D1F0A;cursor: pointer;float: right; height: auto; margin-left: -123px; padding: 3px; position: fixed; text-align: center; top: 288px;    width: 100px;line-height: 30px;background:#fff;">
+    <div style="font-family: '微软雅黑',Arial,Helvetica,sans-serif;border-bottom: 1px solid #DDDDDD;">
+        <big style="color:#7D1F0A;">菜品分类</big>
+    </div>
+    <% @store.categories.each do |category| %>
+    <% if category.foods.length > 0 %>
+    <a class="categorys_link" href="#category_<%= category.id%>">
+        <div class="ordering_restaurants_menu_categorys" style="text-decoration:none;">
+           <%= category.name%>
+        </div>
+    </a>
+    <%end%>
+    <%end%>
+</div>
+  <div class="foods_content">
+  <%is_trade = @store.is_trade?%>
+        <% @store.categories.each do |category| %>
+        <% if category.foods.length > 0 %>
+                <div class="result_res">
+                        <div class="result_res_type" id="category_<%= category.id%>">
+                            <p>
+                                <%= category.name%>
+                            </p>
+                        </div>
+                        <div class="result_res_food">
+                                <% category.foods.each_with_index do |food,index|  %>
+                                <ul class="food" id="<%=food.id%>" can_show="<%=food.photo.exists?%>">
+                                        <li class="food_title">
+                                                <span id="food_name_<%=food.id%>"><%= food.name %></span>
+                                                <span><%=food.sales_count%></span>
+                                        </li>
+                                        <li>
+                                                <span><%= food.price%></span>元
+                                        </li>
+                                        <li class="food_add"
+                                         <%if !is_trade%>
+                                            onclick="order_alert()"
+                                        <%elsif @store.isphone == 2%>
+                                            onclick="phone_alert()"
+                                        <%else%>
+                                            onclick="eat_post('<%=@store.id %>','<%=@store.name%>','<%= food.id%>','<%= food.name%>','<%= food.price%>',0);"
+                                        <%end%>
+                                        >
+                        </li>
+                        <div class="food_detail" style="display:none;" id="fd_<%=food.id%>">
+                        <div style="float:left;">
+                                <img src="<%=food.get_image_url%>" id="food_detail_image">
+                                <span id="food_detail_title"><%=food.name%></span>
+                        </div>
+                        <div style="float:left;">
+                                <p id="food_detail_ms">
+                                    <font>标签:&nbsp;</font><content id="tag_content"><%=food.tag%></content>
+                                </p>
+                                <p id="food_detail_ms"><font>配料:&nbsp;</font>
+                                    <content id="pl_content"><%=food.ingredients%></content>
+                                </p>
+                        </div>
+                        </div>
+                        </ul>
+
+
+      <% end %>
+        </div>
+</div>
+        <% end %>
+        <% end %>
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+function order_alert () {
+        alert("此店正在休息中，请留意店家营业时间和公告！ 如需详情，请致电店家号码!");
+}
+
+function phone_alert () {
+        alert("亲,<%=@store.name%>属于空中餐厅，只能通过电话向店家预订哦!订餐热线，请看左上方角.");
+}
+
+$("ul").hover(
+    function(){
+       var food_id = $(this).attr("id");
+       if($(this).attr("can_show") == 'true'){
+         $("#fd_"+food_id).show();
+      }
+    },
+    function(){
+       var food_id = $(this).attr("id");
+       $("#fd_"+food_id).hide();
+    }
+);
+</script>
+
+<style type="text/css">
+.categorys_link:hover {
+    text-decoration: none;
+}
+
+.ordering_restaurants_menu_categorys:hover {
+    background-color: #eee;
+}
+
+.food_detail{
+    border: 1px solid #7D1F0A;
+    float: right;
+    height: auto;
+    margin-left: 330px;
+    padding: 3px;
+    position: absolute;
+    text-align: left;
+    width: 200px;
+    line-height:20px;background:#fff;
+}
+
+.food_detail img{
+    float: left;
+    width: 42px;
+    height: 42px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.food_detail span{
+    float: left;
+    padding-left: 10px;
+    font-family:'微软雅黑';
+    font-size: 16px;
+    color:#7D1F0A;
+    padding-top: 10px;
+}
+
+#food_detail_ms{
+    padding-left: 10px;
+    padding-top: 3px;
+
+
+}
+
+#food_detail_ms font{
+    color: #F93;
+}
+
+</style>

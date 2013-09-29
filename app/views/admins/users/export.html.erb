@@ -1,0 +1,63 @@
+<div class="admin-breadcrumb">
+  <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li><a href="/admins/users"><%=controller_name%></a> <span class="divider">/</span></li>
+        <li class="active"><%=action_name%></li>
+  </ul>
+</div>
+
+<ul class="nav nav-tabs">
+      <li title="" rel="" class="icon index_collection_link">
+        <a class="pjax" href="/admins/users">
+              <i class="icon-th-list"></i>
+              <span>List</span>
+        </a>
+      </li>
+        
+      <li title="" rel="" class="icon export_collection_link active">
+        <a class="pjax" href="/admins/users/export">
+              <i class="icon-share"></i>
+            <span>Export</span>
+        </a>
+      </li>
+        
+       <li title="" rel="" class="icon history_index_collection_link ">
+            <a class="pjax" href="/admin/comment/history">
+              <i class="icon-book"></i>
+              <span>History</span>
+            </a>
+      </li>
+
+</ul>
+<%=form_tag '/admins/users/do_export', :method => :post, :class=> "pjax-form form-inline"%>
+<fieldset>
+<legend>
+  <i class='icon-chevron-down'></i>
+			Select fields to export
+</legend>
+<div class='control-group'>
+<label class='control-label' data-original-title='Click to reverse selection' onclick='jQuery(this).siblings(".controls").find("input").click()' rel='tooltip'>Fields from comments</label>
+<div class='controls'>
+	<input checked="checked" id="schema_only_id" name="export[users][id]" type="checkbox" value="id" />
+	编号
+	<input checked="checked" id="schema_methods_commentable_id" name="export[users][username]" type="checkbox" value="username" />
+	用户名
+	<input checked="checked" id="schema_methods_commentable_type" name="export[users][email]" type="checkbox" value="email" />
+	邮箱
+
+	<input checked="checked" id="schema_only_content" name="export[users][created_at]" type="checkbox" value="created_at" />
+	创建时间
+
+	<input checked="checked" id="schema_only_created_at" name="export[users][is_locked]" type="checkbox" value="is_locked" />
+	状态
+</div>
+</div>
+</fieldset>
+<div class='form-actions'>
+<input name='return_to' type='hidden' value='http://rails-admin-tb.herokuapp.com/admin/comment'>
+	<button class='btn btn-primary' name='csv' type='submit'>
+	 <i class='icon-white icon-ok'></i>
+	    Export to csv
+  </button>
+</div>
+</form>

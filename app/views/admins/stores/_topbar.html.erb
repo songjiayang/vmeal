@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs">
+
+	<li title="" rel="" class="icon index_collection_link active">
+		<a class="pjax" href="/admins/stores/"> <i class="icon-th-list"></i> <span>店家列表</span> </a>
+	</li>
+
+
+	<li title="" rel="" class="icon export_collection_link ">
+		<% unless @default_store.nil? %>
+		<a class="pjax" href="/admins/stores/<%= @default_store.id%>/edit?default=ok"> <i class="icon-share"></i> <span>编辑默认店家模板</span> </a>
+		<% end %>
+	</li>
+
+	<li class="dropdown" style="float:right">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Selected items<b class="caret"></b></a>
+		<ul class="dropdown-menu" style="left:auto; right:0;">
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('export'); jQuery('#bulk_form').submit(); return false;">Export selected Comments</a>
+			</li>
+			<li>
+				<a href="#" onclick="jQuery('#bulk_action').val('bulk_delete'); jQuery('#bulk_form').submit(); return false;">Delete selected Comments</a>
+			</li>
+		</ul>
+	</li>
+</ul>

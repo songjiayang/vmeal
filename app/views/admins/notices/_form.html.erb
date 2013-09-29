@@ -1,0 +1,22 @@
+<div class="control-group ">
+  <label class='control-label'>标题:</label>
+  <div class="controls">
+    <%= f.text_field :title, class:'input-xlarge' %>
+  </div>
+</div>
+
+<div class="control-group ">
+  <label class='control-label'>内容:</label>
+  <div class="controls">
+    <%= kindeditor_tag 'notice[content]', @notice.content ,:allowFileManager => true,
+    :simple_mode => false%>
+  </div>
+</div>
+ 
+
+<div class="form-actions">
+	<%= f.submit '提交', :class=>"btn btn-primary"%>
+	<%=link_to  '取消', admins_ads_path %>
+</div>
+
+

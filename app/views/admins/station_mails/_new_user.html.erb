@@ -1,0 +1,15 @@
+<%= form_tag (send_mail_admins_station_mails_path) ,:method => :get do  %>
+<div class="field">
+	<%= label_tag :站内信标题 %>
+	<%= select_tag :mail_id, options_for_select(@station_mails.map{ |s| [s.title, s.id] }) %>
+</div>
+<div class="field">
+	<label>指定人邮箱</label>
+	<%= text_area_tag :emails ,'',:size => "25x15"%>
+	<label style="color: red;">（多人用英文状态下";"隔开）</label>
+</div>
+<%= hidden_field_tag :send_to_user , 'send_to_user'%>
+<div class="actions">
+	<%= submit_tag '发送' %>
+</div>
+<% end %>

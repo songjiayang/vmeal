@@ -1,0 +1,279 @@
+﻿
+/*标签集*/
+
+
+.img_a{
+	border:0px;
+	}
+
+
+.content{
+	margin:0;
+	padding:0;
+	border-spacing:0;
+}
+
+.top_style{
+	width:100%;
+	height:36px;
+	line-height:36px;
+	color:#FFF;
+	margin-top:0;
+	background:#333;
+	float:left;
+	box-shadow:2px 2px 5px #666666;
+	-moz-box-shadow:2px 2px 5px #666666;
+	-webkit-box-shadow:2px 2px 5px #666666;
+	background-image:linear-gradient(#575757 0%,#333 100%);
+	background-image:-moz-linear-gradient(#575757 0%,#333 100%);
+	background-image:-webkit-linear-gradient(#575757 0%,#333 100%);
+	z-index: 2000;	
+}
+
+#header_main{
+	width:960px;
+	height:36px;
+	margin:0px auto;
+	color:#EBEBEB;	
+}
+
+#header_main_logo{
+	width:100px;
+	height:36px;
+	float:left;
+	text-align:center;
+}
+#header_main_welcome{
+	width:300px;
+	height:100%;
+	float:left;
+	text-align:left;
+}
+
+#header_main_welcome a{
+	color:#FFF;
+	text-decoration:none;
+}
+#header_main_welcome a:hover{
+	text-decoration:underline;
+}
+
+#header_main_status{
+	width:300px;
+	height:100%;
+	float:right;
+	text-align:right;
+	color:#666;
+}
+
+#header_main_status a{
+	color:#FFF;
+	text-decoration:none;
+}
+#header_main_status a:hover{
+	color:#FFF;
+	text-decoration:underline;
+}
+
+#ordering_home_content{
+	width:100%;
+	height:126px;
+	margin:0px auto;
+	float:left;
+	z-index: -200px;
+}
+
+
+
+
+
+
+/*home页顶部的广告和logo部分框架*/
+#ordering_home_advertising{
+	width:960px;
+	height:96px;
+	padding-top:15px;
+	padding-bottom:15px;
+	margin:0px auto;
+	border-bottom:none;
+}
+#ordering_home_advertising_left{
+	width:220px;
+	height:96px;
+	float:left;
+	border-bottom:none;
+
+}
+#ordering_home_advertising_line{
+	height:96px;
+	width:20px;
+	float:left;
+	border-bottom:none;
+		padding-left:10px;
+	padding-right:10px;
+}
+
+
+#ordering_home_advertising_center{
+	height:96px;
+	width:258px;
+	float:left;
+	border-bottom:none;
+}
+
+
+#ordering_home_advertising_right{
+	width:230px;
+	height:96px;
+	float:right;
+	margin:0px auto;
+	border-bottom:none;
+	padding-left:212px;
+}
+
+
+
+
+#odering_home_nav_border{
+	width:100%;
+	height:40px;
+	float:left;
+	background:#FDE332;	
+	background-image:linear-gradient(#FDE643 0%,#FDE229 100%);
+	background-image:-moz-linear-gradient(#FDE643 0%,#FDE229 100%);
+	background-image:-webkit-linear-gradient(#FDE643 0%,#FDE229 100%);
+}
+
+#odering_home_nav_center{
+	width:960px;
+	margin:0px auto;
+	height:40px;
+	background:none;
+
+}
+
+.odering_home_nav_button{
+	width:80px;
+	height:40px;
+	float:left;
+	font-size:14px;
+	border:0;
+	background:none;
+	font-family:"宋体";
+	font-weight:bold;
+	color:#444;
+	margin:0;
+}
+
+.odering_home_nav_button:hover{
+	background:#F68B01;
+	color:#FFFFFF;
+	cursor:pointer;
+}
+
+.odering_home_nav_button_visit{
+	width:80px;
+	height:40px;
+	float:left;
+	font-size:14px;
+	border:0;
+	background:#F68B01;
+	font-family:"宋体";
+	font-weight:bold;
+	color:#fff;
+	margin:0;
+}
+
+
+
+#odering_home_leftbutton{
+	width:500px;
+	float:left;
+	height:40px;
+}
+
+#odering_home_nav_right{
+	width:400px;
+	float:right;
+	height:40px;
+}
+
+#odering_home_nav_search_border{
+	width:380px;
+	float:right;
+	height:25px;
+	margin-top:7px;
+	background:#F68B01;
+	border:#F68B01 1px solid;
+	
+	
+}
+
+.odering_home_nav_inputtext{
+	padding-left:5px;
+	height:25px;
+	float:left;
+	border:0;
+	line-height:25px;
+	width:315px;
+	margin:0;
+	color:#999;
+}
+#odering_home_nav_inputdiv{
+	height:25px;
+	float:left;
+	border:0;
+	width:320px;
+	margin:0;
+	overflow:hidden;
+}
+
+.odering_home_nav_buttoninput{
+	height:25px;
+	float:left;
+	width:60px;
+	background:#F68B01;
+	margin:0;
+	cursor:pointer;
+	border:0;
+	
+}
+
+#odering_home_nav_buttoninputdiv{
+	height:25px;
+	float:left;
+	width:60px;
+	border:0;
+	background:#F68B01;
+	margin:0;
+}
+
+
+
+
+.bottom {
+	width: 100%;
+	height: 150px;
+	background: none;
+	text-align: center;
+	float: left;
+	line-height: 30px;
+	border-top: #fde436 3px solid;
+	color: #555;
+}
+.bottom_line {
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	float: left;
+	padding-top:20px;
+}
+
+.bottom_line_link {
+	color: #333;
+	text-decoration: none;
+}
+.bottom_line_link:hover {
+	color: #069;
+}
+

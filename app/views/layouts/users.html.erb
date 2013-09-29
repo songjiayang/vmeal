@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="外卖,外卖电话,西南石油大学外卖,四川音乐学院外卖,成都医学院外卖,订餐电话,订餐平台,正因村,西南石油大学,四川音乐学院,成都医学院">
+		<meta name="description" content="微大学订餐平台,汇集新都区所有美食，以大学生为受众群体的一个新式订餐平台">
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=22068623" charset="UTF-8"></script>
+		<title>微大学</title>
+		<%= stylesheet_link_tag "user_center" %>
+		<%= javascript_include_tag "jquery.min"%>
+	</head>
+	<body>
+		<%= render 'commom/top_bar'%>
+		<div class="main">
+			<div class="main_position">
+				<%=cookies[:school]%>
+			</div>
+			<div class="main_content">
+				<div class="main_content_title">
+					<h1>个人中心</h1>
+				</div>
+				<%= yield %>
+			</div>
+		</div>
+		</div>
+		<%= render 'commom/bottom_bar'%>
+	</body>
+	<%= javascript_include_tag "user_center" %>
+	<%= render 'commom/tongji'%>
+</html>

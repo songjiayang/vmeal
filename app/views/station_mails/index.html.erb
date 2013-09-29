@@ -1,0 +1,26 @@
+<h1>Listing station_mails</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @station_mails.each do |station_mail| %>
+  <tr>
+    <td><%= station_mail.title %></td>
+    <td><%= station_mail.content %></td>
+    <td><%= link_to 'Show', station_mail %></td>
+    <td><%= link_to 'Edit', edit_station_mail_path(station_mail) %></td>
+    <td><%= link_to 'Destroy', station_mail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to '发送' , send_mail_station_mails_path(:mail_id => station_mail.id)%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Station mail', new_station_mail_path %>

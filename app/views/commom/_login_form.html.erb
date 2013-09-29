@@ -1,0 +1,93 @@
+<input type="hidden" id="layer_num" value='0'/>
+<div class="login_window" style="display:none" id="login">
+	<div class="window_title">
+		<div>
+			吃东西不差登录这点事
+		</div>
+    <span id="close" class="layer_close">
+    </span>
+	</div>
+	<div class="window_detail">
+		<%= form_for :user, :url => new_user_session_path do |f| %>
+		<form method="post" action="/users/sign_in">
+			<div class="window_label label1">
+        <label class="input_label" for="user[email]">邮箱</label>
+				<%= f.email_field :email ,:size =>"30",:maxlength=>"30", :class => "window_input"%>
+        <span class="enter_email" style="">请输入邮箱</span>
+			</div>
+			<div class="window_label label1">
+          <label class="input_label" for="user[password]">密码</label>
+					<%= f.password_field :password ,:size =>"30",:maxlength=>"30", :class => "window_input"  , :onCopy => "return false" ,:onpaste => "return false;" , :onCut => "return false" ,:onselectstart => "return false"%>
+          <span class="enter_psw" style="">请输入密码</span>
+			</div>
+			<input type="hidden" id="user_redirect" name="user_redirect" value="0"/>
+			<div class="window_label label2">
+				<p></p>
+				<label>
+					<input type="checkbox" checked="true" name="user[remember_me]"/>
+					<span>自动登录</span> <%= f.submit '登录'%> </label>
+			</div>
+			<%end%>
+			<div class="window_label label3">
+				<p></p>
+				<label> <a href="#">忘记密码？</a> | <a href="#">注册</a> </label>
+			</div>
+			<div class="window_label label4">
+				<p></p>
+				<div class="window_qqlogin window_otherlogin">
+					<a href="/users/qqlogin">QQ登录</a>
+				</div>
+				<div class="window_blank"></div>
+				<div class="window_bloglogin window_otherlogin">
+					<a href="/users/sina_login">微博登录</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+      $("#user_email").focusin(function() {
+        if($(this).attr("value")==""){
+          $(".enter_email").hide();
+        }
+      });
+      $("#user_email").focusout(function(){
+        if($(this).attr("value")==""){
+          $(".enter_email").show();
+        }
+      });
+      $("#user_email").click(function(){
+          $(".enter_email").hide();
+      });
+      
+      $(".enter_email").click(function(){
+        $(".enter_email").hide();
+        $("#user_email").focus();
+      });
+
+      $("#user_password").focusin(function() {
+        if($(this).attr("value")==""){
+          $(".enter_psw").hide();
+        }
+      });
+      $("#user_password").focusout(function(){
+        if($(this).attr("value")==""){
+          $(".enter_psw").show();
+        }
+      });
+      
+      $(".enter_psw").click(function(){
+        $(".enter_psw").hide();
+        $("#user_password").focus();
+      });
+
+      $("#user_password").click(function(){
+          $(".enter_psw").hide();
+      });
+
+      $("#close").click(function(){
+        layer.close($("#layer_num").attr("value"));
+      });
+    });
+</script>

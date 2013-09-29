@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "food_search" %>
+<%= javascript_include_tag "car" %>
+<div class="main">
+	<div class="main_position">西南石油大学（新都校区）</div>
+    <div class="main_content">
+  <div class="main_content_left">
+        	<div class="main_content_left_info">
+            	<p>搜索到与<span>“<%=@key_word%>”</span>相关的餐品<span><%=@foods.length%>条,店家<%=@search_foods.size%>条.</span></p>
+            </div>
+        <%=render "search_form"%>
+        <%=render "page"%>
+        </div>
+    </div>
+    <div class="main_content_right">
+       <div class="main_content_right_tips">
+            <span>小提示</span>
+        <p>微大学微餐厅外卖有店家配送，在多家餐厅同时点餐会产生多笔订餐，送餐速度也各不相同。</p>
+        </div>
+     <%=render  :partial =>"carts/cart",:locals=>{:carts=>@carts}%>
+  </div>
+</div>
+</div>

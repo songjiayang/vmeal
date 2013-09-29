@@ -1,0 +1,228 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>注册微大学</title>
+	<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="bookmark" type="image/x-icon" />
+	<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="icon" type="image/x-icon" />
+	<link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="/css/ordering_regist.css" rel="stylesheet" type="text/css" />
+	<link href="/css/Register.css" type="text/css" rel="stylesheet" />
+	<script src="/javascripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<style type="text/css">
+		.code {
+			background-image: url(code.jpg);
+			font-family: Arial;
+			font-style: italic;
+			color: Red;
+			font-size: 16px;
+			border: 0;
+			padding: 2px 3px;
+			letter-spacing: 3px;
+			font-weight: bolder;
+		}
+		.unchanged {
+			border: 0;
+		}
+	</style>
+	<script language="javascript" type="text/javascript">
+		function clear_msg(div) {
+			if (div.id == "user_email") {
+				document.getElementById("email_error").innerText = "";
+			}
+			if (div.id == "user_username") {
+				document.getElementById("username_error").innerText = "";
+			}
+			if (div.id == "user_password" || div.id == "user_password_confirmation") {
+				document.getElementById("password_error").innerText = "";
+			}
+			if (div.id == "errormsg"){
+				document.getElementById("errormsg").innerText = "";
+			}
+		}
+
+		function validate_password() {
+			var password1 = document.getElementById("user_password").value;
+			var password2 = document.getElementById("user_password_confirmation").value;
+			if (password1 != password2 && password2 != "") {
+				document.getElementById("password_error").innerText = "两次输入的密码不一致";
+			}
+			if (password1 == password2) {
+				document.getElementById("password_error").innerText = "";
+			}
+		}
+
+		var code;
+		//在全局 定义验证码
+		function createCode() {
+			code = "";
+			var codeLength = 4;
+			//验证码的长度
+			var checkCode = document.getElementById("checkCode");
+			var selectChar = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+			//所有候选组成验证码的字符，当然也可以用中文的
+
+			for (var i = 0; i < codeLength; i++) {
+
+				var charIndex = Math.floor(Math.random() * 36);
+				code += selectChar[charIndex];
+
+			}
+			//       alert(code);
+			if (checkCode) {
+				checkCode.className = "code";
+				checkCode.value = code;
+			}
+
+		}
+
+		function validate() {
+			var inputCode = document.getElementById("captcha").value;
+			var email = document.getElementById("user_email").value;
+			var username = document.getElementById("user_username").value;
+			var password1 = document.getElementById("user_password").value;
+			var password2 = document.getElementById("user_password_confirmation").value;
+			var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+			if (!emailReg.test(email) || email == "" || email.length > 100) {
+				document.getElementById("email_error").innerText = "请输入正确的邮箱格式";
+				return false;
+			}
+			if (username.length < 3 || username.length > 30) {
+				document.getElementById("username_error").innerText = "用户名必须为3-30个字符";
+				return false;
+			}
+			if (password1 == "" || password2 == "" || password1 != password2) {
+				document.getElementById("password_error").innerText = "请输入正确的密码";
+				return false;
+			}
+
+			if (inputCode.length <= 0) {
+				document.getElementById("errormsg").innerText = "请输入验证码"
+				return false;
+			} else if (inputCode.toLowerCase() != code.toLowerCase()) {
+				document.getElementById("errormsg").innerText = "验证码输入错误";
+				createCode();
+				//刷新验证码
+				return false;
+			}
+		}
+
+	</script>
+	<script type="text/javascript">
+		function getPasswordSecurityLevel(password) {
+			return 0
+			//密码长度大于5位
+			+ (password.length > 0 )
+			//密码含有字母
+			+ (/[a-z]/.test(password) && /[A-Z]/.test(password) )
+			//密码含有字母和数字
+			+ (/\d/.test(password) && /\D/.test(password) )
+			//密码含有特殊字符
+			+ (/[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/.test(password) && /\w/.test(password) )
+			//密码长度大于12位
+			+ (password.length > 10 );
+		}
+
+		function check() {
+			var level = getPasswordSecurityLevel($("#user_password").val());
+			jQuery("#cp").removeClass().addClass("passwordstyle" + level);
+		}
+
+		jQuery(function() {
+			jQuery("#user_password").bind('keyup', check).bind('blur', check);
+		});
+	</script>
+</head>
+
+<body onload="createCode()">
+	<div class="top">
+		<div class="top_vmeal">
+			<a href="/"><img src="/images/icon/vmeal.png" /></a>
+		</div>
+		<div class="top_rightbox">
+			<span>已有账号？<span> <a href="/users/sign_in">登录</a>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main_content">
+			<div class="main_content_control">
+				<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+				<div class="main_content_reglabel">
+					<div class="errormsg" id="email_error">
+						<%if devise_error_messages!.to_s.include?("has already been taken") %>
+						亲，该邮箱已经被注册，请换一个邮箱进行注册。
+						<% else %>
+						<% end %>
+					</div>
+					<p>
+						邮箱
+					</p>
+					<label> <%= f.email_field :email, :size => "30",:maxlength => "30" ,:class => "main_content_input" ,:onfocus =>"document.getElementById('email').style.display = 'block';", :onblur => "document.getElementById('email').style.display = 'none';clear_msg(this); "%> </label>
+				</div>
+				<div class="main_content_reglabel">
+					<div class="errormsg" id="password_error">
+
+					</div>
+					<p>
+						密码
+					</p>
+					<label> <%= f.password_field :password , :size => "30",:maxlength => "30" , :class => "main_content_input" , :onfocus =>"document.getElementById('password').style.display = 'block';" ,:onblur => "document.getElementById('password').style.display = 'none';validate_password()" , :onCopy => "return false" ,:onpaste => "return false;" , :onCut => "return false" ,:onselectstart => "return false"%> </label>
+				</div>
+				<div class="main_content_reglabel">
+					<div class="errormsg" id="password_again_error">
+
+					</div>
+					<p>
+						重复密码
+					</p>
+					<label> <%= f.password_field :password_confirmation, :class => "main_content_input"  , :size => "30",:maxlength => "30", :onblur => "validate_password();clear_msg(this)" , :onCopy => "return false" ,:onpaste => "return false;" , :onCut => "return false" ,:onselectstart => "return false"%> </label>
+				</div>
+				<div class="main_content_reglabel">
+					<div class="errormsg" id="username_error">
+
+					</div>
+					<p>
+						昵称
+					</p>
+					<label> <%if session[:qqlogin]%>
+						<%= f.text_field :username,:value => session[:qqlogin]["nickname"], :size => "30",:maxlength => "30",:class => "main_content_input" ,:onfocus =>"document.getElementById('username').style.display = 'block';" ,:onblur =>"document.getElementById('username').style.display = 'none';clear_msg(this)" %>
+						<%else%>
+						<%= f.text_field :username, :size => "30",:maxlength => "30",:class => "main_content_input" ,:onfocus =>"document.getElementById('username').style.display = 'block';" ,:onblur =>"document.getElementById('username').style.display = 'none';clear_msg(this);" %>
+						<%end%> </label>
+				</div>
+				<div class="main_content_reglabel">
+					<div class="errormsg" id="errormsg">
+
+					</div>
+					<p>
+						验证码
+					</p>
+					<input class="regist_info_inputstyle" type="text" style="width:80px;" id= "captcha"/>
+						<input type="text" onclick="createCode()" onblur="clear_msg(this)" readonly="readonly" id="checkCode" class="regist_info_inputstyle" style="width:90px;text-align: center;height: 40px; background:#DDD;cursor: pointer;" title="点击切换"  />
+						<br />
+				</div>
+
+				<div class="main_content_reglabel">
+					<p></p>
+					<label>
+						<input type="checkbox" checked="true" name="remember"/>
+						<a href="#">我已经认真阅读并同意微大学的《使用协议》</a> </label>
+				</div>
+				<div class="main_content_reglabel">
+					<p></p>
+					<label> <%= f.submit "注册", :onclick => "return validate()" %> </label>
+				</div>
+				<% end %>
+			</div>
+			<div class="main_content_otherlogin">
+				<p class="othertext">
+					或者直接使用第三方账号登录
+				</p>
+				<p class="otherlogin qqlogin">
+					<a href="/users/qqlogin">腾讯QQ登录</a>
+				</p>
+				<p class="otherlogin bloglogin">
+					<a href="/users/sina_login">新浪微博登录</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>

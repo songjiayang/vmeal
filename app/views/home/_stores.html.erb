@@ -1,0 +1,18 @@
+<div class="ordering_center_left_restaurants">
+        <%  stores.each do |store| %>
+        <% unless store.isclose > 1%>
+        <div class="ordering_center_left_restaurant_box">
+                <div class="ordering_center_left_restaurant_head">
+                        <a href="/stores/<%= store.id%>"><img src="<%= store.image%>" width="76" height="76" /></a></div>
+                <div class="ordering_center_left_restaurant_detail">
+                <div class="ordering_center_left_restaurant_line1 line"><a href="/stores/<%= store.id%>"><%=store.name%></a></div>
+                <div class="ordering_center_left_restaurant_line2 line"><%=store.categore%></div>
+                <div class="ordering_center_left_restaurant_line3 line"><%=store.sold_count%></div>
+                <div class="ordering_center_left_restaurant_line4 line">
+                        <%=store.is_trade?? "正在营业" : "暂停服务"%>
+             </div>
+        </div>
+        </div>
+        <% end %>
+<%end%>
+</div>

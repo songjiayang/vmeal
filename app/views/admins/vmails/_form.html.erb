@@ -1,0 +1,53 @@
+<div class="control-group ">
+  <label class='control-label'>标题:</label>
+  <div class="controls">
+    <%= f.text_field :title, class:'input-xlarge' %>
+  </div>
+</div>
+  <div class="control-group ">
+    <label class='control-label'>收件人:</label>
+    <div class="controls"  class="check_box" >
+      <label class='radio'>
+        <input type="radio" name="check_box" id="check_box1" checked>
+        所有人
+      </label>
+      <label class='radio'>
+        <input type="radio" name="check_box" id="check_box2">
+        指定人
+      </label>
+    </div>
+    <div class="controls" style="display:none;" id="mail_senter">
+      <%= f.text_area :sent_mails, class:'input-xlarge', :rows=>"4", :style=>"width:670px;"%>
+      <p class='help-block' style="color:#468847;">温馨提示:多个邮箱已
+        <span style="color:red;">;</span>分隔.</>
+    </div>
+ </div>
+ <div class="control-group ">
+  <label class='control-label'>邮件内容:</label>
+  <div class="controls ">
+   <%= kindeditor_tag 'vmail[content]', '' ,:allowFileManager => true,
+    :simple_mode => false%>
+  </div>
+</div>
+
+<div class="form-actions">
+  <button class="btn btn-success" data-loading-text="保存中..." id="save_immediatel">暂存</button>
+  <a class="btn btn-warning" id="return_immediatel">取消</a>
+</div>
+
+<script type="text/javascript">
+  $("#check_box2").click(function(){
+    $("#mail_senter").show();
+  }); 
+   $("#check_box1").click(function(){
+    $("#mail_senter").hide();
+  });   
+   $("#return_immediatel").click(function(){
+       location.replace("/admins/vmails")
+   });
+   $("#save_immediatel").click(function() {
+        $(this).button('loading');
+  });
+</script>
+
+

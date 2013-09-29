@@ -1,0 +1,14 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+</head>
+<body>
+<h1>尊敬的:<%= @resource.email %>!</h1>
+<p>您好！恭喜您注册成为微大学用户</p>
+<p>这是一封注册认证邮件，请点击以下链接确认(激活后可以直接登录)：</p>
+<p><%= link_to '点击激活我的邮箱', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>如果链接不能点击，请复制<%= confirmation_url(@resource,:confirmation_token => @resource.confirmation_token)%>地址到浏览器，然后直接打开</p>
+<p>上述链接48小时内有效。如果激活链接失效，请您登录网站 <a href="http://weidaxue.me">http://weidaxue.me</a> 重新申请认证。</p>
+<p>感谢您注册微大学！</p>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<link href="/css/ordering_restaurants.css" rel="stylesheet" type="text/css" />
+
+<div id="ordering_restaurants_contentbase">
+	<div id="ordering_restaurants_content">
+		<input id="menu_type" type="hidden" value="store">
+		<div class="ordering_restaurants_category">
+			<table width="958" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="60" align="right" valign="middle">类别：</td>
+					<td width="898" align="left" valign="middle">
+					<input type="hidden" id="item" value="全部"/>
+					<input id="item全部" type="button" class="ordering_restaurants_category_button_select" onclick="selectitem('全部');jQuery(this).removeClass().addClass('ordering_restaurants_category_button_select');" value="全部" />
+					<%StoCategory.find_all_story_category.each do |name|%>
+					<input id="item<%= name%>" type="button" class="ordering_restaurants_category_button" onclick="selectitem('<%= name%>');jQuery(this).removeClass().addClass('ordering_restaurants_category_button_select')" value="<%= name%>" />
+					<%end%> </td>
+				</tr>
+				<tr>
+					<td align="right" valign="middle">特色：</td>
+					<td align="left" valign="middle">
+					<input id="tag全部" type="button" onclick="selecttag('全部')" class="ordering_restaurants_category_button_select" value="全部" />
+					<%Store::STORE_TAGES.each do |tag|%>
+					<input id="tag<%= tag%>" type="button" class="ordering_restaurants_category_button" onclick="selecttag('<%= tag%>')" value="<%= tag%>" />
+					<%end%></td>
+				</tr>
+				<tr>
+					<td align="right" valign="middle">状态：</td>
+					<td align="left" valign="middle">
+					<input type="button" class="ordering_restaurants_category_button_select" value="全部" />
+					<input type="button" class="ordering_restaurants_category_button" value="营业中" />
+					<input type="button" class="ordering_restaurants_category_button" value="打烊中" />
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		
+		<script>
+			function selectitem (arge) {
+				flage=true;
+			  if(arge=="全部"){
+			  	<%@sto_categories.each do |store_category|%>
+			  		
+			  		if(!$("#type<%= store_category.name%>").find(".ordering_restaurants_shoplist").find('.ordering_restaurants_shopborder').is(":hidden")&&flage){
+			  			flage=false;
+			  		}
+			  		if(!flage){
+			  			$("#type<%= store_category.name%>").show();	
+			  		}else{
+			  			$("#type<%= store_category.name%>").hide();
+			  		}
+			  		$("#item").attr("value",arge);
+			  		jQuery($("#item<%= store_category.name%>")).removeClass().addClass('ordering_restaurants_category_button');
+			  	<%end%>
+			  }else{
+			  <%@sto_categories.each do |store_category|%>
+			  	if(arge=="<%= store_category.name%>"){
+			  		$("#type"+arge).show();
+			  		$("#item").attr("value",arge);
+			  		if(!$("#type<%= store_category.name%>").find(".ordering_restaurants_shoplist").find('.ordering_restaurants_shopborder').is(":hidden")&&flage){
+			  			flage=false;
+			  		}
+			  		if(!flage){
+			  			$("#type<%= store_category.name%>").show();	
+			  		}else{
+			  			$("#type<%= store_category.name%>").hide();
+			  		}
+			  		jQuery($("#item"+arge)).removeClass().addClass('ordering_restaurants_category_button_select');
+			  		jQuery($("#item全部")).removeClass().addClass('ordering_restaurants_category_button');
+			  	}else{
+			  		<%@sto_categories.each do |store_category1|%>			  		
+			  			<%if store_category.name!=store_category1.name%>
+			  				$("#type<%= store_category.name%>").hide();	
+			  				jQuery($("#item<%= store_category.name%>")).removeClass().addClass('ordering_restaurants_category_button');
+			  				jQuery($("#item全部")).removeClass().addClass('ordering_restaurants_category_button');		  			
+			  			<%end%>
+			  	<%end%>
+			  	}
+			  <%end%>
+			  }
+			};
+			
+			function selecttag (arge) {
+				if(arge=="全部"){
+			   <%Store::STORE_TAGES.each do |tag|%>			  		
+			  		var content="span:contains('";
+					content=content+"<%=tag%>";
+					content=content+"')";
+					$(content).parent().parent().show();
+			  		jQuery($("#tag<%= tag%>")).removeClass().addClass('ordering_restaurants_category_button');
+			  		jQuery($("#tag全部")).removeClass().addClass('ordering_restaurants_category_button_select');
+			  	<%end%>
+			  }else{			  	
+			  	var flage=true;
+			  	var flag=true;
+			  	<%Store::STORE_TAGES.each do |tag|%> 
+			  			jQuery($("#tag<%= tag%>")).removeClass().addClass('ordering_restaurants_category_button');
+			  			jQuery($("#tag全部")).removeClass().addClass('ordering_restaurants_category_button');
+			  			var content="span:contains('";
+						content=content+"<%=tag%>";
+						content=content+"')";
+						$(content).parent().parent().hide();
+						$(content).parent().parent().parent().parent().hide();
+			  	<%end%>
+			  	jQuery($("#tag全部")).removeClass().addClass('ordering_restaurants_category_button');
+			  	jQuery($("#tag"+arge)).removeClass().addClass('ordering_restaurants_category_button_select');
+			  	var content="span:contains('";
+				content=content+arge;
+				content=content+"')";
+				$(content).parent().parent().parent().parent().show();
+				$(content).parent().parent().show();				
+				selectitem($("#item").attr("value"));
+			  };
+			};
+			
+		</script>
+		
+		
+		
+		
+		<%@numbertype=0%>
+		<%@sto_categories.each do |store_category|%>
+		<%@numbertype=@numbertype+1%>
+		<%@stores = store_category.find_all_stores%>
+		<%if @stores.size>0%>
+		<div id="type<%=store_category.name%>">
+		<div class="ordering_restaurants_tittle">
+			<%= store_category.name%>
+		</div>
+		<div class="ordering_restaurants_shoplist_border">
+		<div class="ordering_restaurants_shoplist">
+			<%@stores.each do |store|%>
+			<div class="ordering_restaurants_shopborder">
+				<div class="ordering_restaurants_shop_top">
+					<div class="ordering_restaurants_shop_left">
+						<a href="/stores/<%= store.id%>"><img src="<%= store.get_image_url%>" width="60" height="60"/></a>
+					</div>
+					<div class="ordering_restaurants_shop_right">
+						<div class="ordering_restaurants_shop_name">
+							<%= link_to store.name , store_path(store)%>
+						</div>
+						<div class="ordering_restaurants_shop_label">
+							<%= store.main_sales%>
+						</div>
+						<div class="ordering_restaurants_shop_label">
+								<div class="show_start">
+								<img src="/images/star.png" id="store_show_<%= store.id%>" onload="javascript:show_start('store_show_<%= store.id%>',<%= store.rank%>)">
+							   </div>
+						</div>
+					</div>
+
+				</div>
+				<div class="ordering_restaurants_shop_status">
+					<div class="ordering_restaurants_shop_status_left">
+						<%= store.sent_time%>分钟
+					</div>
+					<div class="ordering_restaurants_shop_status_right">
+						<%= link_to "收藏", add_fav_store_stores_path(:store_id => store.id)%>
+					</div>
+				</div>
+				<div class="ordering_restaurants_shop_status">
+					<span><%= store.tags%><span>
+				</div>
+			</div>
+			<%end%>
+		</div>
+		</div>
+</div>
+<%end%>
+		<%end%>
+	</div>
+</div>
+

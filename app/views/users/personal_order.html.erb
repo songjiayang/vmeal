@@ -1,0 +1,27 @@
+<%= render :partial => 'tab', :locals => {:tab_index => @tab_index} %>
+<div class="main_content_details">
+    <div class="main_content_details_top">
+        <p>
+          &nbsp;
+        </p>
+        <p>
+            &nbsp;
+        </p>
+    </div>
+    <%= render :partial=>"orders",:locals => {:orders => @orders,:order_status => @order_status}%>
+</div>
+<% if flash[:user_order_message]%>
+	<script>
+			  alert('<%=flash[:user_order_message]%>');
+	</script>
+<%end%>
+
+<%if flash[:new_orders]%>
+<%= javascript_include_tag "application" ,"http://localhost:9292/faye.js" %>
+<script type="text/javascript">
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  faye.publish('/faye/orders/new', {
+        new_orders: <%=flash[:new_orders]%>
+    });
+</script>
+<%end%>

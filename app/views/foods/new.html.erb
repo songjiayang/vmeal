@@ -1,0 +1,36 @@
+<div id="ordering_personalcenter_contentbase">
+	<div id="ordering_personalcenter_content">
+		<div class="ordering_personalcenter_position">
+			微大学>店家中心><font color="#FF9900">食品管理</font>
+		</div
+		<div id="ordering_personalcenter_main">
+			<div id="ordering_personalcenter_left"></div>
+			<div class="ordering_personalcenter_right">
+				<div class="ordering_personalcenter_right_centent">
+
+					<div class="ordering_personalcenter_right_title">
+						食品添加
+					</div>
+					<div class="ordering_personalcenter_classification">
+
+						<input class="ordering_personalcenter_classification_button" type="button" value="管理菜品类别"
+						onclick="location='/stores/store_center_add_category'" />
+
+						<input class="ordering_personalcenter_classification_button" type="button" value="管理本店菜品"
+						onclick="location='/stores/store_center_add_food'" />
+
+						<%= button_to '添加菜品类别',new_category_path(:store_id => session[:store_id]), :class => "ordering_personalcenter_classification_button" %>
+					</div>
+					<div class="ordering_personalcenter_personaldata">
+
+						<%= render 'form' %>
+						<div id="notice">
+							<%= flash[:notice] %>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

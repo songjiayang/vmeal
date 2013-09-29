@@ -1,0 +1,19 @@
+<div class="admin-breadcrumb">
+	<ul class="breadcrumb">
+		<li>
+			<a href="/admins">Home</a><span class="divider">/</span>
+		</li>
+		<li>
+			<a href="/admins/stores"><%= controller_name%></a><span class="divider">/</span>
+		</li>
+		<%if ["edit"].index action_name.to_s%>
+		<li>
+			<%= link_to @store.id, admins_stores_path(@store)%> <span class="divider">/</span>
+		</li>
+		<%end%>
+		<li class="active">
+			<%= action_name%>
+		</li>
+	</ul>
+</div>
+<%= render :partial => 'admins/flash', :locals => {:flash => flash} %>

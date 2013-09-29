@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<SCRIPT type="text/javascript">    
+    if(-1 != navigator.userAgent.indexOf("MSIE"))    
+    {    
+        document.write(' <OBJECT id="Player"');    
+        document.write(' classid="clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6"');    
+        document.write(' width=0 height=0 > <param name="URL" value="/msg/msg.wav" /> <param name="AutoStart" value="false" /> </OBJECT>');    
+    }    
+    else    
+    {    
+        document.write(' <OBJECT id="Player"');    
+        document.write(' type="application/x-ms-wmp"');    
+        document.write(' autostart="false" src= "/msg/msg.wav" width=0 height=0> </OBJECT>');    
+    }    
+    </SCRIPT>    
+<body>
+
+ <input type=button value="Play" onclick="Player.controls.play();" />
+
+</body>
+</html>

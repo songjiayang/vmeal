@@ -1,0 +1,16 @@
+<%if @need_binding%>
+	<%unless current_user%>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.layer({
+		    		type : 1,
+		    		title : ['',false],
+		    		closeBtn : ['0',true],
+		    		border : [10 , 0.3 , '#000', true],
+		    		area : ['auto','auto'],
+		    		page : {dom : '#otherlogin'}
+				});
+			});
+		</script>
+	<%end%>
+<%end%>

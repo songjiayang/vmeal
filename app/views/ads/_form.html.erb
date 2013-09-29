@@ -1,0 +1,71 @@
+<style type="text/css">
+	.ad_attr_a_line span{
+			font-weight: 800;
+			font-size: 14px;
+			color: #3399FF;
+			text-align: left;
+			width: 50px;
+	}
+
+	.ad_attr_a_line{
+		margin-left: 30px;
+		padding: 5px;
+	}
+
+	.ad_attr_a_line input {
+		margin-left: 10px;
+	}
+
+	.ad_attr_a_line select {
+		margin-left: 15px;
+	}
+
+
+</style>
+<div class="box-content">
+		<form class="form-horizontal"  id="ad_form">
+			<div class='ad_attr_a_line'>
+				<span style="margin-left:30px;">标题:</span>
+				<input type="text" class="input-xlarge" id="title">
+			</div>
+			<div class='ad_attr_a_line'>
+				<span >图片地址:</span>
+				<input type="text" class="input-xlarge" id="img_path">
+			</div>
+
+			<div class='ad_attr_a_line'>
+				<span >跳转连接:</span>
+				<input type="text" class="input-xlarge" id="link_to">
+			</div>
+
+			<div class='ad_attr_a_line'>
+				<span >状态设置:</span>
+					<select id='status'>
+						<option value ="1">使用中</option>
+					  <option value ="2">已取消</option>
+				</select>
+			</div>
+
+			<div class='ad_attr_a_line'>
+				<span >广告类型:</span>
+				<select id='ad_type'>
+						<option value ="1">焦点图</option>
+					  <option value ="2">一般图片</option>
+				</select>
+			</div>
+
+			<div class='ad_attr_a_line'>
+				<span >过期时间:</span>
+				<input type="text" class="input-xlarge datepicker" id="expiration_time">
+			</div>
+
+			<div class='ad_attr_a_line'>
+				<span >广告费用:</span>
+				<input type="text" class="input-xlarge" id="money">
+			</div>			
+			   
+		</form>   
+
+</div>
+
+

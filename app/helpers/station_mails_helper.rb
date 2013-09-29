@@ -1,0 +1,2 @@
+module StationMailsHelper
+end

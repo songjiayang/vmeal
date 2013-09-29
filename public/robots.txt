@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /assets
+Disallow: /admins
+Disallow: /uploads
+Sitemap: http://www.weidaxue.me/sitemap.xml

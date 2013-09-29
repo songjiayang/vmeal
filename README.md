@@ -2,6 +2,12 @@ Vmeal
 =====================
 ***一个在线订餐平台，店家可以在这里开店，用户可以购买商品.***
 演示地址: www.weidaxue.me
+备注：代码由于是刚学rails的时候编写的，所以有很多地方可以重构，由于时间和精力有限，暂不会进行大面积的重构。
+
+###为什么开源###
+1. 创业项目失败。
+2. 代码是在学习rails的时候书写，很多参考了`web开发敏捷之道`一书,故回馈社区。
+3. 希望此系统能够维持下去，哪怕有一个人用，我们也会很开心，有兴趣的朋友可以一起讨论研究，学习进步。
 
 
 ###项目依赖###
@@ -37,19 +43,6 @@ Vmeal
 9. 第三方登录和分享
 ......
 
-###主要功能模块界面#####
-1. 首页
-![首页](http://img.my.csdn.net/uploads/201309/30/1380476098_8830.png)
-2. 餐品详情
-![](http://img.my.csdn.net/uploads/201309/30/1380476125_3999.png)
-3. 个人中心
-![](http://img.my.csdn.net/uploads/201309/30/1380476098_1176.png)
-4. 商家后台
-![](http://img.my.csdn.net/uploads/201309/30/1380476099_6976.png)
-5. 管理员后台
-![](http://img.my.csdn.net/uploads/201309/30/1380476099_4268.png)
-
-
 ###核心开发人员#####
 1. [songjiayang](https://github.com/songjiayang)
 2. [yinchangxin](https://github.com/YinChangXin)
@@ -58,9 +51,15 @@ Vmeal
 5. [zhaohang]()
 
 
+###问题反馈###
+https://github.com/dianrui/vmeal/issues
 
 ###License###
 [GNU Affero GPL 3](http://www.gnu.org/licenses/agpl-3.0.html)
+
+
+
+
 
 
 

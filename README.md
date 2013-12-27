@@ -23,7 +23,7 @@ Vmeal
 3. 执行bundle命令 `bundle `
 4. 启动redis
 5. 执行 `rake db:create`
-6. 执行 `rake db:schema:load`
+6. 执行 `rake db:migrate`
 7. 执行 `rake db:seed`
 8. 执行 `rails s`
 

@@ -1,4 +1,4 @@
-#Ingore config 
+#Ingore config
 /config/database.yml
 /config/environments/production.rb
 /config/initializers/session_store.rb
@@ -6,7 +6,6 @@
 
 #Ingore db
 /db/development.sqlite3
-/db/schema.rb
 
 #Ingore log
 /log/*.log

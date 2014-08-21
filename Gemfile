@@ -43,5 +43,5 @@ gem "nokogiri", "~> 1.5.6"
 
 
 group :development do
-    gem "better_errors"
+  gem "better_errors"
 end

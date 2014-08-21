@@ -4,8 +4,6 @@
    adapter: mysql2
    encoding: utf8
    pool: 10
-   username: root
-   password: weidaxue
    host: localhost
    port: 3306
  

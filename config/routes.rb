@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 Vmeal::Application.routes.draw do
-
 
   get "test/index"
 
@@ -150,11 +148,12 @@ Vmeal::Application.routes.draw do
   resources :sto_categories
   resources :send_addresses
 
-  devise_for :users  , :controllers => { :registrations => "registrations",:sessions => "sessions" }
-  #, :controllers => {:sessions => "sessions"}
+  devise_for :users, :controllers => {
+    :registrations => "registrations",
+    :sessions => "sessions"
+  }
 
-  #用于注销的URL路径以及方法的配置
-  devise_for :users do
+  devise_scope :users do
     get 'logout' => 'devise/sessions#destroy'
   end
 
@@ -271,8 +270,6 @@ Vmeal::Application.routes.draw do
 
   resources :reply, :only=>[:show,:create]
 
-  match ':controller(/:action(/:id(.:format)))'
-
   root :to => "home#index"
 
   get "stores/:id/delete"=>"stores#destroy"
@@ -285,12 +282,12 @@ Vmeal::Application.routes.draw do
 
   post "carts/action/:type" => "carts#action"
 
-  match 'cj/(:type)'=>"activities#index",:constraints => { :type => /coming|history/ }
-  match 'cj/(:id)'=>"activities#show", :as=>"activities", :constraints => { :id => /\d+/ }, :method=>"get"
+  get 'cj/:type', to: "activities#index", constraints: { type:  /coming|history/ }
+  get 'cj/:id', to: "activities#show", constraints: { :id => /\d+/ }
   resources :score_histories
-  match 'cj/confirm_order'=>"score_histories#new"
-  match 'cj/error'=>"score_histories#error"
-  match 'faq/jf_rule' => "faq#jf_rule"
-  match 'locate' => 'home#location'
-  match 'choose/(:id)' => 'home#set_location'
+  get 'cj/confirm_order'=>"score_histories#new"
+  get 'cj/error'=>"score_histories#error"
+  get 'faq/jf_rule' => "faq#jf_rule"
+  get 'locate' => 'home#location'
+  get 'choose/(:id)' => 'home#set_location'
 end

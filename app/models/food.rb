@@ -85,19 +85,7 @@ class Food < ActiveRecord::Base
   end
 
   def self.hot_foods(school,refresh = false)
-    hot_foods_key = "hot_foods_of_#{school}"
-    if refresh || (!$redis.exists hot_foods_key) || (JSON.parse $redis.get hot_foods_key).blank?
-      hot_foods = Food.order("sales_count DESC").select{|food| food.store.isclose < 1 and  Store.select("id").where("school_id=?",School.find_by_name(school).id).map{|s|s.id}.include? food.store_id }.first(8)
-      $redis.set(hot_foods_key,hot_foods.to_json )
-      hot_foods
-    else
-      hot_foods = JSON.parse $redis.get hot_foods_key
-      hot_foods.map { |e|
-          food = Food.new(e)
-          food.id = e['id']
-          food
-       }
-    end
+    Food.order("sales_count DESC").select{|food| food.store.isclose < 1 and  Store.select("id").where("school_id=?",School.find_by_name(school).id).map{|s|s.id}.include? food.store_id }.first(8)
   end
 
 end

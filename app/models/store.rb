@@ -184,19 +184,7 @@ class Store < ActiveRecord::Base
   end
 
   def self.stores_of_a_school(school,refresh=false)
-    stors_key = "stores_of_#{school}"
-    if refresh || (!$redis.exists stors_key) || (JSON.parse $redis.get stors_key).blank?
-      stores =  Store.where("school_id=?",School.where(:name=>school).first.id).order("sortvalue")
-      $redis.set(stors_key,stores.to_json )
-      stores
-    else
-      stores = JSON.parse $redis.get stors_key
-      stores.map { |e|
-        store = Store.new(e)
-        store.id = e['id']
-        store
-      }
-    end
+    stores =  Store.where("school_id=?",School.where(:name=>school).first.id).order("sortvalue")
   end
 
   def self.create_default_store

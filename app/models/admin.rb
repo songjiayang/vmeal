@@ -2,8 +2,6 @@
 
 class Admin < ActiveRecord::Base
 
-  attr_accessible :name, :role, :password, :password_confirmation
-
   has_secure_password
 
   VALID_INPUT_REGEX = /[\w|!|@|#|$]+/i

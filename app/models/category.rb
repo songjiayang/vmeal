@@ -1,7 +1,6 @@
 # encoding: utf-8
 class Category < ActiveRecord::Base
   
-  attr_accessible :name, :store
   belongs_to :store
   has_many :foods  , :dependent => :destroy
   

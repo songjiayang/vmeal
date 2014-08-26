@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   #include Devise::Async::Model # should be below call to `devise`
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :is_store, :default_address_id, :uid,:image_url_file_name, :is_locked, :integral
   validates :username , :length => {:in => 3..30 , :message => "用户名必须为3-30个字符"}
   has_attached_file :image_url,
      :styles => {
@@ -34,9 +33,9 @@ class User < ActiveRecord::Base
   after_create :fresh_the_number
 
   #异步邮箱
-  handle_asynchronously :send_reset_password_instructions , :run_at => Proc.new { Time.now }
-  handle_asynchronously :send_confirmation_instructions  , :run_at => Proc.new { Time.now }
-  handle_asynchronously :send_on_create_confirmation_instructions  , :run_at => Proc.new { Time.now }
+  # handle_asynchronously :send_reset_password_instructions , :run_at => Proc.new { Time.now }
+  # handle_asynchronously :send_confirmation_instructions  , :run_at => Proc.new { Time.now }
+  # handle_asynchronously :send_on_create_confirmation_instructions  , :run_at => Proc.new { Time.now }
   def can_increment_sent_address?
     send_address.size<10? true:false
   end
@@ -99,14 +98,7 @@ class User < ActiveRecord::Base
   end
 
   def self.numbers(refresh = false)
-    redis_key = "users_number"
-    if refresh || (!$redis.exists redis_key) || ($redis.get redis_key).blank?
-      number = User.count
-    $redis.set(redis_key,number)
-    number
-    else
-    $redis.get redis_key
-    end
+    User.count
   end
 
   def signin_number(refresh = false)

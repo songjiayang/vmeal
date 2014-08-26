@@ -1,7 +1,6 @@
 #encoding:utf-8
 require 'nokogiri'
 class Vmail < ActiveRecord::Base
-  attr_accessible :admin_id, :content, :sent_mails, :title
   validates :admin_id, :content, :sent_mails, :title, :presence => true 
   STATUS=["未发送","已发送"]
 

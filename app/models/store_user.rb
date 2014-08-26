@@ -1,6 +1,5 @@
 # encoding: utf-8
 class StoreUser < ActiveRecord::Base
-  attr_accessible :password, :store_id, :username, :store_id
   has_one :store
   before_save :encrypt_password
   SECRET = Digest::SHA1.hexdigest("weidaxue.me")

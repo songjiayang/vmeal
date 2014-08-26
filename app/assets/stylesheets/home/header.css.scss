@@ -1,0 +1,54 @@
+.header {
+  position:absolute;
+  top:0px;
+  left:0px;
+  height:54px;
+  width:100%;
+  background:#7D1F0A;
+  display:block;
+  z-index:100;
+  .right{
+    position: relative;
+  }
+}
+
+.brand-logo {
+  height:54px;
+  width:163px;
+  float:left;
+  background:#601606;
+}
+
+ul.navs.navbar-nav{
+  float:left;
+  padding-left:7px;
+  margin: 0px;
+  li { 
+    width: 44px;
+    height: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    float: left;
+    margin-top: 5px;
+    text-align: center;
+    cursor: pointer;
+    list-style-type: none;
+  }
+}
+
+.navbar-form{
+  display: inline-block;
+  position: absolute;
+  right: 60px;
+  margin: 10px;
+  .submit-btn{
+    position: absolute;
+    width:18px;
+    height:20px;
+    padding: 5px 6px 7px 6px;
+    background:#FFF;
+    background-repeat:no-repeat;
+    cursor:pointer;
+  }
+}

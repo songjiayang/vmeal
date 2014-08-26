@@ -1,0 +1,58 @@
+header.header
+  .container
+    .brand-logo
+      = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path
+    ul.navs.navbar-nav.pull-left
+      li
+        = link_to image_tag("icon/home.png" ,:width=>"24",:height=>"24"), :root
+        .title_div
+          | 主页
+      li
+        = link_to image_tag("icon/food.png" ,:width=>"24",:height=>"24"), orders_users_path(:status=>"building")                          
+        .title_div
+          | 我的订单
+      li
+        = link_to image_tag("icon/like.png" ,:width=>"24",:height=>"24"), collects_users_path
+        .title_div
+          | 我的收藏
+      li
+        = link_to image_tag("icon/buy24.png" ,:width=>"24",:height=>"24"), bill_users_path
+        .title_div
+          | 购物车
+      li
+        = link_to image_tag("/temp/cjs.png" ,:width=>"24",:height=>"24"), "/cj"
+        .title_div
+          | 我要抽奖
+      li
+        = link_to image_tag("/temp/Chat.png" ,:width=>"24",:height=>"24"), "http://bbs.weidaxue.me"
+        .title_div
+          | 微大学bbs
+
+    .right.pull-right 
+      form#search_form.navbar-form  action="/foods/search" method="get" 
+        input#input_key_word.ordering_top_input name="keys" type="text" placeholder="输入餐品或店家" 
+        img.submit-btn height="18" src="/images/icon/search.png" width="18" 
+
+      - if user_signed_in?
+        .ordering_top_login_pic
+          img#userimg border="0" height="30" src=current_user.get_image_url("small") width="30" 
+        #downbox.ordering_down_box style="display:none;" tabindex="0" 
+          .ordering_down_box_li
+            .ordering_down_box_li_pic
+            .ordering_down_box_li_text
+              = link_to "我的微大学",home_users_path
+          .ordering_down_box_li
+            .ordering_down_box_li_pic
+            .ordering_down_box_li_text
+              = link_to "我的收藏",collects_users_path
+          .ordering_down_box_li
+            .ordering_down_box_li_pic
+            .ordering_down_box_li_text
+              = link_to "账号设置",account_users_path
+          .ordering_down_box_li
+            .ordering_down_box_li_pic
+            .ordering_down_box_li_text
+              a href="/logout"  退出
+      - else
+        .ordering_top_login
+          a href="/users/sign_in"  登录

@@ -11,15 +11,15 @@ html lang='zh-CN'
 		= stylesheet_link_tag "application",  media: "all"
 		= csrf_meta_tags
 	body
-		=render 'commom/top_bar'
+		=render 'share/header'
 		= yield
-		=render 'commom/bottom_bar'
+		=render 'share/bottom_bar'
 		p id="back-to-top"
 		a href="#top"
 			span
 			| 返回顶部
 
 		= javascript_include_tag "application",  media: "all"
-		= render "home/other_login"
+		/ = render "home/other_login"
 		html xmlns:wb="http://open.weibo.com/wb"
-		=render 'commom/tongji'
+		=render 'share/tongji'

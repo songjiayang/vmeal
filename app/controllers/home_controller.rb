@@ -1,9 +1,5 @@
-#encoding : utf-8
 class HomeController < ApplicationController
-  #首页的登录和session验证身份地方不能做缓存
-  #这个时候就需要action做缓存或者做片段缓存
-  #caches_action :index ,:show_stores
-  layout 'devise', :only => [:location]
+
   def index
     unless cookies[:school]
       redirect_to '/locate'
@@ -69,7 +65,6 @@ class HomeController < ApplicationController
 
   def set_location
       school = School.find(params[:id])
-      p school.name+"-----------------------------"
       if school
          set_locate_school(school.name)
          redirect_to root_path

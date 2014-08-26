@@ -1,5 +1,7 @@
 Vmeal::Application.routes.draw do
 
+  root :to => "home#index"
+
   get "test/index"
 
   get "qingans/index"
@@ -269,8 +271,6 @@ Vmeal::Application.routes.draw do
   end
 
   resources :reply, :only=>[:show,:create]
-
-  root :to => "home#index"
 
   get "stores/:id/delete"=>"stores#destroy"
 

@@ -16,6 +16,8 @@ gem 'paperclip', '~> 4.2.0'
 gem 'rails_kindeditor', '~> 0.4.5'
 gem 'settingslogic', '~> 2.0.9'
 
+gem 'slim', '~> 2.0.3'
+
 gem 'puma', '~> 2.9.0'
 
 

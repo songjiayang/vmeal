@@ -1,32 +1,32 @@
 header.header
   .container
-    .brand-logo
-      = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path
-    ul.navs.navbar-nav.pull-left
-      li
-        = link_to image_tag("icon/home.png" ,:width=>"24",:height=>"24"), :root
-        .title_div
-          | 主页
-      li
-        = link_to image_tag("icon/food.png" ,:width=>"24",:height=>"24"), orders_users_path(:status=>"building")                          
-        .title_div
-          | 我的订单
-      li
-        = link_to image_tag("icon/like.png" ,:width=>"24",:height=>"24"), collects_users_path
-        .title_div
-          | 我的收藏
-      li
-        = link_to image_tag("icon/buy24.png" ,:width=>"24",:height=>"24"), bill_users_path
-        .title_div
-          | 购物车
-      li
-        = link_to image_tag("/temp/cjs.png" ,:width=>"24",:height=>"24"), "/cj"
-        .title_div
-          | 我要抽奖
-      li
-        = link_to image_tag("/temp/Chat.png" ,:width=>"24",:height=>"24"), "http://bbs.weidaxue.me"
-        .title_div
-          | 微大学bbs
+    .left
+      = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path, class: 'brand-logo'
+      ul.navs.navbar-nav.pull-left
+        li
+          = link_to image_tag("icon/home.png" ,:width=>"24",:height=>"24"), :root
+          .title_div
+            | 主页
+        li
+          = link_to image_tag("icon/food.png" ,:width=>"24",:height=>"24"), orders_users_path(:status=>"building")                          
+          .title_div
+            | 我的订单
+        li
+          = link_to image_tag("icon/like.png" ,:width=>"24",:height=>"24"), collects_users_path
+          .title_div
+            | 我的收藏
+        li
+          = link_to image_tag("icon/buy24.png" ,:width=>"24",:height=>"24"), bill_users_path
+          .title_div
+            | 购物车
+        li
+          = link_to image_tag("/temp/cjs.png" ,:width=>"24",:height=>"24"), "/cj"
+          .title_div
+            | 我要抽奖
+        li
+          = link_to image_tag("/temp/Chat.png" ,:width=>"24",:height=>"24"), "http://bbs.weidaxue.me"
+          .title_div
+            | 微大学bbs
 
     .right.pull-right 
       form#search_form.navbar-form  action="/foods/search" method="get" 

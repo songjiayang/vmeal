@@ -1,25 +1,3 @@
-.ordering_top_login{
-	height:18px;
-	width:46px;
-	padding-top:18px;
-	padding-bottom:18px;
-	float:left;
-	color:#FFF;
-	text-align:right;
-	font-size:14px;
-	line-height:18px;
-}
-
-.ordering_top_login a{
-	color:#FFF;
-	text-decoration:none;
-}
-
-
-.ordering_top_login a:hover{
-	text-decoration:underline;
-}
-
 .ordering_top_input{
 	width:185px;
 	height:30px;

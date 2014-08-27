@@ -39,11 +39,10 @@ ul.navs.navbar-nav{
 
 .navbar-form{
   display: inline-block;
-  position: absolute;
+  float: left;
   right: 60px;
   margin: 10px;
   .submit-btn{
-    position: absolute;
     width:18px;
     height:20px;
     padding: 5px 6px 7px 6px;
@@ -51,4 +50,25 @@ ul.navs.navbar-nav{
     background-repeat:no-repeat;
     cursor:pointer;
   }
+}
+
+.ordering_top_login{
+  height:18px;
+  padding-top:18px;
+  padding-bottom:18px;
+  float:left;
+  color:#FFF;
+  text-align:right;
+  font-size:14px;
+  line-height:18px;
+}
+
+.ordering_top_login a{
+  color:#FFF;
+  text-decoration:none;
+}
+
+
+.ordering_top_login a:hover{
+  text-decoration:underline;
 }

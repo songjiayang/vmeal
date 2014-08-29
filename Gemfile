@@ -6,6 +6,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '~> 2.5.3'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.1.1'
+gem 'jquery-ui-rails', '~> 5.0.0'
 
 gem 'mysql2', '~> 0.3.16'
 gem 'sidekiq', '~> 3.2.2'

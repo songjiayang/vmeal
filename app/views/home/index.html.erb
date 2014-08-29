@@ -71,24 +71,3 @@
                 </div>
         </div>
 </div>
-<% cache "home_notices", :expires_in => 1.day do %>
-<script type="text/javascript">
-  $(document).ready(function () {
-                $('.carousel').carousel({
-                  interval: 2000
-                })
-  });
-  $(document).ready(function () {
-       setInterval("startRequest()",2000);
-    });
-    var messages = [<%=format_notice(@notices)%>]
-    var index = 0
-    function startRequest(){
-      $(".ordering_maintop_message").html(messages[index]);
-      index+=1;
-      if (index>=messages.length){
-                index = 0;
-      }
-   }
-</script>
-<%end%>

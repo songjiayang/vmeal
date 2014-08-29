@@ -21,26 +21,4 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-  $(document).ready(function () {
-      var window_height = $(window).height();
-      var bottom_height = $(".ordering_bottom").offset().top;
-      if ((parseInt(bottom_height)+60)< parseInt(window_height)){
-      $(".ordering_bottom").offset({ top: parseInt(window_height)-90});
-      }
-    $("#wx_image").click(function () {
-      $.layer({
-        type : 2,
-        closeBtn : [0,true],
-        iframe : {
-            src : 'http://www.weidaxue.me/temp/ewm.jpg'
-        },
-        title : ['' , false],
-        area : ['430px','430px'],
-        success : function(){ //层加载成功后进行的回调
-            layer.shift('right-bottom',1000); //浏览器右下角弹出
-        }
-      });
-    });
-  });
-</script>
+

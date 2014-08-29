@@ -6,18 +6,8 @@ body{
   background:#F4EDEC;
 }
 
-.pull-left {
-  display: block;
-  float: left;
-}
-
-.pull-right{
-  display: block;
-  float: right;
-}
-
 .container{
-  margin:0px auto;
   min-width: 800px;
   max-width: 960px;
+  padding: 0px;
 }

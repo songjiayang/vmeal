@@ -35,13 +35,4 @@
 </div>
 </div>
 </div>
-<script type="text/javascript">
-		function only_redirect_to(store_id){
-			self.location="/stores/"+store_id;
-		}
-		function do_eat_post_and_redirect(store_id,store_name,food_id,food_name,food_price){
-			eat_post(store_id,store_name,food_id,food_name,food_price,0);	
-			only_redirect_to(store_id)
-		}
-</script>
 <%end%>

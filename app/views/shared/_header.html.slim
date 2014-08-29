@@ -1,28 +1,25 @@
 header.header
   .container
-    .left
-      = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path, class: 'brand-logo'
-      ul.navs.navbar-nav.pull-left
-        li
-          a href=orders_users_path(:status=>"building") data-toggle="tooltip" data-placement="bottom" title="Tooltip on left"
-            i.fa.fa-cutlery.icon                         
-        li
-          a href=collects_users_path
-            i.fa.fa-heart.icon
-        li
-          a href=bill_users_path
-            i.fa.fa-shopping-cart.icon
-        li
-          a href='/cj'
-            i.fa.fa-pie-chart.icon
-        li
-          a href="http://bbs.weidaxue.me"
-            i.fa.fa-comment.icon
-    .right.pull-right 
-      form#search_form.navbar-form  action="/foods/search" method="get" 
-        input#input_key_word.ordering_top_input name="keys" type="text" placeholder="输入餐品或店家" 
-        i class="fa fa-search submit-btn"
-        / img.submit-btn src="/images/icon/search.png" 
+    = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path, class: 'brand-logo'
+    ul.navs.navbar-nav.pull-left
+      li
+        a href=orders_users_path(:status=>"building") data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on left"
+          i.fa.fa-cutlery.icon                         
+      li
+        a href=collects_users_path
+          i.fa.fa-heart.icon
+      li
+        a href=bill_users_path
+          i.fa.fa-shopping-cart.icon
+      li
+        a href='/cj'
+          i.fa.fa-pie-chart.icon
+      li
+        a href="http://bbs.weidaxue.me"
+          i.fa.fa-comment.icon
+    form#search_form.pull-right.navbar-form  action="/foods/search" method="get" 
+      input#input_key_word.ordering_top_input name="keys" type="text" placeholder="输入餐品或店家" 
+      i class="fa fa-search submit-btn"
 
       - if user_signed_in?
         .ordering_top_login_pic
@@ -44,6 +41,3 @@ header.header
             .ordering_down_box_li_pic
             .ordering_down_box_li_text
               a href="/logout"  退出
-      / - else
-      /   .ordering_top_login
-      /     a href="/users/sign_in"  登录

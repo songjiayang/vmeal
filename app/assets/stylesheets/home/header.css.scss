@@ -1,4 +1,3 @@
-// Utilities
 @import "utilities/variables";
 
 .header {
@@ -32,34 +31,11 @@ ul.navs.navbar-nav{
   }
 }
 
+.navbar-form { padding-right: 0px;}
 .navbar-form .submit-btn{
-  width:30px;
-  height:30px;
   padding: 5px 6px 7px 6px;
   background:#FFF;
-  background-repeat:no-repeat;
   cursor:pointer;
   font-size: 18px;
   color: $primary-color;
-}
-
-.ordering_top_login{
-  height:18px;
-  padding-top:18px;
-  padding-bottom:18px;
-  float:left;
-  color:#FFF;
-  text-align:right;
-  font-size:14px;
-  line-height:18px;
-}
-
-.ordering_top_login a{
-  color:#FFF;
-  text-decoration:none;
-}
-
-
-.ordering_top_login a:hover{
-  text-decoration:underline;
 }

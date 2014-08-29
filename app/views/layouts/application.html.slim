@@ -11,9 +11,9 @@ html lang='zh-CN'
 		= stylesheet_link_tag "application",  media: "all"
 		= csrf_meta_tags
 	body
-		=render 'share/header'
+		=render 'shared/header'
 		= yield
-		=render 'share/bottom_bar'
+		=render 'shared/footer'
 		p id="back-to-top"
 		a href="#top"
 			span
@@ -22,4 +22,4 @@ html lang='zh-CN'
 		= javascript_include_tag "application",  media: "all"
 		/ = render "home/other_login"
 		html xmlns:wb="http://open.weibo.com/wb"
-		=render 'share/tongji'
+		=render 'shared/analytics'

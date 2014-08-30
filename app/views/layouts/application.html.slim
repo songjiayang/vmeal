@@ -7,7 +7,7 @@ html lang='zh-CN'
 		meta property="wb:webmaster" content="f7deafaa69e93a8d" 
 		meta property="qc:admins" content="3524473267675141055655"
 		title 微大学
-		link href="/temp/favicon.ico" mce_href="/temp/favicon.ico" rel="bookmark" type="image/x-icon"
+		link rel="shortcut icon" href='/favicon.ico'
 		link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
 		= stylesheet_link_tag "application",  media: "all"
 		= csrf_meta_tags
@@ -21,6 +21,5 @@ html lang='zh-CN'
 			| 返回顶部
 
 		= javascript_include_tag "application",  media: "all"
-		/ = render "home/other_login"
 		html xmlns:wb="http://open.weibo.com/wb"
 		=render 'shared/analytics'

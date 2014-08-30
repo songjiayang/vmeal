@@ -3,7 +3,7 @@ header.header
     = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path, class: 'brand-logo'
     ul.navs.navbar-nav.pull-left
       li
-        a href=orders_users_path(:status=>"building") data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on left"
+        a href=orders_users_path(:status=>"building") data-toggle="tooltip" data-placement="left" title="Tooltip on left"
           i.fa.fa-cutlery.icon                         
       li
         a href=collects_users_path
@@ -17,27 +17,28 @@ header.header
       li
         a href="http://bbs.weidaxue.me"
           i.fa.fa-comment.icon
+
     form#search_form.pull-right.navbar-form  action="/foods/search" method="get" 
       input#input_key_word.ordering_top_input name="keys" type="text" placeholder="输入餐品或店家" 
       i class="fa fa-search submit-btn"
 
-      - if user_signed_in?
-        .ordering_top_login_pic
-          img#userimg border="0" height="30" src=current_user.get_image_url("small") width="30" 
-        #downbox.ordering_down_box style="display:none;" tabindex="0" 
-          .ordering_down_box_li
-            .ordering_down_box_li_pic
-            .ordering_down_box_li_text
-              = link_to "我的微大学",home_users_path
-          .ordering_down_box_li
-            .ordering_down_box_li_pic
-            .ordering_down_box_li_text
-              = link_to "我的收藏",collects_users_path
-          .ordering_down_box_li
-            .ordering_down_box_li_pic
-            .ordering_down_box_li_text
-              = link_to "账号设置",account_users_path
-          .ordering_down_box_li
-            .ordering_down_box_li_pic
-            .ordering_down_box_li_text
-              a href="/logout"  退出
+    - if user_signed_in?
+      .ordering_top_login_pic
+        img#userimg border="0" height="30" src=current_user.get_image_url("small") width="30" 
+      #downbox.ordering_down_box style="display:none;" tabindex="0" 
+        .ordering_down_box_li
+          .ordering_down_box_li_pic
+          .ordering_down_box_li_text
+            = link_to "我的微大学",home_users_path
+        .ordering_down_box_li
+          .ordering_down_box_li_pic
+          .ordering_down_box_li_text
+            = link_to "我的收藏",collects_users_path
+        .ordering_down_box_li
+          .ordering_down_box_li_pic
+          .ordering_down_box_li_text
+            = link_to "账号设置",account_users_path
+        .ordering_down_box_li
+          .ordering_down_box_li_pic
+          .ordering_down_box_li_text
+            a href="/logout"  退出

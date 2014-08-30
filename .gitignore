@@ -18,7 +18,6 @@
 
 #Ingore other
 /tmp/cache/*
-/vendor/*
 /test/*
 /script/log/*
 

@@ -1,4 +1,3 @@
-#encoding : utf-8
 namespace :init do 
 	desc "初始化活动数据"
 	task :init_activities => :environment do

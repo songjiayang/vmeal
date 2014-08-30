@@ -10,6 +10,7 @@ html lang='zh-CN'
 		link rel="shortcut icon" href='/favicon.ico'
 		link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
 		= stylesheet_link_tag "application",  media: "all"
+		= javascript_include_tag :modernizr
 		= csrf_meta_tags
 	body
 		=render 'shared/header'
@@ -20,6 +21,6 @@ html lang='zh-CN'
 			span
 			| 返回顶部
 
-		= javascript_include_tag "application",  media: "all"
+		= javascript_include_tag "application"
 		html xmlns:wb="http://open.weibo.com/wb"
 		=render 'shared/analytics'

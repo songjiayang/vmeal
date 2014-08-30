@@ -1,5 +1,4 @@
 Vmeal::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -45,6 +44,5 @@ Vmeal::Application.configure do
     :password => "password",
     :enable_starttls_auto => true
   }
-  config.active_support.deprecation=:log
 
 end

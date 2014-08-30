@@ -11,10 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 
-//= require_tree ./lib
-//= require layer.min
+//= require_tree ./components
+
 //= require login
 //= require dropdown
 //= require top

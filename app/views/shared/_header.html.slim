@@ -3,19 +3,19 @@ header.header
     = link_to image_tag("icon/logo.png" ,:width=>"124",:height=>"53" ), root_path, class: 'brand-logo'
     ul.navs.navbar-nav.pull-left
       li
-        a href=orders_users_path(:status=>"building") data-toggle="tooltip" data-placement="left" title="Tooltip on left"
+        a href=orders_users_path(:status=>"building") data-toggle="tooltip" data-placement="bottom" title="" data-original-title="我的订单"
           i.fa.fa-cutlery.icon                         
       li
-        a href=collects_users_path
+        a href=collects_users_path data-toggle="tooltip" data-placement="bottom" title="" data-original-title="我的收藏"
           i.fa.fa-heart.icon
       li
-        a href=bill_users_path
+        a href=bill_users_path data-toggle="tooltip" data-placement="bottom" title="" data-original-title="购物车"
           i.fa.fa-shopping-cart.icon
       li
-        a href='/cj'
+        a href='/cj' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="我要抽奖"
           i.fa.fa-pie-chart.icon
       li
-        a href="http://bbs.weidaxue.me"
+        a href="http://bbs.weidaxue.me" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="话题讨论"
           i.fa.fa-comment.icon
 
     form#search_form.pull-right.navbar-form  action="/foods/search" method="get" 

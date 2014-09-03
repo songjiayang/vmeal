@@ -1,0 +1,13 @@
+@import "utilities/variables";
+
+.top-news {  
+  float: right;
+  background: #FFE28C url(image-path('icon/notice.png')) 15px 50% no-repeat;
+  height: 32px;
+  width: 50%;
+  line-height: 32px;
+  padding-left: 40px;
+  a {
+    color: black;
+  }
+}

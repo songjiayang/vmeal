@@ -1,17 +1,3 @@
-.ordering_top_input{
-	width:185px;
-	height:30px;
-	background:#FFF;
-	border:0;
-	color:#999;
-	float:left;
-	text-indent:5px;
-}
-
-.ordering_top_input:focus {
-	outline:none;
-}
-
 .ordering_contentbase{
 	width:100%;
 	float:left;

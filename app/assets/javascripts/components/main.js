@@ -82,7 +82,7 @@ $(document).ready(function(){
     var scrollToTop = function() {
 
       // Get link
-      var link = $('#to-top');
+      var link = $('#scrollUp');
 
       $(window).scroll(function() {
           // If the user scrolled a bit (150 pixels) show the link

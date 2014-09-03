@@ -45,11 +45,12 @@ ul.navs.navbar-nav{
   }
 }
 
-.navbar-form { padding: 0px;}
+.navbar-form { padding: 0px; }
 .navbar-form .submit-btn {
   padding: 5px 6px 7px 6px;
   background: white;
   cursor:pointer;
   font-size: 18px;
   color: $primary-color;
+  border: 0px;
 }

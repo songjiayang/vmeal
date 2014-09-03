@@ -62,7 +62,6 @@
                                         </div>
 
                                         <div class="ordering_center_right">
-                                                <%= render "weibo"%>
                                                 <%= render "hot_foods"%>
                                         </div>
 

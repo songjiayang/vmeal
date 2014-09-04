@@ -78,29 +78,6 @@ $(document).ready(function(){
       //});
     };
 
-    /* Scroll to top functionality */
-    var scrollToTop = function() {
-
-      // Get link
-      var link = $('#scrollUp');
-
-      $(window).scroll(function() {
-          // If the user scrolled a bit (150 pixels) show the link
-          if ($(this).scrollTop() > 150) {
-              link.fadeIn(100);
-          } else {
-              link.fadeOut(100);
-          }
-      });
-
-      // On click get to top
-      link.click(function() {
-          $('html, body').animate({scrollTop: 0}, 200);
-          return false;
-      });
-    };
-
-
     /* Input placeholder for older browsers */
     var oldiePlaceholder = function() {
 
@@ -133,7 +110,6 @@ $(document).ready(function(){
     return {
       init: function() {
         uiInit(); // Initialize UI Code
-        scrollToTop(); // Scroll to top functionality
         oldiePlaceholder(); // Make input placeholder work in older browsers
       }
     };

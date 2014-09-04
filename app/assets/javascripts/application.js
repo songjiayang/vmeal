@@ -14,6 +14,9 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 
+
+//= require scroll-up
+
 //= require_tree ./components
 
 //= require login

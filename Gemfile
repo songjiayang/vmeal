@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.1.1'
 gem 'jquery-ui-rails', '~> 5.0.0'
 gem 'bootstrap-sass', '~> 3.2.0.1'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'modernizr-rails'
 
 gem 'mysql2', '~> 0.3.16'
@@ -20,7 +21,6 @@ gem 'rails_kindeditor', '~> 0.4.5'
 gem 'settingslogic', '~> 2.0.9'
 
 gem 'slim', '~> 2.0.3'
-
 gem 'puma', '~> 2.9.0'
 
 gem 'scroll-up', '~> 0.0.5'
@@ -51,6 +51,5 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
   gem 'factory_girl_rails', '~> 4.4.1'
-
   gem 'byebug', '~> 3.2.0' 
 end
